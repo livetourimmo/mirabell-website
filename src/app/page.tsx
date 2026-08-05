@@ -5,8 +5,9 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Gallery } from "@/components/gallery";
-import { PlaceholderMedia } from "@/components/placeholder-media";
 import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@/components/eyebrow";
+import { SectionDivider } from "@/components/mountain-mark";
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
           />
         </section>
 
-        <section className="shell grid gap-10 pt-14 pb-20 md:grid-cols-12 md:gap-10 md:pt-20 md:pb-28">
+        <section className="shell grid gap-12 pt-14 pb-20 md:grid-cols-12 md:items-center md:gap-10 md:pt-20 md:pb-28">
           <div className="md:col-span-7">
             <h1 className="font-heading text-5xl leading-[1.02] text-primary md:text-[3.6rem]">
               Zwei Häuser am Hang von Uetliburg
@@ -49,8 +50,8 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Signature: die beiden Hausnummern wie ein Türschild */}
           <div className="md:col-span-5 md:pl-6">
-            {/* Signature: die beiden Hausnummern, wie ein Türschild */}
             <div className="flex items-stretch gap-5">
               <div className="border border-accent px-5 py-3 text-center">
                 <div className="font-heading text-3xl tabular-nums text-primary">53</div>
@@ -99,10 +100,17 @@ export default function Home() {
         <section id="projekt" className="shell py-section-mobile md:py-section">
           <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-24">
             <Reveal>
-              <PlaceholderMedia label="Platzhalter: Architektur-Visualisierung Haus A" className="w-full" aspect="aspect-[4/5]" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
+                <Image
+                  src="/images/aussen1.png"
+                  alt="Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
             <Reveal delay={100} className="md:pl-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Über das Projekt</p>
+              <Eyebrow>Über das Projekt</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
                 Traditionelle Formensprache, zeitgemässer Ausbau
               </h2>
@@ -127,7 +135,7 @@ export default function Home() {
         <section className="shell py-section-mobile md:py-section">
           <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-24">
             <Reveal className="order-2 md:order-1 md:pr-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Lage</p>
+              <Eyebrow>Lage</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
                 Dorfkern von Uetliburg, Blick Richtung Obersee
               </h2>
@@ -145,7 +153,14 @@ export default function Home() {
               </Link>
             </Reveal>
             <Reveal delay={100} className="order-1 md:order-2">
-              <PlaceholderMedia label="Platzhalter: Lageplan / Kartenausschnitt" className="w-full" aspect="aspect-[4/5]" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
+                <Image
+                  src="/images/drohne-uetliburg.JPG"
+                  alt="Luftaufnahme Uetliburg mit Blick Richtung Obersee"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
           </div>
         </section>
@@ -158,7 +173,7 @@ export default function Home() {
               <p className="mt-2 text-sm uppercase tracking-[0.2em] text-background/70">Wohnungen, zwei Häuser</p>
             </Reveal>
             <Reveal delay={80} className="md:col-span-7 md:col-start-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Angebot</p>
+              <Eyebrow tone="inverted">Angebot</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-background md:text-4xl">
                 Vom Erstbezug bis zur Attika im Dachgeschoss
               </h2>
@@ -177,13 +192,15 @@ export default function Home() {
         {/* GALERIE */}
         <section className="shell py-section-mobile md:py-section">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Galerie</p>
+            <Eyebrow>Galerie</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">Impressionen</h2>
           </Reveal>
           <Reveal delay={100} className="mt-10">
             <Gallery />
           </Reveal>
         </section>
+
+        <SectionDivider />
       </main>
       <Footer />
     </>

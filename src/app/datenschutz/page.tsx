@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata: Metadata = {
   title: "Datenschutz",
@@ -12,7 +13,7 @@ export default function DatenschutzPage() {
       <Nav overPhoto={false} />
       <main className="flex-1">
         <section className="mx-auto max-w-3xl px-6 py-section-mobile md:py-section">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Rechtliches</p>
+          <Eyebrow>Rechtliches</Eyebrow>
           <h1 className="mt-3 font-heading text-4xl text-primary">Datenschutzerklärung</h1>
 
           <div className="mt-10 flex flex-col gap-8 text-foreground-muted">

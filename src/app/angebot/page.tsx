@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Download } from "lucide-react";
+import Image from "next/image";
+import { Download, Table as TableIcon } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
-import { UnitsTable } from "@/components/units-table";
-import { PlaceholderMedia } from "@/components/placeholder-media";
+import { Eyebrow } from "@/components/eyebrow";
+import { SectionDivider } from "@/components/mountain-mark";
 import { MOCK_DOWNLOADS } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
@@ -28,15 +29,17 @@ export default function AngebotPage() {
       <main className="flex-1">
         {/* HERO — vollflächiges Bild, Titel & Informationen darunter statt darauf */}
         <section className="relative h-screen w-full">
-          <PlaceholderMedia
-            label="Platzhalter: Visualisierung Angebotsseite"
-            className="h-full w-full"
-            aspect=""
+          <Image
+            src="/images/aussen1.png"
+            alt="Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B"
+            fill
+            priority
+            className="object-cover"
           />
         </section>
 
-        <section className="shell pt-14 pb-16 md:pt-20 md:pb-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">Angebot</p>
+        <section className="shell pt-14 pb-section-mobile md:pt-20 md:pb-section">
+          <Eyebrow>Angebot</Eyebrow>
           <h1 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.02] text-primary md:text-6xl">
             Dreizehn Wohnungen im Detail
           </h1>
@@ -44,24 +47,23 @@ export default function AngebotPage() {
             Grundrisse, Flächen und Preise für Haus A und Haus B — filterbar nach
             Geschoss und Zimmerzahl, inklusive Baubeschrieb und Plänen zum Download.
           </p>
-        </section>
-
-        {/* EINLEITUNG */}
-        <section className="shell py-section-mobile md:py-section">
-          <Reveal className="max-w-[62ch]">
-            <p className="text-foreground-muted">
-              Vom 2.5-Zimmer-Erstbezug bis zur grosszügigen 4.5-Zimmer-Wohnung im
-              Dachgeschoss: Der Navigator unten zeigt den aktuellen Stand aller
-              Wohnungen in Haus A und Haus B, inklusive Status und direktem Zugriff
-              auf die jeweiligen Grundrisse.
-            </p>
-          </Reveal>
+          <p className="mt-6 max-w-[52ch] text-foreground-muted">
+            Vom 2.5-Zimmer-Erstbezug bis zur grosszügigen 4.5-Zimmer-Wohnung im
+            Dachgeschoss: Der Navigator unten zeigt den aktuellen Stand aller
+            Wohnungen in Haus A und Haus B, inklusive Status und direktem Zugriff
+            auf die jeweiligen Grundrisse.
+          </p>
         </section>
 
         {/* NAVIGATOR / ANGEBOTSLISTE */}
         <section id="navigator" className="shell pb-section-mobile md:pb-section">
           <Reveal>
-            <UnitsTable />
+            <div className="flex min-h-[420px] w-full flex-col items-center justify-center gap-4 rounded-[var(--radius-base)] border border-dashed border-border bg-[color-mix(in_srgb,var(--color-secondary)_18%,var(--color-background))] text-center">
+              <TableIcon className="size-7 text-foreground-muted" strokeWidth={1.25} />
+              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground-muted">
+                Platzhalter
+              </span>
+            </div>
           </Reveal>
         </section>
 
@@ -69,7 +71,7 @@ export default function AngebotPage() {
         <section className="bg-secondary/25">
           <div className="shell py-section-mobile md:py-section">
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Unterlagen</p>
+              <Eyebrow>Unterlagen</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-4xl">Downloads</h2>
             </Reveal>
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -94,7 +96,7 @@ export default function AngebotPage() {
         {/* MATERIALISIERUNG */}
         <section className="shell py-section-mobile md:py-section">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Materialisierung</p>
+            <Eyebrow>Materialisierung</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl text-primary md:text-4xl">Ausbau &amp; Materialien</h2>
           </Reveal>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -108,6 +110,8 @@ export default function AngebotPage() {
             ))}
           </div>
         </section>
+
+        <SectionDivider />
       </main>
       <Footer />
     </>

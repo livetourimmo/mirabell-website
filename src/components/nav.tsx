@@ -11,7 +11,6 @@ const LINKS = [
   { href: "/#projekt", label: "Projekt" },
   { href: "/angebot", label: "Angebot" },
   { href: "/lage", label: "Lage" },
-  { href: "/#kontakt", label: "Kontakt" },
 ];
 
 interface NavProps {

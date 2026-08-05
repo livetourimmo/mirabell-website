@@ -5,7 +5,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
-import { SectionDivider } from "@/components/mountain-mark";
+import { MirabelleAccent } from "@/components/mirabelle-accent";
 import { MOCK_DOWNLOADS } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 const MATERIALS = [
   { titel: "Böden", text: "Eichenparkett in Wohn- und Schlafräumen, Feinsteinzeug in Nasszellen." },
   { titel: "Fassade", text: "Mineralischer Grobputz, Satteldach mit Ziegeleindeckung." },
-  { titel: "Fenster", text: "Holz-Metall-Fenster mit Dreifachverglasung." },
-  { titel: "Heizung", text: "Erdsonden-Wärmepumpe für beide Häuser." },
-  { titel: "Küche", text: "[Platzhalter: Küchenhersteller und Ausstattung folgt]" },
-  { titel: "Bad", text: "[Platzhalter: Sanitärausstattung folgt]" },
+  { titel: "Fenster", text: "Holz-Metall-Fenster mit Dreifachverglasung, raumhoch mit Hebeschiebefenster zu Terrasse, Balkon oder Loggia." },
+  { titel: "Heizung", text: "Erdsonden-Wärmepumpe mit acht Erdsonden à 200 m Tiefe, Fussbodenheizung mit Einzelraumregulierung." },
+  { titel: "Küche", text: "Individuell wählbar, Ausbaubudget CHF 30'000–35'000." },
+  { titel: "Bad", text: "Individuell wählbar, Ausbaubudget CHF 20'000–25'000. Eigener Waschturm in jeder Wohnung." },
 ];
 
 export default function AngebotPage() {
@@ -38,21 +38,25 @@ export default function AngebotPage() {
           />
         </section>
 
-        <section className="shell pt-14 pb-section-mobile md:pt-20 md:pb-section">
-          <Eyebrow>Angebot</Eyebrow>
-          <h1 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.02] text-primary md:text-6xl">
-            Dreizehn Wohnungen im Detail
-          </h1>
-          <p className="mt-6 max-w-[52ch] text-foreground-muted">
-            Grundrisse, Flächen und Preise für Haus A und Haus B — filterbar nach
-            Geschoss und Zimmerzahl, inklusive Baubeschrieb und Plänen zum Download.
-          </p>
-          <p className="mt-6 max-w-[52ch] text-foreground-muted">
-            Vom 2.5-Zimmer-Erstbezug bis zur grosszügigen 4.5-Zimmer-Wohnung im
-            Dachgeschoss: Der Navigator unten zeigt den aktuellen Stand aller
-            Wohnungen in Haus A und Haus B, inklusive Status und direktem Zugriff
-            auf die jeweiligen Grundrisse.
-          </p>
+        <section className="shell flex items-start justify-between gap-6 pt-14 pb-section-mobile md:pt-20 md:pb-section">
+          <div>
+            <Eyebrow>Angebot</Eyebrow>
+            <h1 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.02] text-primary md:text-6xl">
+              Mirabell in einem Blick
+            </h1>
+            <p className="mt-6 max-w-[52ch] text-foreground-muted">
+              Alle Grundrisse, Flächen und Preise der dreizehn Wohnungen in
+              Übersicht. Filterbar nach Geschoss und Zimmerzahl. Der Baubeschrieb
+              und die Pläne stehen Ihnen als Download zur Verfügung.
+            </p>
+            <p className="mt-6 max-w-[52ch] text-foreground-muted">
+              Beide Häuser verfügen über einen Lift und sind hindernisfrei
+              nach SIA 500 erschlossen, ergänzt durch eine moderne Sonnerie
+              mit Videokamera sowie eine Tiefgarage mit Vorbereitung für
+              E-Ladestationen.
+            </p>
+          </div>
+          <MirabelleAccent />
         </section>
 
         {/* NAVIGATOR / ANGEBOTSLISTE */}
@@ -94,10 +98,16 @@ export default function AngebotPage() {
         </section>
 
         {/* MATERIALISIERUNG */}
-        <section className="shell py-section-mobile md:py-section">
+        <section id="materialisierung" className="shell scroll-mt-24 py-section-mobile md:py-section">
           <Reveal>
             <Eyebrow>Materialisierung</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl text-primary md:text-4xl">Ausbau &amp; Materialien</h2>
+            <p className="mt-4 max-w-[60ch] text-foreground-muted">
+              Dank individueller Auswahlmöglichkeiten und grosszügiger
+              Ausbaubudgets können Sie zahlreiche Materialien und
+              Ausstattungsdetails Ihren persönlichen Vorstellungen anpassen —
+              Parkett für CHF 150/m² sowie Platten für CHF 200/m².
+            </p>
           </Reveal>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {MATERIALS.map((material, i) => (
@@ -110,8 +120,6 @@ export default function AngebotPage() {
             ))}
           </div>
         </section>
-
-        <SectionDivider />
       </main>
       <Footer />
     </>

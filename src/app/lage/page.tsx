@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
-import { SectionDivider } from "@/components/mountain-mark";
+import { MirabelleAccent } from "@/components/mirabelle-accent";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export const metadata: Metadata = {
   title: "Lage",
@@ -12,15 +19,43 @@ export const metadata: Metadata = {
 };
 
 const MAKRO = [
-  { titel: "Region", text: "Uetliburg liegt im Hügelland zwischen Zürichsee und Obersee, Kanton St. Gallen." },
-  { titel: "Verkehr", text: "[Platzhalter: Anbindung ÖV / Autobahn folgt]" },
-  { titel: "Naherholung", text: "Hügelland und Seeufer in unmittelbarer Nähe, Blick Richtung Obersee." },
+  {
+    titel: "Region",
+    text: "Uetliburg ist ein Ortsteil der Gemeinde Gommiswald im Kanton St. Gallen. Inmitten der sanften Hügellandschaft und in unmittelbarer Nähe zum Obersee geniessen Sie eine naturnahe Umgebung mit Wiesen, Wäldern und zahlreichen Wanderwegen direkt vor der Haustüre.",
+  },
+  {
+    titel: "Verkehr",
+    text: "Die Bushaltestelle Uetliburg SG, Ottenhofen liegt direkt vor der Haustüre. Die regionalen Zentren Wattwil, Rapperswil-Jona, Glarus Nord und Wetzikon sind bequem mit Auto oder ÖV erreichbar.",
+  },
+  {
+    titel: "Naherholung",
+    text: "Die idyllische Landschaft rund um Uetliburg bietet ideale Voraussetzungen für eine aktive Freizeitgestaltung. Wander- und Velowege, weitläufige Wälder sowie die Nähe zum Obersee laden das ganze Jahr über zu Ausflügen und vielfältigen Naturerlebnissen ein.",
+  },
 ];
 
-const MIKRO = [
-  { titel: "Einkauf", text: "[Platzhalter: Nahversorgung in Gehdistanz folgt]" },
-  { titel: "Schule", text: "[Platzhalter: Schulhaus / Kindergarten folgt]" },
-  { titel: "Öffentlicher Verkehr", text: "[Platzhalter: nächste Haltestelle folgt]" },
+const REGIONALE_ZENTREN = [
+  { name: "Wattwil", km: "11.6 km", oev: "35 Min.", auto: "16 Min." },
+  { name: "Rapperswil-Jona", km: "21.7 km", oev: "29 Min.", auto: "27 Min." },
+  { name: "Glarus Nord", km: "20.8 km", oev: "70 Min.", auto: "24 Min." },
+  { name: "Wetzikon", km: "32.5 km", oev: "50 Min.", auto: "34 Min." },
+];
+
+type Mikro = {
+  kategorie: string;
+  name: string;
+  meter: number;
+  fuss: number;
+  oev: number | null;
+  auto: number | null;
+  velo: number | null;
+};
+
+const MIKRO: Mikro[] = [
+  { kategorie: "ÖV", name: "Bushaltestelle Uetliburg SG, Ottenhofen", meter: 9, fuss: 1, oev: null, auto: null, velo: null },
+  { kategorie: "Einkaufen", name: "Coop Supermarkt Gommiswald", meter: 1800, fuss: 22, oev: 8, auto: 3, velo: 6 },
+  { kategorie: "Bildung", name: "Primarschule Gommiswald", meter: 2200, fuss: 30, oev: 8, auto: 4, velo: 9 },
+  { kategorie: "Gesundheit", name: "Familienpraxis Gommiswald", meter: 1700, fuss: 23, oev: 10, auto: 3, velo: 6 },
+  { kategorie: "Freizeit & Natur", name: "Badi Gommiswald", meter: 1700, fuss: 23, oev: 11, auto: 3, velo: 6 },
 ];
 
 export default function LagePage() {
@@ -28,31 +63,36 @@ export default function LagePage() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* HERO — vollflächiges Bild, Titel & Informationen darunter statt darauf */}
-        <section className="relative h-screen w-full">
-          <Image
-            src="/images/drohne-uetliburg.JPG"
-            alt="Luftaufnahme Uetliburg mit Blick Richtung Obersee"
-            fill
-            priority
-            className="object-cover"
+        {/* HERO — vollflächiges Video, Titel & Informationen darunter statt darauf */}
+        <section className="relative h-screen w-full overflow-hidden">
+          <video
+            src="/videos/lage-hero.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
           />
         </section>
 
-        <section className="shell pt-14 pb-section-mobile md:pt-20 md:pb-section">
-          <Eyebrow>Lage</Eyebrow>
-          <h1 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.02] text-primary md:text-6xl">
-            Im Dorfkern von Uetliburg
-          </h1>
-          <p className="mt-6 max-w-[52ch] text-foreground-muted">
-            Ottenhofenstrasse 53 und 55 — ruhig gelegen und dennoch mitten im Dorf,
-            mit Blick über das Hügelland Richtung Obersee.
-          </p>
-          <p className="mt-6 max-w-[52ch] text-foreground-muted">
-            Die folgende Karte zeigt Mirabell im Zusammenhang mit der unmittelbaren
-            Umgebung — von Einkaufsmöglichkeiten über Schulen bis zu
-            Naherholungsgebieten am See.
-          </p>
+        <section className="shell flex items-start justify-between gap-6 pt-14 pb-section-mobile md:pt-20 md:pb-section">
+          <div>
+            <Eyebrow>Lage</Eyebrow>
+            <h1 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.02] text-primary md:text-6xl">
+              Wohnen im Herzen von Uetliburg
+            </h1>
+            <p className="mt-6 max-w-[52ch] text-foreground-muted">
+              An der Ottenhofenstrasse 53 und 55. Ruhig gelegen und dennoch mitten
+              im Dorf, mit Blick über das st. gallische Hügelland Richtung Obersee.
+            </p>
+            <p className="mt-6 max-w-[52ch] text-foreground-muted">
+              Die folgende Karte zeigt Mirabell im Zusammenhang mit der unmittelbaren
+              Umgebung — von Einkaufsmöglichkeiten über Schulen bis zu
+              Naherholungsgebieten am See.
+            </p>
+          </div>
+          <MirabelleAccent />
         </section>
 
         {/* INTERAKTIVE KARTE (ATLIST) */}
@@ -92,6 +132,32 @@ export default function LagePage() {
                 </Reveal>
               ))}
             </div>
+
+            <Reveal delay={180} className="mt-12">
+              <p className="font-heading text-lg text-primary">Regionale Zentren</p>
+              <div className="mt-4 overflow-hidden rounded-[var(--radius-base)] border border-border bg-surface">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Ort</TableHead>
+                      <TableHead>Distanz</TableHead>
+                      <TableHead>ÖV</TableHead>
+                      <TableHead>Auto</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {REGIONALE_ZENTREN.map((ort) => (
+                      <TableRow key={ort.name}>
+                        <TableCell className="font-medium text-primary">{ort.name}</TableCell>
+                        <TableCell className="text-foreground-muted">{ort.km}</TableCell>
+                        <TableCell className="text-foreground-muted">{ort.oev}</TableCell>
+                        <TableCell className="text-foreground-muted">{ort.auto}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -100,20 +166,39 @@ export default function LagePage() {
           <Reveal>
             <Eyebrow>Unmittelbare Umgebung</Eyebrow>
             <h2 className="mt-3 font-heading text-3xl text-primary md:text-4xl">Mikroebene</h2>
+            <p className="mt-4 max-w-[52ch] text-sm text-foreground-muted">
+              Distanz und Fahrzeit ab Ottenhofenstrasse 53 + 55, 8738 Uetliburg.
+            </p>
           </Reveal>
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {MIKRO.map((item, i) => (
-              <Reveal key={item.titel} delay={i * 60}>
-                <div className="border-t border-border pt-5">
-                  <p className="font-heading text-lg text-primary">{item.titel}</p>
-                  <p className="mt-2 text-sm text-foreground-muted">{item.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={80} className="mt-10 overflow-hidden rounded-[var(--radius-base)] border border-border bg-surface">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Kategorie</TableHead>
+                  <TableHead>Ort</TableHead>
+                  <TableHead>Meter</TableHead>
+                  <TableHead>Zu Fuss</TableHead>
+                  <TableHead>ÖV</TableHead>
+                  <TableHead>Auto</TableHead>
+                  <TableHead>Velo</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {MIKRO.map((item) => (
+                  <TableRow key={item.kategorie}>
+                    <TableCell className="font-medium text-primary">{item.kategorie}</TableCell>
+                    <TableCell className="whitespace-normal text-foreground-muted">{item.name}</TableCell>
+                    <TableCell className="text-foreground-muted">{item.meter} m</TableCell>
+                    <TableCell className="text-foreground-muted">{item.fuss} Min.</TableCell>
+                    <TableCell className="text-foreground-muted">{item.oev !== null ? `${item.oev} Min.` : "–"}</TableCell>
+                    <TableCell className="text-foreground-muted">{item.auto !== null ? `${item.auto} Min.` : "–"}</TableCell>
+                    <TableCell className="text-foreground-muted">{item.velo !== null ? `${item.velo} Min.` : "–"}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Reveal>
         </section>
-
-        <SectionDivider />
       </main>
       <Footer />
     </>

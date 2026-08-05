@@ -7,7 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { Gallery } from "@/components/gallery";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/eyebrow";
-import { SectionDivider } from "@/components/mountain-mark";
+import { MirabelleAccent } from "@/components/mirabelle-accent";
 
 export default function Home() {
   return (
@@ -29,12 +29,13 @@ export default function Home() {
         <section className="shell grid gap-12 pt-14 pb-20 md:grid-cols-12 md:items-center md:gap-10 md:pt-20 md:pb-28">
           <div className="md:col-span-7">
             <h1 className="font-heading text-5xl leading-[1.02] text-primary md:text-[3.6rem]">
-              Zwei Häuser am Hang von Uetliburg
+              Exklusives Wohnen zwischen Natur und Weitblick
             </h1>
             <p className="mt-6 max-w-[52ch] text-foreground-muted">
-              Haus A und Haus B stehen im Dorfkern von Uetliburg, mit Satteldach und
-              Fassade aus mineralischem Grobputz. Innen Eichenparkett, aussen der
-              Blick über das Hügelland Richtung Obersee.
+              Willkommen im Neubau Mirabell. Mirabell steht für eine Wohnqualität,
+              die weit über den klassischen Neubau hinausgeht. Offene Grundrisse,
+              eine hochwertige Architektur und grosszügige Käuferbudgets schaffen
+              ein Zuhause für Menschen mit hohen Ansprüchen.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -84,14 +85,26 @@ export default function Home() {
             </span>
             <div className="md:col-span-8 md:col-start-3">
               <p className="font-heading text-2xl leading-relaxed text-primary md:text-4xl">
-                Wohnen mit Aussicht heisst für uns: ruhige Räume, ehrliche Materialien
-                und ein Blick, der sich jeden Tag neu lohnt.
+                Ein Wohnort für alle, die die Natur und eine atemberaubende Aussicht
+                lieben, ohne auf eine gute Erreichbarkeit verzichten zu wollen.
               </p>
               <p className="mt-8 max-w-[56ch] text-foreground-muted">
-                Mirabell entsteht im Dorfkern von Uetliburg — zwei Baukörper, dreizehn
-                Wohnungen, gestaltet für Familien und Paare, die Ruhe und Aussicht suchen,
-                ohne auf kurze Wege zu verzichten.
+                Uetliburg gehört zur Gemeinde Gommiswald und kombiniert diverse
+                Vorzüge. Besonders die naturnahe Umgebung mit viel Ruhe und
+                gleichzeitig kurzen Wegen zu Einkaufsmöglichkeiten, Schulen und den
+                regionalen Zentren.
               </p>
+            </div>
+            <div className="col-span-2 hidden items-start justify-center md:flex">
+              <Image
+                src="/images/mirabelle-single.png"
+                alt=""
+                width={540}
+                height={480}
+                unoptimized
+                aria-hidden="true"
+                className="h-auto w-36 opacity-50 lg:w-44"
+              />
             </div>
           </Reveal>
         </section>
@@ -110,19 +123,20 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={100} className="md:pl-4">
-              <Eyebrow>Über das Projekt</Eyebrow>
+              <Eyebrow>Architektur</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
-                Traditionelle Formensprache, zeitgemässer Ausbau
+                Charmante Architektur mit Sicht auf den See
               </h2>
               <p className="mt-6 max-w-[48ch] text-foreground-muted">
-                Satteldach, Grobputz und Eichenparkett stehen für eine Architektur, die sich
-                bewusst in den Ortskern von Uetliburg einfügt. Innen sorgen grosszügige
-                Grundrisse, hochwertige Materialien und durchdachte Details für ein Zuhause,
-                das lange trägt. Eine Erdsonden-Wärmepumpe versorgt beide Häuser energieeffizient,
-                24 Parkplätze in der gemeinsamen Einstellhalle ergänzen das Angebot.
+                Die Architektur orientiert sich an einer warmen und natürlichen
+                Gestaltung. Grosszügige Aussenräume, harmonische Materialien und
+                eine sorgfältig abgestimmte Umgebung schaffen ein Wohnensemble, das
+                sich gut in die Landschaft einfügt. Die beiden Gebäude bieten
+                Privatsphäre, viel Freiraum und ein angenehmes Wohngefühl für alle
+                Generationen.
               </p>
               <Link
-                href="/angebot"
+                href="/angebot#materialisierung"
                 className="mt-8 inline-flex items-center gap-2 font-medium text-primary hover:underline"
               >
                 Materialisierung &amp; Baubeschrieb <ArrowRight className="size-4" strokeWidth={1.5} />
@@ -137,13 +151,13 @@ export default function Home() {
             <Reveal className="order-2 md:order-1 md:pr-4">
               <Eyebrow>Lage</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
-                Dorfkern von Uetliburg, Blick Richtung Obersee
+                Naturnahes Wohnen mit guten Anbindungen
               </h2>
               <p className="mt-6 max-w-[48ch] text-foreground-muted">
-                Uetliburg liegt eingebettet im Hügelland zwischen Zürichsee und Obersee —
-                ruhig und dennoch gut angebunden. Die unmittelbare Umgebung, Einkauf,
-                Schule und öffentlicher Verkehr sind auf der Lage-Seite im Detail
-                dargestellt, inklusive interaktiver Karte.
+                Hügel, Wälder und Wanderwege beginnen praktisch vor der Haustüre und
+                laden zu Spaziergängen, Velotouren oder sportlichen Aktivitäten ein.
+                Gleichzeitig erreichen Sie Uznach, Rapperswil oder Zürich bequem in
+                kurzer Zeit.
               </p>
               <Link
                 href="/lage"
@@ -170,20 +184,50 @@ export default function Home() {
           <div className="shell grid gap-10 py-section-mobile md:grid-cols-12 md:py-section">
             <Reveal className="md:col-span-4">
               <p className="font-heading text-[5.5rem] leading-none text-background md:text-[7.5rem]">13</p>
-              <p className="mt-2 text-sm uppercase tracking-[0.2em] text-background/70">Wohnungen, zwei Häuser</p>
+              <p className="mt-2 text-sm uppercase tracking-[0.2em] text-background/70">
+                Sieben 4.5-Zimmerwohnungen · Sechs 3.5-Zimmerwohnungen · 24 Tiefgaragenplätze
+              </p>
             </Reveal>
             <Reveal delay={80} className="md:col-span-7 md:col-start-6">
-              <Eyebrow tone="inverted">Angebot</Eyebrow>
+              <Eyebrow tone="inverted">Attraktiver Mix</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-background md:text-4xl">
-                Vom Erstbezug bis zur Attika im Dachgeschoss
+                Offen, hell und grosszügig geschnitten
               </h2>
               <p className="mt-6 max-w-[52ch] text-background/75">
-                Von der 2.5-Zimmer-Wohnung bis zur grosszügigen 4.5-Zimmer-Wohnung im
-                Dachgeschoss — der Navigator zeigt Grundrisse, Flächen und Preise im
-                Detail, filterbar nach Zimmerzahl und Geschoss.
+                Die Wohnungen von Mirabell überzeugen mit offenen Wohn-, Ess- und
+                Küchenbereichen, die das Herzstück jeder Wohnung bilden und einen
+                Ort schaffen, an dem gemeinsam gekocht, gelacht und gelebt wird.
+              </p>
+              <p className="mt-4 max-w-[52ch] text-background/75">
+                Grosszügige, raumhohe Fensterflächen mit 3-fach-Verglasung holen
+                viel Tageslicht ins Innere und verbinden den Wohnraum über ein
+                Hebeschiebefenster mit Terrasse, Balkon oder Loggia. Je nach
+                Wohnung geniessen Sie zudem einen privaten Garten oder einen
+                geschützten Aussenbereich.
               </p>
               <Button asChild variant="accent" size="lg" className="mt-8">
                 <Link href="/angebot">Zum Angebot</Link>
+              </Button>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* AUSSTATTUNG */}
+        <section className="bg-secondary/25">
+          <div className="shell py-section-mobile md:py-section">
+            <Reveal className="mx-auto max-w-[56ch] text-center">
+              <Eyebrow className="justify-center">Ausstattung</Eyebrow>
+              <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
+                Hochwertig ausgestattet mit Raum für Ihre Wünsche
+              </h2>
+              <p className="mt-6 text-foreground-muted">
+                Im Mirabell erwartet Sie ein moderner Ausbaustandard mit
+                hochwertigen Materialien, zeitloser Gestaltung und
+                grosszügigen Budgets, um Ihr neues Zuhause ganz nach Ihren
+                Vorstellungen zu gestalten.
+              </p>
+              <Button asChild variant="primary" size="lg" className="mt-8">
+                <Link href="/angebot#materialisierung">Materialisierung &amp; Baubeschrieb</Link>
               </Button>
             </Reveal>
           </div>
@@ -199,8 +243,6 @@ export default function Home() {
             <Gallery />
           </Reveal>
         </section>
-
-        <SectionDivider />
       </main>
       <Footer />
     </>

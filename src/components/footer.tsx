@@ -3,16 +3,20 @@ import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
+import { MirabelleAccent } from "@/components/mirabelle-accent";
 
 export function Footer() {
   return (
     <footer id="kontakt" className="bg-primary text-[var(--color-background)]">
       <div className="shell py-24 md:py-32">
-        <Reveal>
-          <Eyebrow tone="inverted">Kontakt</Eyebrow>
-          <h2 className="mt-3 font-heading text-3xl text-white md:text-4xl">
-            Wir zeigen Ihnen die Wohnungen — persönlich vor Ort.
-          </h2>
+        <Reveal className="flex items-start justify-between gap-6">
+          <div>
+            <Eyebrow tone="inverted">Kontakt</Eyebrow>
+            <h2 className="mt-3 font-heading text-3xl text-white md:text-4xl">
+              Wir beraten Sie gerne persönlich zu Ihrer neuen Wohnung.
+            </h2>
+          </div>
+          <MirabelleAccent className="opacity-70" />
         </Reveal>
 
         <div className="mt-14 grid gap-16 lg:grid-cols-[0.85fr_1.15fr]">

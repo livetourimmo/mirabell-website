@@ -84,12 +84,11 @@ export default function LagePage() {
             </h1>
             <p className="mt-6 max-w-[52ch] text-foreground-muted">
               An der Ottenhofenstrasse 53 und 55. Ruhig gelegen und dennoch mitten
-              im Dorf, mit Blick über das st. gallische Hügelland Richtung Obersee.
+              im Dorf, mit Blick Richtung Obersee.
             </p>
             <p className="mt-6 max-w-[52ch] text-foreground-muted">
               Die folgende Karte zeigt Mirabell im Zusammenhang mit der unmittelbaren
-              Umgebung — von Einkaufsmöglichkeiten über Schulen bis zu
-              Naherholungsgebieten am See.
+              Umgebung.
             </p>
           </div>
           <MirabelleAccent />

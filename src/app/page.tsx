@@ -156,8 +156,6 @@ export default function Home() {
               <p className="mt-6 max-w-[48ch] text-foreground-muted">
                 Hügel, Wälder und Wanderwege beginnen praktisch vor der Haustüre und
                 laden zu Spaziergängen, Velotouren oder sportlichen Aktivitäten ein.
-                Gleichzeitig erreichen Sie Uznach, Rapperswil oder Zürich bequem in
-                kurzer Zeit.
               </p>
               <Link
                 href="/lage"
@@ -183,9 +181,23 @@ export default function Home() {
         <section className="bg-primary text-background">
           <div className="shell grid gap-10 py-section-mobile md:grid-cols-12 md:py-section">
             <Reveal className="md:col-span-4">
-              <p className="font-heading text-[5.5rem] leading-none text-background md:text-[7.5rem]">13</p>
-              <p className="mt-2 text-sm uppercase tracking-[0.2em] text-background/70">
-                Sieben 4.5-Zimmerwohnungen · Sechs 3.5-Zimmerwohnungen · 24 Tiefgaragenplätze
+              <p className="text-sm uppercase tracking-[0.2em] text-background/60">Wohnungsspiegel</p>
+              <dl className="mt-5 divide-y divide-background/15 border-y border-background/15">
+                <div className="flex items-baseline justify-between gap-6 py-3.5">
+                  <dt className="text-background/75">4.5-Zimmerwohnungen</dt>
+                  <dd className="font-heading text-2xl tabular-nums text-background md:text-3xl">7</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-6 py-3.5">
+                  <dt className="text-background/75">3.5-Zimmerwohnungen</dt>
+                  <dd className="font-heading text-2xl tabular-nums text-background md:text-3xl">6</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-6 py-3.5">
+                  <dt className="text-background/75">Tiefgaragenplätze</dt>
+                  <dd className="font-heading text-2xl tabular-nums text-background md:text-3xl">24</dd>
+                </div>
+              </dl>
+              <p className="mt-4 text-xs uppercase tracking-[0.15em] text-background/50">
+                13 Wohnungen in zwei Häusern
               </p>
             </Reveal>
             <Reveal delay={80} className="md:col-span-7 md:col-start-6">

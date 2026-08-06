@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 };
 
 const MATERIALS = [
-  { titel: "Böden", text: "Eichenparkett in Wohn- und Schlafräumen, Feinsteinzeug in Nasszellen." },
-  { titel: "Fassade", text: "Mineralischer Grobputz, Satteldach mit Ziegeleindeckung." },
+  { titel: "Böden", text: "Parkett individuell wählbar, Ausbaubudget CHF 150/m²." },
+  { titel: "Fassade", text: "Kompaktfassade mit mineralischer Wärmedämmung (22 cm). Sockelgeschoss weiss gestrichen, Obergeschosse mit Grobputz in zurückhaltendem Farbton." },
   { titel: "Fenster", text: "Holz-Metall-Fenster mit Dreifachverglasung, raumhoch mit Hebeschiebefenster zu Terrasse, Balkon oder Loggia." },
   { titel: "Heizung", text: "Erdsonden-Wärmepumpe mit acht Erdsonden à 200 m Tiefe, Fussbodenheizung mit Einzelraumregulierung." },
-  { titel: "Küche", text: "Individuell wählbar, Ausbaubudget CHF 30'000–35'000." },
-  { titel: "Bad", text: "Individuell wählbar, Ausbaubudget CHF 20'000–25'000. Eigener Waschturm in jeder Wohnung." },
+  { titel: "Küche", text: "Kücheneinrichtungen individuell wählbar, Ausbaubudget CHF 30'000–35'000." },
+  { titel: "Bad", text: "Sanitärapparate individuell wählbar, Ausbaubudget CHF 20'000–25'000. Eigener Waschturm in jeder Wohnung." },
 ];
 
 export default function AngebotPage() {
@@ -105,8 +105,7 @@ export default function AngebotPage() {
             <p className="mt-4 max-w-[60ch] text-foreground-muted">
               Dank individueller Auswahlmöglichkeiten und grosszügiger
               Ausbaubudgets können Sie zahlreiche Materialien und
-              Ausstattungsdetails Ihren persönlichen Vorstellungen anpassen —
-              Parkett für CHF 150/m² sowie Platten für CHF 200/m².
+              Ausstattungsdetails Ihren persönlichen Vorstellungen anpassen.
             </p>
           </Reveal>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

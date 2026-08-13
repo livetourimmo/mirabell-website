@@ -7,7 +7,6 @@ import { Reveal } from "@/components/reveal";
 import { Gallery } from "@/components/gallery";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/eyebrow";
-import { MirabelleAccent } from "@/components/mirabelle-accent";
 
 export default function Home() {
   return (
@@ -29,13 +28,17 @@ export default function Home() {
         <section className="shell grid gap-12 pt-14 pb-20 md:grid-cols-12 md:items-center md:gap-10 md:pt-20 md:pb-28">
           <div className="md:col-span-7">
             <h1 className="font-heading text-5xl leading-[1.02] text-primary md:text-[3.6rem]">
-              Exklusives Wohnen zwischen Natur und Weitblick
+              Mirabell
             </h1>
-            <p className="mt-6 max-w-[52ch] text-foreground-muted">
-              Willkommen im Neubau Mirabell. Mirabell steht für eine Wohnqualität,
-              die weit über den klassischen Neubau hinausgeht. Offene Grundrisse,
-              eine hochwertige Architektur und grosszügige Käuferbudgets schaffen
-              ein Zuhause für Menschen mit hohen Ansprüchen.
+            <p className="mt-3 font-heading text-xl text-primary/80 md:text-2xl">
+              Wo Seesicht und Weitblick zuhause sind.
+            </p>
+            <p className="mt-5 max-w-[52ch] text-foreground-muted">
+              13 charaktervolle Eigentumswohnungen (3.5 &amp; 4.5 Zimmer) mit
+              grosszügiger Autoeinstellhalle inklusive E-Mobilität.
+            </p>
+            <p className="mt-6 max-w-[52ch] font-heading italic text-primary">
+              Erleben Sie das Privileg des Wohnens in Uetliburg.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -75,36 +78,23 @@ export default function Home() {
         </section>
 
         {/* EINLEITUNG */}
-        <section id="einleitung" className="shell py-section-mobile md:py-section">
+        <section id="einleitung" className="shell py-10 md:py-16">
           <Reveal className="grid gap-6 md:grid-cols-12">
-            <span
-              aria-hidden
-              className="col-span-2 hidden font-heading text-[6rem] leading-none text-secondary md:block"
-            >
-              „
-            </span>
             <div className="md:col-span-8 md:col-start-3">
               <p className="font-heading text-2xl leading-relaxed text-primary md:text-4xl">
-                Ein Wohnort für alle, die die Natur und eine atemberaubende Aussicht
-                lieben, ohne auf eine gute Erreichbarkeit verzichten zu wollen.
+                Eine Symbiose aus Architektur und Panorama.
               </p>
               <p className="mt-8 max-w-[56ch] text-foreground-muted">
-                Uetliburg gehört zur Gemeinde Gommiswald und kombiniert diverse
-                Vorzüge. Besonders die naturnahe Umgebung mit viel Ruhe und
-                gleichzeitig kurzen Wegen zu Einkaufsmöglichkeiten, Schulen und den
-                regionalen Zentren.
+                Mirabell verbindet charaktervolle Architektur mit einer
+                aussergewöhnlichen Aussichtslage. Grosszügige Grundrisse, Seesicht
+                und Weitblick schaffen ein Wohngefühl, das Raum und Umgebung
+                miteinander verbindet.
               </p>
-            </div>
-            <div className="col-span-2 hidden items-start justify-center md:flex">
-              <Image
-                src="/images/mirabelle-single.png"
-                alt=""
-                width={540}
-                height={480}
-                unoptimized
-                aria-hidden="true"
-                className="h-auto w-36 opacity-50 lg:w-44"
-              />
+              <p className="mt-8 max-w-[56ch] text-foreground-muted">
+                Uetliburg bietet dazu die besondere Kombination aus naturnahem,
+                ruhigem Wohnen und guter Erreichbarkeit. Einkaufsmöglichkeiten,
+                Schulen und die regionalen Zentren liegen in kurzer Distanz.
+              </p>
             </div>
           </Reveal>
         </section>
@@ -115,7 +105,7 @@ export default function Home() {
             <Reveal>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
                 <Image
-                  src="/images/aussen1.png"
+                  src="/images/aussen1-v2.png"
                   alt="Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B"
                   fill
                   className="object-cover"
@@ -125,15 +115,18 @@ export default function Home() {
             <Reveal delay={100} className="md:pl-4">
               <Eyebrow>Architektur</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
-                Charmante Architektur mit Sicht auf den See
+                Charakter, der bleibt. Aussicht, die begeistert.
               </h2>
               <p className="mt-6 max-w-[48ch] text-foreground-muted">
-                Die Architektur orientiert sich an einer warmen und natürlichen
-                Gestaltung. Grosszügige Aussenräume, harmonische Materialien und
-                eine sorgfältig abgestimmte Umgebung schaffen ein Wohnensemble, das
-                sich gut in die Landschaft einfügt. Die beiden Gebäude bieten
-                Privatsphäre, viel Freiraum und ein angenehmes Wohngefühl für alle
-                Generationen.
+                Mirabell verbindet zeitlose Gestaltung mit grosszügigen
+                Grundrissen und einem durchdachten Zusammenspiel von Innen- und
+                Aussenräumen. Klare Formen, sorgfältig abgestimmte Materialien
+                und lichtdurchflutete Wohnbereiche schaffen ein elegantes und
+                zugleich behagliches Ambiente. Die grosszügigen Loggien
+                erweitern den Wohnraum nach aussen und schaffen einen
+                fliessenden Übergang zur Umgebung. Seesicht und Weitblick
+                vollenden ein Wohngefühl, das Mirabell seinen unverwechselbaren
+                Charakter verleiht.
               </p>
               <Link
                 href="/angebot#materialisierung"
@@ -151,11 +144,18 @@ export default function Home() {
             <Reveal className="order-2 md:order-1 md:pr-4">
               <Eyebrow>Lage</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
-                Naturnahes Wohnen mit guten Anbindungen
+                Zwischen Natur, Weitblick und urbaner Nähe.
               </h2>
               <p className="mt-6 max-w-[48ch] text-foreground-muted">
-                Hügel, Wälder und Wanderwege beginnen praktisch vor der Haustüre und
-                laden zu Spaziergängen, Velotouren oder sportlichen Aktivitäten ein.
+                Mirabell liegt dort, wo Ruhe, Natur und Lebensqualität
+                selbstverständlich zusammenfinden. Wälder, Wiesen und
+                vielfältige Freizeitmöglichkeiten prägen die Umgebung von
+                Uetliburg und schaffen Raum für Erholung und Bewegung direkt
+                vor der Haustür. Gleichzeitig sind Einkaufsmöglichkeiten,
+                Schulen und die wichtigen regionalen Zentren auf kurzen Wegen
+                erreichbar. So vereint Mirabell naturnahes Wohnen,
+                eindrucksvollen Weitblick und die Annehmlichkeiten des
+                täglichen Lebens zu einer Lage mit besonderer Lebensqualität.
               </p>
               <Link
                 href="/lage"
@@ -203,19 +203,21 @@ export default function Home() {
             <Reveal delay={80} className="md:col-span-7 md:col-start-6">
               <Eyebrow tone="inverted">Attraktiver Mix</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-background md:text-4xl">
-                Offen, hell und grosszügig geschnitten
+                Offen, hell und grosszügig gestaltet
               </h2>
               <p className="mt-6 max-w-[52ch] text-background/75">
-                Die Wohnungen von Mirabell überzeugen mit offenen Wohn-, Ess- und
-                Küchenbereichen, die das Herzstück jeder Wohnung bilden und einen
-                Ort schaffen, an dem gemeinsam gekocht, gelacht und gelebt wird.
+                Die Wohnungen von Mirabell überzeugen mit offenen Wohn-, Ess-
+                und Küchenbereichen, die das Herzstück des Zuhauses bilden.
+                Grosszügig konzipiert und lichtdurchflutet schaffen sie Raum
+                für gemeinsames Kochen, Geniessen und Zusammensein.
               </p>
               <p className="mt-4 max-w-[52ch] text-background/75">
-                Grosszügige, raumhohe Fensterflächen mit 3-fach-Verglasung holen
-                viel Tageslicht ins Innere und verbinden den Wohnraum über ein
-                Hebeschiebefenster mit Terrasse, Balkon oder Loggia. Je nach
-                Wohnung geniessen Sie zudem einen privaten Garten oder einen
-                geschützten Aussenbereich.
+                Grosszügige, teilweise raumhohe Fensterflächen sorgen für viel
+                Tageslicht und schaffen eine natürliche Verbindung zwischen
+                Innenraum und Aussenraum. Terrassen, Loggien und je nach
+                Wohnung private Gartenflächen erweitern den persönlichen
+                Lebensraum und bieten attraktive Rückzugsorte zum Entspannen
+                und Geniessen.
               </p>
               <Button asChild variant="accent" size="lg" className="mt-8">
                 <Link href="/angebot">Zum Angebot</Link>
@@ -227,21 +229,37 @@ export default function Home() {
         {/* AUSSTATTUNG */}
         <section className="bg-secondary/25">
           <div className="shell py-section-mobile md:py-section">
-            <Reveal className="mx-auto max-w-[56ch] text-center">
-              <Eyebrow className="justify-center">Ausstattung</Eyebrow>
-              <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
-                Hochwertig ausgestattet mit Raum für Ihre Wünsche
-              </h2>
-              <p className="mt-6 text-foreground-muted">
-                Im Mirabell erwartet Sie ein moderner Ausbaustandard mit
-                hochwertigen Materialien, zeitloser Gestaltung und
-                grosszügigen Budgets, um Ihr neues Zuhause ganz nach Ihren
-                Vorstellungen zu gestalten.
-              </p>
-              <Button asChild variant="primary" size="lg" className="mt-8">
-                <Link href="/angebot#materialisierung">Materialisierung &amp; Baubeschrieb</Link>
-              </Button>
-            </Reveal>
+            <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-24">
+              <Reveal>
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
+                  <Image
+                    src="/images/v1_Innen6.jpg"
+                    alt="Sitzplatz auf der Terrasse mit raumhohen Fenstern"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={100} className="md:pl-4">
+                <Eyebrow>Ausstattung</Eyebrow>
+                <h2 className="mt-3 font-heading text-3xl text-primary md:text-5xl">
+                  Qualität mit Raum für Individualität.
+                </h2>
+                <p className="mt-6 max-w-[48ch] text-foreground-muted">
+                  Für Mirabell wurde eine sorgfältig abgestimmte Auswahl an
+                  Materialien und Ausstattungen definiert, die eine harmonische
+                  und zeitlose Gestaltung ermöglicht. Je nach Bereich stehen
+                  unterschiedliche Varianten zur Verfügung. Abhängig vom
+                  jeweiligen Baufortschritt können Käufer darüber hinaus eigene
+                  Wünsche und individuelle Materialisierungen einbringen. So
+                  bietet Mirabell den Freiraum, dem eigenen Zuhause eine
+                  persönliche und unverwechselbare Handschrift zu verleihen.
+                </p>
+                <Button asChild variant="primary" size="lg" className="mt-8">
+                  <Link href="/angebot#materialisierung">Materialisierung &amp; Baubeschrieb</Link>
+                </Button>
+              </Reveal>
+            </div>
           </div>
         </section>
 

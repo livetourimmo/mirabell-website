@@ -17,12 +17,13 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.mirabell.immobilien"),
   title: {
-    default: "Mirabell — Wohnen mit Aussicht | Uetliburg",
-    template: "%s | Mirabell Uetliburg",
+    default: "Mirabell — Wo Seesicht und Weitblick zuhause sind",
+    template: "%s | Mirabell",
   },
   description:
-    "Mirabell in Uetliburg: 13 Eigentumswohnungen in zwei Häusern, Blick Richtung Obersee. Ein Neubauprojekt der Visto Immobilien AG.",
+    "Mirabell in Uetliburg: 13 charaktervolle Eigentumswohnungen (3.5 & 4.5 Zimmer) mit grosszügiger Autoeinstellhalle inklusive E-Mobilität.",
 };
 
 export default function RootLayout({

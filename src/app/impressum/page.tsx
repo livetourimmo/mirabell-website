@@ -21,9 +21,9 @@ export default function ImpressumPage() {
             <div>
               <h2 className="font-heading text-xl text-primary">Verantwortlich für den Inhalt</h2>
               <p className="mt-2">
-                Visto Immobilien AG<br />
-                [Platzhalter: Strasse Nr.]<br />
-                [Platzhalter: PLZ Ort]<br />
+                Salus Fidelity GmbH<br />
+                Einsiedlerstrasse 21<br />
+                8834 Schindellegi<br />
                 Schweiz
               </p>
             </div>
@@ -31,15 +31,11 @@ export default function ImpressumPage() {
             <div>
               <h2 className="font-heading text-xl text-primary">Kontakt</h2>
               <p className="mt-2">
-                Telefon: [Platzhalter: Telefonnummer]<br />
-                E-Mail: [Platzhalter: E-Mail-Adresse]
+                Telefon: 044 593 96 05<br />
+                E-Mail: info@salusfidelity.ch
               </p>
             </div>
 
-            <div>
-              <h2 className="font-heading text-xl text-primary">Handelsregister</h2>
-              <p className="mt-2">[Platzhalter: UID / Handelsregisternummer]</p>
-            </div>
 
             <div>
               <h2 className="font-heading text-xl text-primary">Haftungsausschluss</h2>
@@ -52,7 +48,53 @@ export default function ImpressumPage() {
 
             <div>
               <h2 className="font-heading text-xl text-primary">Konzept &amp; Realisierung</h2>
-              <p className="mt-2">[Platzhalter: Website-Realisierung]</p>
+              <p className="mt-2">
+                liveTour Immobilienmarketing GmbH<br />
+                Wellhauserweg 41a<br />
+                8500 Frauenfeld<br />
+                <a href="https://www.livetour.ch" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  www.livetour.ch
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-xl text-primary">Projektbeteiligte</h2>
+              <div className="mt-4 grid gap-6 sm:grid-cols-2">
+                <div>
+                  <p className="font-semibold text-primary">Bauherrschaft / Realisation</p>
+                  <p className="mt-1">
+                    Salus Fidelity GmbH<br />
+                    Einsiedlerstrasse 21<br />
+                    8834 Schindellegi
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-primary">Verkauf</p>
+                  <p className="mt-1">
+                    Keller ImmoVermarktung GmbH<br />
+                    Lindenstrasse 35<br />
+                    8738 Uetliburg
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-primary">Architektur</p>
+                  <p className="mt-1">
+                    Hasler Limacher Architekten GmbH<br />
+                    Werner-Kälin-Strasse 3<br />
+                    8840 Einsiedeln<br />
+                    info@hasler-limacher.ch
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-primary">Baumanagement</p>
+                  <p className="mt-1">
+                    Lienert Partner AG<br />
+                    Mühlestrasse 3<br />
+                    8840 Einsiedeln
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
          </div>

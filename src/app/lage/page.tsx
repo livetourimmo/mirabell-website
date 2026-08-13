@@ -3,7 +3,6 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
-import { MirabelleAccent } from "@/components/mirabelle-accent";
 import {
   Table,
   TableBody,
@@ -21,11 +20,11 @@ export const metadata: Metadata = {
 const MAKRO = [
   {
     titel: "Region",
-    text: "Uetliburg ist ein Ortsteil der Gemeinde Gommiswald im Kanton St. Gallen. Inmitten der sanften Hügellandschaft und in unmittelbarer Nähe zum Obersee geniessen Sie eine naturnahe Umgebung mit Wiesen, Wäldern und zahlreichen Wanderwegen direkt vor der Haustüre.",
+    text: "Uetliburg gehört zur Gemeinde Gommiswald im Kanton St. Gallen und liegt in der attraktiven Region zwischen Zürichsee und Voralpen. Die Lage verbindet den ländlichen Charakter des Ortes mit der Nähe zu den regionalen Zentren und schafft damit einen vielseitigen Ausgangspunkt für Wohnen, Arbeiten und Freizeit.",
   },
   {
     titel: "Verkehr",
-    text: "Die Bushaltestelle Uetliburg SG, Ottenhofen liegt direkt vor der Haustüre. Die regionalen Zentren Wattwil, Rapperswil-Jona, Glarus Nord und Wetzikon sind bequem mit Auto oder ÖV erreichbar.",
+    text: "Die Bushaltestelle Uetliburg SG, Ottenhofen befindet sich direkt vor der Haustüre und bietet eine komfortable Anbindung an den öffentlichen Verkehr. Rapperswil-Jona, Wattwil, Glarus Nord und Wetzikon sowie der angrenzende Kanton Schwyz sind mit dem Auto oder den öffentlichen Verkehrsmitteln gut erreichbar.",
   },
   {
     titel: "Naherholung",
@@ -76,22 +75,24 @@ export default function LagePage() {
           />
         </section>
 
-        <section className="shell flex items-start justify-between gap-6 pt-14 pb-section-mobile md:pt-20 md:pb-section">
+        <section className="shell pt-14 pb-section-mobile md:pt-20 md:pb-section">
           <div>
             <Eyebrow>Lage</Eyebrow>
             <h1 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.02] text-primary md:text-6xl">
               Wohnen im Herzen von Uetliburg
             </h1>
             <p className="mt-6 max-w-[52ch] text-foreground-muted">
-              An der Ottenhofenstrasse 53 und 55. Ruhig gelegen und dennoch mitten
-              im Dorf, mit Blick Richtung Obersee.
+              An der Ottenhofenstrasse 53 und 55 geniesst Mirabell eine ruhige
+              Lage mitten im Dorf. Der Blick in Richtung Obersee und die
+              naturnahe Umgebung verleihen dem Standort seine besondere
+              Wohnqualität und verbinden Ruhe, Aussicht und Dorfleben auf
+              angenehme Weise.
             </p>
             <p className="mt-6 max-w-[52ch] text-foreground-muted">
-              Die folgende Karte zeigt Mirabell im Zusammenhang mit der unmittelbaren
-              Umgebung.
+              Die nachfolgende Karte zeigt die Lage von Mirabell und die
+              unmittelbare Umgebung.
             </p>
           </div>
-          <MirabelleAccent />
         </section>
 
         {/* INTERAKTIVE KARTE (ATLIST) */}

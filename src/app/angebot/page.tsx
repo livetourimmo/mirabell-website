@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Download, Table as TableIcon } from "lucide-react";
+import Script from "next/script";
+import { Download } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
@@ -61,13 +62,33 @@ export default function AngebotPage() {
         {/* NAVIGATOR / ANGEBOTSLISTE */}
         <section id="navigator" className="shell pb-section-mobile md:pb-section">
           <Reveal>
-            <div className="flex min-h-[420px] w-full flex-col items-center justify-center gap-4 rounded-[var(--radius-base)] border border-dashed border-border bg-[color-mix(in_srgb,var(--color-secondary)_18%,var(--color-background))] text-center">
-              <TableIcon className="size-7 text-foreground-muted" strokeWidth={1.25} />
-              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground-muted">
-                Platzhalter
-              </span>
-            </div>
+            <iframe
+              id="lvt-axo-mirabell"
+              src="https://lvt-gamma.vercel.app/immobilie/mirabell?sort=source"
+              title="Immobiliennavigator"
+              style={{ width: "100%", border: 0, minHeight: 760 }}
+              loading="lazy"
+            />
           </Reveal>
+          <Script id="lvt-axo-mirabell-resize" strategy="afterInteractive">
+            {`
+              (function () {
+                var iframe = document.getElementById("lvt-axo-mirabell");
+                if (!iframe) return;
+                window.addEventListener("message", function (event) {
+                  if (
+                    event.source !== iframe.contentWindow ||
+                    !event.data ||
+                    event.data.type !== "lvt-axo-resize" ||
+                    typeof event.data.height !== "number"
+                  ) {
+                    return;
+                  }
+                  iframe.style.height = Math.ceil(event.data.height) + "px";
+                });
+              })();
+            `}
+          </Script>
         </section>
 
         {/* DOWNLOADS */}
@@ -78,9 +99,9 @@ export default function AngebotPage() {
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-4xl">Downloads</h2>
             </Reveal>
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
-              {MOCK_DOWNLOADS.map((item, i) => (
-                <Reveal key={item.id} delay={i * 60}>
-                  <div className="flex items-start justify-between gap-4 rounded-[var(--radius-base)] border border-border bg-surface p-6">
+              {MOCK_DOWNLOADS.map((item, i) => {
+                const content = (
+                  <>
                     <div>
                       <p className="font-heading text-lg text-primary">{item.titel}</p>
                       <p className="mt-1.5 text-sm text-foreground-muted">{item.beschreibung}</p>
@@ -89,9 +110,22 @@ export default function AngebotPage() {
                       </p>
                     </div>
                     <Download className="mt-1 size-5 shrink-0 text-foreground-muted" strokeWidth={1.5} />
-                  </div>
-                </Reveal>
-              ))}
+                  </>
+                );
+                const className =
+                  "flex items-start justify-between gap-4 rounded-[var(--radius-base)] border border-border bg-surface p-6";
+                return (
+                  <Reveal key={item.id} delay={i * 60}>
+                    {item.url ? (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className={`${className} transition-colors hover:border-primary`}>
+                        {content}
+                      </a>
+                    ) : (
+                      <div className={className}>{content}</div>
+                    )}
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>

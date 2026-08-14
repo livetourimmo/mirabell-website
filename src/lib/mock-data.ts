@@ -25,6 +25,7 @@ export const MOCK_DOWNLOADS: DownloadItem[] = [
   { id: "grundrisse", titel: "Grundrisse Gesamtübersicht", beschreibung: "Alle 13 Wohnungen im Überblick, Haus A und Haus B.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
   { id: "situationsplan", titel: "Situationsplan", beschreibung: "Lage der beiden Baukörper auf dem Grundstück.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
   { id: "ug-plan", titel: "UG-Plan / Einstellhalle", beschreibung: "Anordnung der 24 Parkplätze und Kellerabteile.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
+  { id: "empfehlungsschreiben", titel: "Empfehlungsschreiben der Bank", beschreibung: "Finanzierungsempfehlung der Bank zum Projekt Mirabell, Ottenhofenstrasse.", dateityp: "PDF", dateigroesse: "397 KB", url: "/Empfehlungsschreiben%20Ottenhofenstrasse.pdf" },
 ];
 
 export function formatChf(value: number) {

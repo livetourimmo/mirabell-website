@@ -105,7 +105,7 @@ export default function Home() {
             <Reveal>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
                 <Image
-                  src="/images/aussen1-v2.png"
+                  src="/images/aussen1-v7.png"
                   alt="Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B"
                   fill
                   className="object-cover"

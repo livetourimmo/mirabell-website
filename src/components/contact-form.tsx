@@ -43,8 +43,16 @@ export function ContactForm() {
 
     setStatus("loading");
     try {
-      // TODO: Anbindung an Supabase (Tabelle `contact_requests`), sobald Zugangsdaten vorliegen.
-      await new Promise((resolve) => setTimeout(resolve, 700));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: data,
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error ?? "Der Versand ist fehlgeschlagen.");
+      }
+
       setStatus("success");
       toast.success("Nachricht gesendet", {
         description: "Wir melden uns in Kürze bei Ihnen zurück.",

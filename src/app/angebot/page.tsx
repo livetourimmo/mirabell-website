@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 };
 
 const MATERIALS = [
-  { titel: "Böden", text: "Parkett individuell wählbar." },
+  { titel: "Böden", text: "Parkett aus definierter Grundauswahl mit individuellen Wahlmöglichkeiten im Rahmen des vorgesehenen Budgets." },
   { titel: "Fassade", text: "Kompaktfassade mit mineralischer Wärmedämmung (22 cm). Sockelgeschoss weiss gestrichen, Obergeschosse mit Grobputz in zurückhaltendem Farbton." },
   { titel: "Fenster", text: "Holz-Metall-Fenster mit Dreifachverglasung, raumhoch mit Hebeschiebefenster zu Terrasse, Balkon oder Loggia." },
   { titel: "Heizung", text: "Erdsonden-Wärmepumpe mit acht Erdsonden à 200 m Tiefe, Fussbodenheizung mit Einzelraumregulierung." },
-  { titel: "Küche", text: "Kücheneinrichtungen individuell wählbar." },
-  { titel: "Bad", text: "Sanitärapparate individuell wählbar. Eigener Waschturm in jeder Wohnung." },
+  { titel: "Küche", text: "Küchenausstattung aus definierter Grundauswahl mit individuellen Wahlmöglichkeiten im Rahmen des vorgesehenen Budgets." },
+  { titel: "Bad", text: "Sanitärapparate aus definierter Grundauswahl mit individuellen Wahlmöglichkeiten im Rahmen des vorgesehenen Budgets. Eigener Waschturm in jeder Wohnung." },
 ];
 
 export default function AngebotPage() {

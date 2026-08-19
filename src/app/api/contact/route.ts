@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, "&amp;")
@@ -40,12 +38,13 @@ export async function POST(request: Request) {
     );
   }
 
+  const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL;
 
-  if (!to || !from) {
+  if (!apiKey || !to || !from) {
     console.error(
-      "Kontaktformular: CONTACT_TO_EMAIL oder CONTACT_FROM_EMAIL ist nicht gesetzt."
+      "Kontaktformular: RESEND_API_KEY, CONTACT_TO_EMAIL oder CONTACT_FROM_EMAIL ist nicht gesetzt."
     );
     return Response.json(
       { ok: false, error: "Der Versand ist derzeit nicht konfiguriert." },
@@ -54,6 +53,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from,
       to,

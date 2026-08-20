@@ -29,13 +29,9 @@ export function ContactForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    // Honeypot — für Menschen unsichtbares Feld, Bots füllen es meist aus.
-    if (String(data.get("website") ?? "").length > 0) {
-      setStatus("success");
-      form.reset();
-      return;
-    }
-
+    // Den Honeypot wertet ausschliesslich die API aus. Früher brach das Formular
+    // hier still ab — bei einem Fehlalarm (Passwortmanager füllt das versteckte
+    // Feld aus) verschwand die Anfrage dadurch spurlos, ohne jede Rückmeldung.
     if (!privacyChecked) {
       setPrivacyError(true);
       return;
@@ -69,11 +65,21 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+      {/*
+        Honeypot — für Menschen unsichtbar, Bots füllen es meist aus.
+        Der Feldname darf nach nichts Bekanntem klingen: hiess das Feld "website",
+        trugen Passwortmanager dort eine URL ein und die Anfrage galt als Bot.
+        Die data-*-Attribute halten 1Password, LastPass, Bitwarden und Dashlane fern.
+      */}
       <input
         type="text"
-        name="website"
+        name="kontakt_ref"
         tabIndex={-1}
         autoComplete="off"
+        data-1p-ignore
+        data-lpignore="true"
+        data-bwignore
+        data-form-type="other"
         className="absolute left-[-9999px] h-0 w-0 opacity-0"
         aria-hidden="true"
       />

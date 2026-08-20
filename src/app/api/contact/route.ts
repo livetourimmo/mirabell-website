@@ -20,7 +20,14 @@ export async function POST(request: Request) {
   const data = await request.formData();
 
   // Honeypot — für Menschen unsichtbares Feld, Bots füllen es meist aus.
-  if (String(data.get("website") ?? "").length > 0) {
+  // Wird geloggt, damit ein Fehlalarm in den Vercel-Logs auffällt, statt still
+  // eine echte Anfrage zu verschlucken.
+  if (String(data.get("kontakt_ref") ?? "").length > 0) {
+    console.warn(
+      "Kontaktformular: Honeypot ausgelöst, Anfrage verworfen.",
+      `name=${String(data.get("name") ?? "")}`,
+      `email=${String(data.get("email") ?? "")}`
+    );
     return Response.json({ ok: true });
   }
 

@@ -1,4 +1,11 @@
 import { Resend } from "resend";
+import { MOCK_UNITS } from "@/lib/mock-data";
+
+// Das Select sendet die Unit-ID (z. B. "a-eg-1") — in der E-Mail soll die
+// gleiche Bezeichnung stehen wie im Formular (z. B. "Haus A · Wohnung 1").
+function interesseLabel(value: string) {
+  return MOCK_UNITS.find((unit) => unit.id === value)?.bezeichnung ?? value;
+}
 
 function escapeHtml(value: string) {
   return value
@@ -20,7 +27,7 @@ export async function POST(request: Request) {
   const name = String(data.get("name") ?? "").trim();
   const email = String(data.get("email") ?? "").trim();
   const phone = String(data.get("phone") ?? "").trim();
-  const interesse = String(data.get("interesse") ?? "").trim();
+  const interesse = interesseLabel(String(data.get("interesse") ?? "").trim());
   const message = String(data.get("message") ?? "").trim();
 
   if (!name || !email || !message) {

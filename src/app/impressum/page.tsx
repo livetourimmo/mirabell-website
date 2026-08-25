@@ -51,11 +51,12 @@ export default function ImpressumPage() {
                   </dd>
                   <dt className="font-medium text-primary">Website</dt>
                   <dd>
+                    {/* Kein noreferrer: der Referrer soll die Partnerseite erreichen. */}
                     <a
                       href={VERANTWORTLICHE.websiteHref}
                       target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary"
+                      rel="noopener"
+                      className="underline decoration-border underline-offset-4 transition-colors hover:decoration-primary"
                     >
                       {VERANTWORTLICHE.website}
                     </a>
@@ -137,13 +138,48 @@ export default function ImpressumPage() {
                       <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
                         {partner.rolle}
                       </p>
-                      <p className="mt-2 font-medium text-primary">{partner.name}</p>
+                      {/* Der Firmenname ist der Link — er trägt den aussagekräftigsten
+                          Ankertext für den Verweis auf die Partnerseite. */}
+                      <p className="mt-2 font-medium text-primary">
+                        {partner.domain ? (
+                          <a
+                            href={`https://${partner.domain}`}
+                            target="_blank"
+                            rel="noopener"
+                            className="underline decoration-border underline-offset-4 transition-colors hover:decoration-primary"
+                          >
+                            {partner.name}
+                          </a>
+                        ) : (
+                          partner.name
+                        )}
+                      </p>
                       <p className="mt-1 text-left! text-sm">
-                        {partner.zeilen.map((zeile) => (
+                        {partner.adresse.map((zeile) => (
                           <span key={zeile} className="block">
                             {zeile}
                           </span>
                         ))}
+                      </p>
+                      <p className="mt-1.5 flex flex-col text-left! text-sm">
+                        {partner.email && (
+                          <a
+                            href={`mailto:${partner.email}`}
+                            className="w-fit hover:text-primary"
+                          >
+                            {partner.email}
+                          </a>
+                        )}
+                        {partner.domain && (
+                          <a
+                            href={`https://${partner.domain}`}
+                            target="_blank"
+                            rel="noopener"
+                            className="w-fit hover:text-primary"
+                          >
+                            {partner.domain}
+                          </a>
+                        )}
                       </p>
                     </div>
                   ))}

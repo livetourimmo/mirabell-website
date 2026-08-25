@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const MAKRO = [
   {
-    titel: "Region",
+    titel: "Lage & Umgebung",
     text: "Uetliburg gehört zur Gemeinde Gommiswald im Kanton St. Gallen und liegt in der attraktiven Region zwischen Zürichsee und Voralpen. Die Lage verbindet den ländlichen Charakter des Ortes mit der Nähe zu den regionalen Zentren und schafft damit einen vielseitigen Ausgangspunkt für Wohnen, Arbeiten und Freizeit.",
   },
   {

@@ -22,31 +22,53 @@ export const VERANTWORTLICHE = {
   handelsregister: "CH-130.3.026.974-8",
 } as const;
 
-export const PROJEKTBETEILIGTE = [
+export interface Projektbeteiligte {
+  rolle: string;
+  name: string;
+  adresse: readonly string[];
+  email?: string;
+  /** Ohne Protokoll — wird als sichtbarer Linktext verwendet. */
+  domain?: string;
+}
+
+/**
+ * Alle Domains wurden vor dem Verlinken geprüft und liefern die erwartete
+ * Seite aus. Die Links tragen bewusst kein rel="nofollow": sie sollen als
+ * echte Partnerverweise zählen. rel="noopener" bleibt aus Sicherheitsgründen.
+ */
+export const PROJEKTBETEILIGTE: readonly Projektbeteiligte[] = [
   {
     rolle: "Bauherrschaft & Realisation",
     name: "Visto Immobilien AG",
-    zeilen: ["Einsiedlerstrasse 21", "8834 Schindellegi"],
+    adresse: ["Einsiedlerstrasse 21", "8834 Schindellegi"],
+    email: "info@visto-immobilien.ch",
+    domain: "visto-immobilien.ch",
   },
   {
     rolle: "Verkauf & Beratung",
     name: "Keller ImmoVermarktung GmbH",
-    zeilen: ["Lindenstrasse 35", "8738 Uetliburg", "info@keller-immovermarktung.ch"],
+    adresse: ["Lindenstrasse 35", "8738 Uetliburg"],
+    email: "info@keller-immovermarktung.ch",
+    domain: "keller-immovermarktung.ch",
   },
   {
     rolle: "Architektur",
     name: "Hasler Limacher Architekten GmbH",
-    zeilen: ["Werner-Kälin-Strasse 3", "8840 Einsiedeln", "info@hasler-limacher.ch"],
+    adresse: ["Werner-Kälin-Strasse 3", "8840 Einsiedeln"],
+    email: "info@hasler-limacher.ch",
+    domain: "hasler-limacher.ch",
   },
   {
     rolle: "Baumanagement",
     name: "Lienert Partner AG",
-    zeilen: ["Mühlestrasse 3", "8840 Einsiedeln"],
+    adresse: ["Mühlestrasse 3", "8840 Einsiedeln"],
+    domain: "lienert-partner.ch",
   },
   {
     rolle: "Konzept & Realisierung Website",
     name: "liveTour Immobilienmarketing GmbH",
-    zeilen: ["Wellhauserweg 41a", "8500 Frauenfeld", "www.livetour.ch"],
+    adresse: ["Wellhauserweg 41a", "8500 Frauenfeld"],
+    domain: "livetour.ch",
   },
 ] as const;
 

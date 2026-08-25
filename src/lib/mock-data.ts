@@ -21,7 +21,7 @@ export const MOCK_UNITS: Unit[] = [
 ];
 
 export const MOCK_DOWNLOADS: DownloadItem[] = [
-  { id: "kurzbaubeschrieb", titel: "Kurzbaubeschrieb", beschreibung: "Konstruktion, Materialisierung und Ausstattung.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
+  { id: "kurzbaubeschrieb", titel: "Kurzbaubeschrieb", beschreibung: "Konstruktion, Materialisierung und Ausstattung.", dateityp: "PDF", dateigroesse: "588 KB", url: "/downloads/Mirabell-Kurzbaubeschrieb.pdf" },
   { id: "grundrisse", titel: "Grundrisse", beschreibung: "Alle 13 Wohnungen, Haus A und Haus B.", dateityp: "PDF", dateigroesse: "6.9 MB", url: "/downloads/Mirabell-Grundrisse.pdf" },
   { id: "situationsplan", titel: "Situationsplan", beschreibung: "Lage der Baukörper auf dem Grundstück.", dateityp: "PDF", dateigroesse: "2.6 MB", url: "/downloads/Mirabell-Situationsplan.pdf" },
   { id: "einstellhalle", titel: "Einstellhalle", beschreibung: "Parkplätze und Kellerabteile im Untergeschoss.", dateityp: "PDF", dateigroesse: "1.4 MB", url: "/downloads/Mirabell-Einstellhalle.pdf" },

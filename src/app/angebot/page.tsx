@@ -6,6 +6,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
+import { ConsentEmbed } from "@/components/consent/consent-embed";
 import { MOCK_DOWNLOADS } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
@@ -63,20 +64,24 @@ export default function AngebotPage() {
         {/* NAVIGATOR / ANGEBOTSLISTE */}
         <section id="navigator" className="shell pb-section-mobile md:pb-section">
           <Reveal>
-            <iframe
-              id="lvt-axo-mirabell"
-              src="https://lvt-gamma.vercel.app/immobilie/mirabell?sort=source"
-              title="Immobiliennavigator"
-              style={{ width: "100%", border: 0, minHeight: 760 }}
-              loading="lazy"
-            />
+            <ConsentEmbed id="navigator" className="min-h-[420px] rounded-[var(--radius-base)]">
+              <iframe
+                id="lvt-axo-mirabell"
+                src="https://lvt-gamma.vercel.app/immobilie/mirabell?sort=source"
+                title="Immobiliennavigator"
+                style={{ width: "100%", border: 0, minHeight: 760 }}
+                loading="lazy"
+              />
+            </ConsentEmbed>
           </Reveal>
           <Script id="lvt-axo-mirabell-resize" strategy="afterInteractive">
             {`
               (function () {
-                var iframe = document.getElementById("lvt-axo-mirabell");
-                if (!iframe) return;
+                // Das iframe existiert erst nach erteilter Einwilligung, deshalb
+                // wird es bei jeder Nachricht neu gesucht statt einmal beim Start.
                 window.addEventListener("message", function (event) {
+                  var iframe = document.getElementById("lvt-axo-mirabell");
+                  if (!iframe) return;
                   if (
                     event.source !== iframe.contentWindow ||
                     !event.data ||
@@ -144,16 +149,21 @@ export default function AngebotPage() {
                 Bewegen Sie sich frei durch die Musterwohnung und entdecken Sie
                 Räume, Ausblick und Materialisierung aus jedem Blickwinkel.
               </p>
-              <div className="mt-6 aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-base)] border border-border bg-surface sm:aspect-[16/10] lg:aspect-[16/9]">
-                <iframe
-                  src="https://app.cloudpano.com/tours/vAe86_sORt"
-                  title="Virtueller Rundgang Mirabell"
-                  loading="lazy"
-                  allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
-                  allowFullScreen
-                  className="block h-full w-full border-0"
-                />
-              </div>
+              <ConsentEmbed
+                id="rundgang"
+                className="mt-6 aspect-[4/3] w-full rounded-[var(--radius-base)] sm:aspect-[16/10] lg:aspect-[16/9]"
+              >
+                <div className="aspect-[4/3] h-full w-full overflow-hidden rounded-[var(--radius-base)] border border-border bg-surface sm:aspect-[16/10] lg:aspect-[16/9]">
+                  <iframe
+                    src="https://app.cloudpano.com/tours/vAe86_sORt"
+                    title="Virtueller Rundgang Mirabell"
+                    loading="lazy"
+                    allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+                    allowFullScreen
+                    className="block h-full w-full border-0"
+                  />
+                </div>
+              </ConsentEmbed>
             </Reveal>
           </div>
         </section>

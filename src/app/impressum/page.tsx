@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Eyebrow } from "@/components/eyebrow";
+import { PROJEKTBETEILIGTE, STAND, VERANTWORTLICHE } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Impressum",
+  description:
+    "Impressum zur Website des Neubauprojekts Mirabell in Uetliburg. Verantwortlich: Visto Immobilien AG, Schindellegi.",
 };
 
 export default function ImpressumPage() {
@@ -13,94 +17,156 @@ export default function ImpressumPage() {
       <Nav overPhoto={false} />
       <main className="flex-1">
         <section className="shell py-section-mobile md:py-section">
-         <div className="max-w-3xl">
-          <Eyebrow>Rechtliches</Eyebrow>
-          <h1 className="mt-3 font-heading text-4xl text-primary">Impressum</h1>
+          <div className="max-w-3xl">
+            <Eyebrow>Rechtliches</Eyebrow>
+            <h1 className="mt-3 font-heading text-4xl text-primary md:text-5xl">Impressum</h1>
+            <p className="mt-5 text-foreground-muted">
+              Angaben zum Betreiber dieser Website für das Neubauprojekt Mirabell,
+              Ottenhofenstrasse 53 + 55, 8738 Uetliburg.
+            </p>
 
-          <div className="mt-10 flex flex-col gap-8 text-foreground-muted">
-            <div>
-              <h2 className="font-heading text-xl text-primary">Verantwortlich für den Inhalt</h2>
-              <p className="mt-2">
-                Salus Fidelity GmbH<br />
-                Einsiedlerstrasse 21<br />
-                8834 Schindellegi<br />
-                Schweiz
-              </p>
-            </div>
+            <div className="mt-12 flex flex-col gap-10">
+              <Block titel="Verantwortlich für diese Website">
+                <p>
+                  {VERANTWORTLICHE.name}
+                  <br />
+                  {VERANTWORTLICHE.strasse}
+                  <br />
+                  {VERANTWORTLICHE.plz} {VERANTWORTLICHE.ort}
+                  <br />
+                  {VERANTWORTLICHE.land}
+                </p>
+                <dl className="mt-5 grid gap-x-8 gap-y-2 sm:grid-cols-[auto_1fr]">
+                  <dt className="font-medium text-primary">Telefon</dt>
+                  <dd>
+                    <a href={VERANTWORTLICHE.telefonHref} className="hover:text-primary">
+                      {VERANTWORTLICHE.telefon}
+                    </a>
+                  </dd>
+                  <dt className="font-medium text-primary">E-Mail</dt>
+                  <dd>
+                    <a href={`mailto:${VERANTWORTLICHE.email}`} className="hover:text-primary">
+                      {VERANTWORTLICHE.email}
+                    </a>
+                  </dd>
+                  <dt className="font-medium text-primary">Website</dt>
+                  <dd>
+                    <a
+                      href={VERANTWORTLICHE.websiteHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary"
+                    >
+                      {VERANTWORTLICHE.website}
+                    </a>
+                  </dd>
+                  <dt className="font-medium text-primary">UID / MWST</dt>
+                  <dd>{VERANTWORTLICHE.uid}</dd>
+                  <dt className="font-medium text-primary">Handelsregister</dt>
+                  <dd>{VERANTWORTLICHE.handelsregister}</dd>
+                </dl>
+              </Block>
 
-            <div>
-              <h2 className="font-heading text-xl text-primary">Kontakt</h2>
-              <p className="mt-2">
-                Telefon: 044 593 96 05<br />
-                E-Mail: info@salusfidelity.ch
-              </p>
-            </div>
+              <Block titel="Haftung für Inhalte">
+                <p>
+                  Die Inhalte dieser Website wurden mit grosser Sorgfalt erstellt. Für
+                  Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit
+                  der Informationen wird jedoch keine Gewähr übernommen.
+                </p>
+                <p className="mt-4">
+                  Visualisierungen, Grundrisse, Flächenangaben, Materialisierungen und
+                  Preise dienen der Veranschaulichung und sind unverbindlich. Massgebend
+                  sind ausschliesslich die Angaben im Kaufvertrag und in den zugehörigen
+                  Vertragsdokumenten. Änderungen aufgrund von Projektierung, behördlichen
+                  Auflagen oder Bauablauf bleiben ausdrücklich vorbehalten. Möblierungen
+                  auf Visualisierungen sind nicht Bestandteil des Kaufgegenstands.
+                </p>
+                <p className="mt-4">
+                  Haftungsansprüche gegen die {VERANTWORTLICHE.name} wegen Schäden
+                  materieller oder immaterieller Art, die aus dem Zugriff auf die
+                  veröffentlichten Informationen, aus deren Nutzung oder Nichtnutzung, aus
+                  Missbrauch der Verbindung oder aus technischen Störungen entstehen,
+                  werden ausgeschlossen. Alle Angebote sind freibleibend. Die{" "}
+                  {VERANTWORTLICHE.name} behält sich ausdrücklich vor, Teile der Seiten
+                  oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu
+                  ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig
+                  einzustellen.
+                </p>
+              </Block>
 
+              <Block titel="Haftung für Links">
+                <p>
+                  Verweise und Links auf Websites Dritter liegen ausserhalb unseres
+                  Verantwortungsbereichs. Für deren Inhalte wird jede Verantwortung
+                  abgelehnt. Zugriff und Nutzung solcher Websites erfolgen auf eigene
+                  Gefahr der Nutzerin oder des Nutzers. Das gilt auch für die auf dieser
+                  Website eingebundenen Inhalte Dritter, namentlich den virtuellen
+                  Rundgang, die Umgebungskarte und den Immobiliennavigator.
+                </p>
+              </Block>
 
-            <div>
-              <h2 className="font-heading text-xl text-primary">Haftungsausschluss</h2>
-              <p className="mt-2">
-                Alle Angaben auf dieser Website erfolgen ohne Gewähr. Änderungen an
-                Grundrissen, Materialisierung, Preisen und Verfügbarkeit vorbehalten.
-                [Platzhalter: vollständiger Haftungsausschluss folgt]
-              </p>
-            </div>
+              <Block titel="Urheberrechte">
+                <p>
+                  Die Urheber- und alle weiteren Rechte an Inhalten, Bildern,
+                  Visualisierungen, Videos, Plänen und sonstigen Dateien auf dieser
+                  Website stehen ausschliesslich der {VERANTWORTLICHE.name} oder den
+                  jeweils besonders bezeichneten Rechteinhabern zu. Für die Reproduktion
+                  oder Weiterverwendung jeglicher Elemente ist die vorgängige schriftliche
+                  Zustimmung der Rechteinhaber einzuholen.
+                </p>
+              </Block>
 
-            <div>
-              <h2 className="font-heading text-xl text-primary">Konzept &amp; Realisierung</h2>
-              <p className="mt-2">
-                liveTour Immobilienmarketing GmbH<br />
-                Wellhauserweg 41a<br />
-                8500 Frauenfeld<br />
-                <a href="https://www.livetour.ch" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                  www.livetour.ch
-                </a>
-              </p>
-            </div>
+              <Block titel="Datenschutz">
+                <p>
+                  Angaben zur Bearbeitung von Personendaten auf dieser Website finden Sie
+                  in der{" "}
+                  <Link
+                    href="/datenschutz"
+                    className="underline underline-offset-2 hover:text-primary"
+                  >
+                    Datenschutzerklärung
+                  </Link>
+                  .
+                </p>
+              </Block>
 
-            <div>
-              <h2 className="font-heading text-xl text-primary">Projektbeteiligte</h2>
-              <div className="mt-4 grid gap-6 sm:grid-cols-2">
-                <div>
-                  <p className="font-semibold text-primary">Bauherrschaft / Realisation</p>
-                  <p className="mt-1">
-                    Salus Fidelity GmbH<br />
-                    Einsiedlerstrasse 21<br />
-                    8834 Schindellegi
-                  </p>
+              <Block titel="Projektbeteiligte">
+                <div className="mt-2 grid gap-7 sm:grid-cols-2">
+                  {PROJEKTBETEILIGTE.map((partner) => (
+                    <div key={partner.rolle} className="border-t border-border pt-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+                        {partner.rolle}
+                      </p>
+                      <p className="mt-2 font-medium text-primary">{partner.name}</p>
+                      <p className="mt-1 text-left! text-sm">
+                        {partner.zeilen.map((zeile) => (
+                          <span key={zeile} className="block">
+                            {zeile}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <p className="font-semibold text-primary">Verkauf</p>
-                  <p className="mt-1">
-                    Keller ImmoVermarktung GmbH<br />
-                    Lindenstrasse 35<br />
-                    8738 Uetliburg
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-primary">Architektur</p>
-                  <p className="mt-1">
-                    Hasler Limacher Architekten GmbH<br />
-                    Werner-Kälin-Strasse 3<br />
-                    8840 Einsiedeln<br />
-                    info@hasler-limacher.ch
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-primary">Baumanagement</p>
-                  <p className="mt-1">
-                    Lienert Partner AG<br />
-                    Mühlestrasse 3<br />
-                    8840 Einsiedeln
-                  </p>
-                </div>
-              </div>
+              </Block>
             </div>
+
+            <p className="mt-14 border-t border-border pt-6 text-sm text-foreground-muted">
+              Stand: {STAND}
+            </p>
           </div>
-         </div>
         </section>
       </main>
       <Footer />
     </>
+  );
+}
+
+function Block({ titel, children }: { titel: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <h2 className="font-heading text-xl text-primary md:text-2xl">{titel}</h2>
+      <div className="mt-3 text-foreground-muted">{children}</div>
+    </section>
   );
 }

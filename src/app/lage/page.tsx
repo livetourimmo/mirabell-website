@@ -3,6 +3,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
+import { ConsentEmbed } from "@/components/consent/consent-embed";
 import {
   Table,
   TableBody,
@@ -103,20 +104,22 @@ export default function LagePage() {
         {/* INTERAKTIVE KARTE (ATLIST) */}
         <section className="shell pb-section-mobile md:pb-section">
           <Reveal>
-            <div className="overflow-hidden rounded-[var(--radius-base)] border border-border">
-              <iframe
-                src="https://my.atlist.com/map/8ab23f36-b8e8-441a-9f3e-facb99afe6d7?share=true"
-                allow="geolocation 'self' https://my.atlist.com"
-                width="100%"
-                height="700"
-                loading="lazy"
-                frameBorder="0"
-                scrolling="no"
-                allowFullScreen
-                id="atlist-embed"
-                className="block w-full"
-              />
-            </div>
+            <ConsentEmbed id="karte" className="min-h-[420px] rounded-[var(--radius-base)]">
+              <div className="overflow-hidden rounded-[var(--radius-base)] border border-border">
+                <iframe
+                  src="https://my.atlist.com/map/8ab23f36-b8e8-441a-9f3e-facb99afe6d7?share=true"
+                  allow="geolocation 'self' https://my.atlist.com"
+                  width="100%"
+                  height="700"
+                  loading="lazy"
+                  frameBorder="0"
+                  scrolling="no"
+                  allowFullScreen
+                  id="atlist-embed"
+                  className="block w-full"
+                />
+              </div>
+            </ConsentEmbed>
           </Reveal>
         </section>
 

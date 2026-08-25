@@ -3,6 +3,8 @@ import { PT_Serif, PT_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { ConsentProvider } from "@/components/consent/consent-provider";
+import { CookieBanner } from "@/components/consent/cookie-banner";
 
 const ptSerif = PT_Serif({
   variable: "--font-pt-serif",
@@ -37,8 +39,11 @@ export default function RootLayout({
       className={cn("h-full antialiased", ptSerif.variable, ptSans.variable)}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
-        {children}
-        <Toaster position="bottom-center" />
+        <ConsentProvider>
+          {children}
+          <CookieBanner />
+          <Toaster position="bottom-center" />
+        </ConsentProvider>
       </body>
     </html>
   );

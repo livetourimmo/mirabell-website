@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
+import { ConsentEinstellungenLink } from "@/components/consent/consent-settings-link";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
 
@@ -50,9 +51,10 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="flex gap-6 text-sm text-white/70">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
               <Link href="/impressum" className="hover:text-white">Impressum</Link>
               <Link href="/datenschutz" className="hover:text-white">Datenschutz</Link>
+              <ConsentEinstellungenLink className="no-underline hover:text-white!" />
             </div>
           </Reveal>
 

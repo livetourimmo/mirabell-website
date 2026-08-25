@@ -2,6 +2,11 @@ import { Resend } from "resend";
 import { MOCK_UNITS } from "@/lib/mock-data";
 import { buildContactEmail } from "@/lib/contact-email";
 
+// Ohne diese Angabe lief die Funktion in iad1 (Washington), d. h. die
+// Formulardaten wurden in den USA verarbeitet. fra1 (Frankfurt) haelt die
+// Bearbeitung im EWR und deckt sich mit der Datenschutzerklaerung.
+export const preferredRegion = "fra1";
+
 // Das Select sendet die Unit-ID (z. B. "a-eg-1") — in der E-Mail soll die
 // gleiche Bezeichnung stehen wie im Formular (z. B. "Haus A · Wohnung 1").
 function interesseLabel(value: string) {

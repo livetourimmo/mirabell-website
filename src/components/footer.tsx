@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { ConsentEinstellungenLink } from "@/components/consent/consent-settings-link";
+import { VERANTWORTLICHE } from "@/lib/legal";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
 
@@ -65,7 +66,7 @@ export function Footer() {
           </Reveal>
         </div>
 
-        <p className="mt-16 border-t border-white/10 pt-10 text-xs text-white/40">© {new Date().getFullYear()} Mirabell, Uetliburg.</p>
+        <p className="mt-16 border-t border-white/10 pt-10 text-xs text-white/40">© {VERANTWORTLICHE.name}</p>
       </div>
     </footer>
   );

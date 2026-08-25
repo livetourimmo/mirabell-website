@@ -31,8 +31,8 @@ export default function AngebotPage() {
         {/* HERO — vollflächiges Bild, Titel & Informationen darunter statt darauf */}
         <section className="relative h-screen w-full">
           <Image
-            src="/images/hero-platzhalter.jpg"
-            alt="Architektur-Visualisierung Mirabell, Abendstimmung"
+            src="/images/aussen4.jpg"
+            alt="Blick vom Hof zwischen Haus A und Haus B über Uetliburg Richtung Obersee"
             fill
             priority
             sizes="100vw"

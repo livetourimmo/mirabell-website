@@ -7,6 +7,7 @@ import { ConsentEinstellungenLink } from "@/components/consent/consent-settings-
 import {
   AUFTRAGSBEARBEITER,
   EMBED_LISTE,
+  EMPFAENGER_ANFRAGEN,
   STAND,
   VERANTWORTLICHE,
 } from "@/lib/legal";
@@ -151,11 +152,28 @@ export default function DatenschutzPage() {
                   </li>
                 </Liste>
                 <p className="mt-4">
-                  Aus diesen Angaben wird eine E-Mail erzeugt und an die für den Verkauf
-                  zuständige Stelle übermittelt. Ihre E-Mail-Adresse wird dabei als
-                  Antwortadresse gesetzt, damit wir Ihnen direkt antworten können. Eine
-                  Nutzung für Werbung oder eine Weitergabe zu anderen Zwecken findet nicht
-                  statt.
+                  Aus diesen Angaben wird eine E-Mail erzeugt und an die mit der
+                  Vermarktung beauftragte Stelle übermittelt:
+                </p>
+                <p className="mt-4">
+                  {EMPFAENGER_ANFRAGEN.name}
+                  <br />
+                  {EMPFAENGER_ANFRAGEN.strasse}
+                  <br />
+                  {EMPFAENGER_ANFRAGEN.plzOrt}
+                  <br />
+                  <a
+                    href={`mailto:${EMPFAENGER_ANFRAGEN.email}`}
+                    className="hover:text-primary"
+                  >
+                    {EMPFAENGER_ANFRAGEN.email}
+                  </a>
+                </p>
+                <p className="mt-4">
+                  Dort werden Ihre Angaben zur Beratung und Betreuung im Verkaufsprozess
+                  bearbeitet. Ihre E-Mail-Adresse wird als Antwortadresse gesetzt, damit
+                  Ihnen direkt geantwortet werden kann. Eine Nutzung für Werbung oder eine
+                  Weitergabe zu anderen Zwecken findet nicht statt.
                 </p>
                 <p className="mt-4">
                   Die Angaben werden nicht in einer Datenbank dieser Website gespeichert,
@@ -269,10 +287,12 @@ export default function DatenschutzPage() {
                   ))}
                 </div>
                 <p className="mt-6">
-                  Darüber hinaus geben wir Personendaten an die am Projekt beteiligten
-                  Stellen weiter, soweit dies zur Beantwortung Ihrer Anfrage und zur
-                  Verkaufsberatung erforderlich ist — namentlich an die mit dem Verkauf
-                  beauftragte Keller ImmoVermarktung GmbH, Uetliburg.
+                  Die Anfragen aus dem Kontaktformular gehen nicht an diese
+                  Dienstleister, sondern an die mit der Vermarktung beauftragte{" "}
+                  {EMPFAENGER_ANFRAGEN.name}, {EMPFAENGER_ANFRAGEN.plzOrt} (siehe
+                  Ziffer 4). Darüber hinaus geben wir Personendaten nur an weitere am
+                  Projekt beteiligte Stellen weiter, soweit dies zur Beantwortung Ihrer
+                  Anfrage erforderlich ist.
                 </p>
               </Abschnitt>
 

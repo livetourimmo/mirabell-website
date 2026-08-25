@@ -74,11 +74,26 @@ export const AUFTRAGSBEARBEITER = [
     name: "liveTour Immobilienmarketing GmbH",
     sitz: "Schweiz",
     zweck:
-      "Betrieb und Betreuung der Website sowie Entgegennahme und Weiterleitung der Anfragen aus dem Kontaktformular.",
-    daten: "Alle im Kontaktformular eingegebenen Angaben",
+      "Technische Umsetzung, Betrieb und Wartung der Website. Anfragen aus dem Kontaktformular werden nicht an liveTour übermittelt.",
+    daten:
+      "Zugriff auf die Server-Logs im Rahmen von Betrieb, Wartung und Fehlersuche",
     datenschutz: "https://www.livetour.ch",
   },
 ] as const;
+
+/**
+ * Empfänger der Kontaktformular-Anfragen. Muss mit der Umgebungsvariablen
+ * CONTACT_TO_EMAIL übereinstimmen — sonst behauptet die Datenschutzerklärung
+ * einen anderen Empfänger als den, an den die E-Mail tatsächlich geht.
+ */
+export const EMPFAENGER_ANFRAGEN = {
+  name: "Keller ImmoVermarktung GmbH",
+  rolle: "Vermarktung und Verkauf",
+  strasse: "Lindenstrasse 35",
+  plzOrt: "8738 Uetliburg",
+  land: "Schweiz",
+  email: "info@keller-immovermarktung.ch",
+} as const;
 
 /* ========================================================================== */
 /* Einwilligungspflichtige Embeds                                             */

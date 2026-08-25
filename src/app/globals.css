@@ -162,6 +162,10 @@ p {
     letter-spacing: 0.01em;
     line-height: 1.2;
     text-wrap: balance;
+    /* Lange deutsche Komposita wie "Datenschutzerklärung" passen auf schmalen
+       Geräten sonst in keine Zeile und schieben die ganze Seite seitlich weg.
+       Greift nur, wenn ein Wort tatsächlich nicht passt. */
+    hyphens: auto;
   }
 }
 

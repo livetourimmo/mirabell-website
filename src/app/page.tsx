@@ -57,7 +57,10 @@ export default function Home() {
 
           {/* Signature: die beiden Hausnummern wie ein Türschild */}
           <div className="md:col-span-5 md:pl-6">
-            <div className="flex items-stretch gap-5">
+            {/* flex-wrap: ohne Umbruch sprengte die Zeile auf 360-px-Geräten den
+                Viewport um 8 px — dadurch liess sich die ganze Seite seitlich
+                schieben und alles wirkte verschoben, auch der Footer. */}
+            <div className="flex flex-wrap items-stretch gap-5">
               <div className="border border-accent px-5 py-3 text-center">
                 <div className="font-heading text-3xl tabular-nums text-primary">53</div>
                 <div className="mt-1 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.1em] text-foreground-muted">
@@ -70,7 +73,7 @@ export default function Home() {
                   Haus B
                 </div>
               </div>
-              <div className="flex flex-col justify-center border-l border-border pl-5 text-xs text-foreground-muted">
+              <div className="flex flex-col justify-center text-xs text-foreground-muted min-[420px]:border-l min-[420px]:border-border min-[420px]:pl-5">
                 <span>Ottenhofenstrasse</span>
                 <span>13 Eigentumswohnungen</span>
               </div>
@@ -259,7 +262,15 @@ export default function Home() {
                   bietet Mirabell den Freiraum, dem eigenen Zuhause eine
                   persönliche und unverwechselbare Handschrift zu verleihen.
                 </p>
-                <Button asChild variant="primary" size="lg" className="mt-8">
+                {/* Der Button-Default ist whitespace-nowrap + shrink-0; bei dieser
+                    langen Beschriftung sprengte das auf 320-px-Geräten den
+                    Viewport. Unterhalb sm darf er deshalb umbrechen. */}
+                <Button
+                  asChild
+                  variant="primary"
+                  size="lg"
+                  className="mt-8 h-auto whitespace-normal px-6 py-3.5 text-center sm:h-12 sm:px-9 sm:py-0"
+                >
                   <Link href="/angebot#materialisierung">Materialisierung &amp; Baubeschrieb</Link>
                 </Button>
               </Reveal>

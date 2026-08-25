@@ -149,7 +149,10 @@ export function ContactForm() {
           }}
           aria-invalid={privacyError}
         />
-        <Label htmlFor="privacy" className="text-sm font-normal leading-snug text-foreground-muted">
+        {/* block statt des Label-Defaults flex: sonst werden die Textknoten und
+            der Link zu einzelnen Flex-Elementen und der Satz bricht auf dem
+            Handy in schmale Spalten auseinander. */}
+        <Label htmlFor="privacy" className="block text-sm font-normal leading-snug text-foreground-muted">
           Ich habe die{" "}
           <Link href="/datenschutz" className="underline underline-offset-2 hover:text-primary">
             Datenschutzerklärung

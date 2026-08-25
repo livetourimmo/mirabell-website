@@ -20,11 +20,14 @@ export function Footer() {
 
         <div className="mt-14 grid gap-16 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal delay={80} className="flex h-full flex-col gap-8">
-            <div className="flex flex-1 flex-col justify-center rounded-[var(--radius-lg)] border border-white/15 bg-white/5 p-7">
+            <div className="flex flex-1 flex-col justify-center rounded-[var(--radius-lg)] border border-white/15 bg-white/5 p-6 sm:p-7">
               <p className="font-heading text-lg italic text-white/55">Verkauf &amp; Beratung</p>
 
-              <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-6">
-                <div className="shrink-0 rounded-[var(--radius-base)] bg-white/90 px-3 py-2">
+              {/* Auf schmalen Screens untereinander: nebeneinander blieben dem
+                  Text neben dem Logo nur rund 120 px, was die Adresse in
+                  zerrissene Zeilen zwang. */}
+              <div className="mt-6 flex flex-col gap-4 border-t border-white/10 pt-6 min-[420px]:flex-row min-[420px]:items-center">
+                <div className="w-fit shrink-0 rounded-[var(--radius-base)] bg-white/90 px-3 py-2">
                   <Image
                     src="/images/Keller_ImmoVermarktung_Logo_RGB-01-Reg.png"
                     alt="Keller ImmoVermarktung GmbH"
@@ -33,10 +36,12 @@ export function Footer() {
                     className="h-12 w-auto"
                   />
                 </div>
+                {/* text-left! gegen den globalen Blocksatz — in dieser schmalen
+                    Spalte riss justify die Adresse sonst auseinander. */}
                 <div>
                   <p className="font-heading text-lg text-white">Carine Keller</p>
-                  <p className="text-sm text-white/70">Keller ImmoVermarktung GmbH</p>
-                  <p className="text-sm text-white/70">Lindenstrasse 35, 8738 Uetliburg</p>
+                  <p className="text-left! text-sm text-white/70">Keller ImmoVermarktung GmbH</p>
+                  <p className="text-left! text-sm text-white/70">Lindenstrasse 35, 8738 Uetliburg</p>
                 </div>
               </div>
 
@@ -60,7 +65,7 @@ export function Footer() {
           </Reveal>
 
           <Reveal delay={160}>
-            <div className="rounded-[var(--radius-lg)] bg-[var(--color-background)] p-8 text-foreground md:p-10">
+            <div className="rounded-[var(--radius-lg)] bg-[var(--color-background)] p-6 text-foreground sm:p-8 md:p-10">
               <ContactForm />
             </div>
           </Reveal>

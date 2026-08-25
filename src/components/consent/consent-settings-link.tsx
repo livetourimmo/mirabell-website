@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useConsent } from "@/components/consent/consent-provider";
 
 /**
@@ -14,7 +15,9 @@ export function ConsentEinstellungenLink({ className = "" }: { className?: strin
     <button
       type="button"
       onClick={einstellungenOeffnen}
-      className={`underline underline-offset-2 hover:text-primary ${className}`}
+      // cn() statt Verkettung: sonst stehen underline und ein übergebenes
+      // no-underline gleichzeitig da und die CSS-Reihenfolge entscheidet.
+      className={cn("underline underline-offset-2 hover:text-primary", className)}
     >
       Cookie-Einstellungen öffnen
       {bereit && zeitpunkt && (

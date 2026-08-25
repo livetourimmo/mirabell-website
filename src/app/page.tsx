@@ -17,10 +17,11 @@ export default function Home() {
             Kein Text auf dem Foto → keine Verlauf-/Lesbarkeits-Kompromisse nötig. */}
         <section className="relative h-screen w-full">
           <Image
-            src="/images/hero-platzhalter.jpg"
-            alt="Architektur-Visualisierung Mirabell, Abendstimmung"
+            src="/images/aussen2.jpg"
+            alt="Architektur-Visualisierung Mirabell, Luftaufnahme von Haus A und Haus B im Dorfkern von Uetliburg"
             fill
             priority
+            sizes="100vw"
             className="object-cover"
           />
         </section>
@@ -105,9 +106,10 @@ export default function Home() {
             <Reveal>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
                 <Image
-                  src="/images/aussen1-v7.png"
-                  alt="Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B"
+                  src="/images/aussen1-v7.jpg"
+                  alt="Architektur-Visualisierung Mirabell, Strassenansicht von Haus A und Haus B"
                   fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
@@ -167,9 +169,10 @@ export default function Home() {
             <Reveal delay={100} className="order-1 md:order-2">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
                 <Image
-                  src="/images/drohne-uetliburg.JPG"
-                  alt="Luftaufnahme Uetliburg mit Blick Richtung Obersee"
+                  src="/images/lage-mirabell.jpg"
+                  alt="Blick über Uetliburg Richtung Obersee, der Standort von Mirabell ist markiert"
                   fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
@@ -233,9 +236,10 @@ export default function Home() {
               <Reveal>
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
                   <Image
-                    src="/images/v1_Innen6.jpg"
-                    alt="Sitzplatz auf der Terrasse mit raumhohen Fenstern"
+                    src="/images/innen6.jpg"
+                    alt="Sitzplatz auf der Loggia mit raumhohen Fenstern"
                     fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover"
                   />
                 </div>

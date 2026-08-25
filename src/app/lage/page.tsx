@@ -62,14 +62,19 @@ export default function LagePage() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* HERO — vollflächiges Video, Titel & Informationen darunter statt darauf */}
-        <section className="relative h-screen w-full overflow-hidden">
+        {/* HERO — vollflächiges Video, Titel & Informationen darunter statt darauf.
+            H.264/MP4 mit faststart, 1080p, ohne Tonspur (das Video läuft ohnehin
+            stumm). Das Poster steht sofort, während das Video noch lädt — ohne
+            es bliebe der Hero beim ersten Aufruf für einen Moment leer. */}
+        <section className="relative h-screen w-full overflow-hidden bg-primary">
           <video
             src="/videos/lage-hero.mp4"
+            poster="/videos/lage-hero-poster.jpg"
             autoPlay
             muted
             loop
             playsInline
+            preload="metadata"
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover"
           />

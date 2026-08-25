@@ -95,6 +95,23 @@ export function ContactForm() {
         </div>
       </div>
 
+      {/* Adresse: Strasse nimmt auf jeder Breite die volle Zeile, PLZ und Ort
+          teilen sich darunter die Reihe. */}
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
+        <div className="col-span-2 flex flex-col gap-2">
+          <Label htmlFor="strasse">Strasse</Label>
+          <Input id="strasse" name="strasse" autoComplete="street-address" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="plz">PLZ</Label>
+          <Input id="plz" name="plz" inputMode="numeric" autoComplete="postal-code" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="ort">Ort</Label>
+          <Input id="ort" name="ort" autoComplete="address-level2" />
+        </div>
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Label htmlFor="phone">Telefon</Label>

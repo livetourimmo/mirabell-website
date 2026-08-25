@@ -30,10 +30,11 @@ export default function AngebotPage() {
         {/* HERO — vollflächiges Bild, Titel & Informationen darunter statt darauf */}
         <section className="relative h-screen w-full">
           <Image
-            src="/images/aussen1-v7.png"
-            alt="Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B"
+            src="/images/hero-platzhalter.jpg"
+            alt="Architektur-Visualisierung Mirabell, Abendstimmung"
             fill
             priority
+            sizes="100vw"
             className="object-cover"
           />
         </section>
@@ -98,24 +99,28 @@ export default function AngebotPage() {
               <Eyebrow>Unterlagen</Eyebrow>
               <h2 className="mt-3 font-heading text-3xl text-primary md:text-4xl">Downloads</h2>
             </Reveal>
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {/* Auf Desktop stehen alle fünf Blöcke in einer Reihe; darunter
+                bricht das Raster über 3 auf 2 Spalten sauber um. */}
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {MOCK_DOWNLOADS.map((item, i) => {
                 const content = (
                   <>
-                    <div>
-                      <p className="font-heading text-lg text-primary">{item.titel}</p>
-                      <p className="mt-1.5 text-sm text-foreground-muted">{item.beschreibung}</p>
-                      <p className="mt-3 text-xs font-medium uppercase tracking-wide text-foreground-muted">
-                        {item.dateityp} · {item.dateigroesse}
-                      </p>
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="font-heading text-base leading-snug text-primary">{item.titel}</p>
+                      <Download className="mt-0.5 size-4 shrink-0 text-foreground-muted" strokeWidth={1.5} />
                     </div>
-                    <Download className="mt-1 size-5 shrink-0 text-foreground-muted" strokeWidth={1.5} />
+                    {/* text-left gegen den globalen Blocksatz — in den schmalen
+                        Spalten reisst justify sonst Wortlücken auf. */}
+                    <p className="mt-1.5 text-left! text-xs leading-snug text-foreground-muted">{item.beschreibung}</p>
+                    <p className="mt-auto pt-3 text-left! text-[11px] font-medium uppercase tracking-wide text-foreground-muted">
+                      {item.dateityp} · {item.dateigroesse}
+                    </p>
                   </>
                 );
                 const className =
-                  "flex items-start justify-between gap-4 rounded-[var(--radius-base)] border border-border bg-surface p-6";
+                  "flex h-full flex-col rounded-[var(--radius-base)] border border-border bg-surface p-4";
                 return (
-                  <Reveal key={item.id} delay={i * 60}>
+                  <Reveal key={item.id} delay={i * 60} className="h-full">
                     {item.url ? (
                       <a href={item.url} target="_blank" rel="noopener noreferrer" className={`${className} transition-colors hover:border-primary`}>
                         {content}
@@ -127,6 +132,29 @@ export default function AngebotPage() {
                 );
               })}
             </div>
+
+            {/* VIRTUELLER RUNDGANG — responsiv über das Seitenverhältnis,
+                damit die Tour auf jedem Screen ohne Scrollbalken passt. */}
+            <Reveal delay={120} className="mt-14">
+              <Eyebrow>Virtueller Rundgang</Eyebrow>
+              <h3 className="mt-3 font-heading text-2xl text-primary md:text-3xl">
+                Mirabell in 360° erleben
+              </h3>
+              <p className="mt-3 max-w-[52ch] text-sm text-foreground-muted">
+                Bewegen Sie sich frei durch die Musterwohnung und entdecken Sie
+                Räume, Ausblick und Materialisierung aus jedem Blickwinkel.
+              </p>
+              <div className="mt-6 aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-base)] border border-border bg-surface sm:aspect-[16/10] lg:aspect-[16/9]">
+                <iframe
+                  src="https://app.cloudpano.com/tours/vAe86_sORt"
+                  title="Virtueller Rundgang Mirabell"
+                  loading="lazy"
+                  allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+                  allowFullScreen
+                  className="block h-full w-full border-0"
+                />
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -146,9 +174,10 @@ export default function AngebotPage() {
             <Reveal delay={100}>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-base)]">
                 <Image
-                  src="/images/v4_Innen4.jpg"
+                  src="/images/innen4.jpg"
                   alt="Schlafzimmer mit direktem Zugang zum Bad"
                   fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>

@@ -13,13 +13,13 @@ interface GalleryImage {
 }
 
 const IMAGES: GalleryImage[] = [
-  { id: "referenz", alt: "Referenzansicht Abendstimmung", src: "/images/hero-platzhalter.jpg", className: "md:col-span-4 md:row-span-2 aspect-[4/3] md:aspect-auto" },
-  { id: "interieur", alt: "Offener Wohn- und Kochbereich mit Seesicht", src: "/images/v1_Innen1.jpg", className: "md:col-span-2 aspect-[4/3]" },
-  { id: "aussenansicht", alt: "Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B", src: "/images/aussen1-v7.png", className: "md:col-span-2 aspect-[4/3]" },
-  { id: "wohnen-dining", alt: "Wohn- und Essbereich mit Zugang zur Terrasse", src: "/images/v1_Innen2.jpg", className: "md:col-span-2 aspect-[4/3]" },
-  { id: "wohnen-kueche", alt: "Wohnbereich mit offener Küche und Balkonzugang", src: "/images/v1_Innen3.jpg", className: "md:col-span-2 aspect-[4/3]" },
-  { id: "terrasse", alt: "Sitzplatz auf der Terrasse mit Blick in den Wohnbereich", src: "/images/v1_Innen6.jpg", className: "md:col-span-2 aspect-[4/3]" },
-  { id: "schlafzimmer", alt: "Schlafzimmer mit direktem Zugang zum Bad", src: "/images/v4_Innen4.jpg", className: "md:col-span-6 aspect-[21/9]" },
+  { id: "hof-seeblick", alt: "Blick vom Hof zwischen Haus A und Haus B Richtung Obersee", src: "/images/aussen4.jpg", className: "md:col-span-4 md:row-span-2 aspect-[4/3] md:aspect-auto" },
+  { id: "interieur", alt: "Offener Wohn- und Kochbereich mit Seesicht", src: "/images/innen1.jpg", className: "md:col-span-2 aspect-[4/3]" },
+  { id: "aussenansicht", alt: "Architektur-Visualisierung Mirabell, Aussenansicht Haus A und Haus B", src: "/images/aussen2.jpg", className: "md:col-span-2 aspect-[4/3]" },
+  { id: "wohnen-dining", alt: "Wohn- und Essbereich mit Zugang zur Terrasse", src: "/images/innen2.jpg", className: "md:col-span-2 aspect-[4/3]" },
+  { id: "wohnen-kueche", alt: "Wohnbereich mit offener Küche und Balkonzugang", src: "/images/innen3.jpg", className: "md:col-span-2 aspect-[4/3]" },
+  { id: "terrasse", alt: "Sitzplatz auf der Loggia mit Blick in den Wohnbereich", src: "/images/innen6.jpg", className: "md:col-span-2 aspect-[4/3]" },
+  { id: "schlafzimmer", alt: "Schlafzimmer mit direktem Zugang zum Bad", src: "/images/innen4.jpg", className: "md:col-span-6 aspect-[21/9]" },
 ];
 
 export function Gallery() {

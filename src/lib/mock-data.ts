@@ -21,11 +21,11 @@ export const MOCK_UNITS: Unit[] = [
 ];
 
 export const MOCK_DOWNLOADS: DownloadItem[] = [
-  { id: "kurzbaubeschrieb", titel: "Kurzbaubeschrieb", beschreibung: "Übersicht über Konstruktion, Materialisierung und Ausstattung.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
-  { id: "grundrisse", titel: "Grundrisse Gesamtübersicht", beschreibung: "Alle 13 Wohnungen im Überblick, Haus A und Haus B.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
-  { id: "situationsplan", titel: "Situationsplan", beschreibung: "Lage der beiden Baukörper auf dem Grundstück.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
-  { id: "ug-plan", titel: "UG-Plan / Einstellhalle", beschreibung: "Anordnung der 24 Parkplätze und Kellerabteile.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
-  { id: "empfehlungsschreiben", titel: "Empfehlungsschreiben der Bank", beschreibung: "Finanzierungsempfehlung der Bank zum Projekt Mirabell, Ottenhofenstrasse.", dateityp: "PDF", dateigroesse: "397 KB", url: "/Empfehlungsschreiben%20Ottenhofenstrasse.pdf" },
+  { id: "kurzbaubeschrieb", titel: "Kurzbaubeschrieb", beschreibung: "Konstruktion, Materialisierung und Ausstattung.", dateityp: "PDF", dateigroesse: "— folgt", url: null },
+  { id: "grundrisse", titel: "Grundrisse", beschreibung: "Alle 13 Wohnungen, Haus A und Haus B.", dateityp: "PDF", dateigroesse: "6.9 MB", url: "/downloads/Mirabell-Grundrisse.pdf" },
+  { id: "situationsplan", titel: "Situationsplan", beschreibung: "Lage der Baukörper auf dem Grundstück.", dateityp: "PDF", dateigroesse: "2.6 MB", url: "/downloads/Mirabell-Situationsplan.pdf" },
+  { id: "einstellhalle", titel: "Einstellhalle", beschreibung: "Parkplätze und Kellerabteile im Untergeschoss.", dateityp: "PDF", dateigroesse: "1.4 MB", url: "/downloads/Mirabell-Einstellhalle.pdf" },
+  { id: "empfehlungsschreiben", titel: "Empfehlungsschreiben", beschreibung: "Finanzierungsempfehlung der Bank zum Projekt.", dateityp: "PDF", dateigroesse: "397 KB", url: "/Empfehlungsschreiben%20Ottenhofenstrasse.pdf" },
 ];
 
 export function formatChf(value: number) {

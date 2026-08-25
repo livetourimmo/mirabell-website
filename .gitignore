@@ -42,3 +42,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Quelldateien (4K-Originale, Rohvideo, PDFs) - gehoeren nicht ins Repo
+/unterlagen neu/

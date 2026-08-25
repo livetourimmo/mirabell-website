@@ -1,19 +1,11 @@
 import { Resend } from "resend";
 import { MOCK_UNITS } from "@/lib/mock-data";
+import { buildContactEmail } from "@/lib/contact-email";
 
 // Das Select sendet die Unit-ID (z. B. "a-eg-1") — in der E-Mail soll die
 // gleiche Bezeichnung stehen wie im Formular (z. B. "Haus A · Wohnung 1").
 function interesseLabel(value: string) {
   return MOCK_UNITS.find((unit) => unit.id === value)?.bezeichnung ?? value;
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
 
 export async function POST(request: Request) {
@@ -34,6 +26,9 @@ export async function POST(request: Request) {
   const name = String(data.get("name") ?? "").trim();
   const email = String(data.get("email") ?? "").trim();
   const phone = String(data.get("phone") ?? "").trim();
+  const strasse = String(data.get("strasse") ?? "").trim();
+  const plz = String(data.get("plz") ?? "").trim();
+  const ort = String(data.get("ort") ?? "").trim();
   const interesse = interesseLabel(String(data.get("interesse") ?? "").trim());
   const message = String(data.get("message") ?? "").trim();
 
@@ -66,21 +61,26 @@ export async function POST(request: Request) {
     );
   }
 
+  const { subject, html, text } = buildContactEmail({
+    name,
+    email,
+    phone,
+    strasse,
+    plz,
+    ort,
+    interesse,
+    message,
+  });
+
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from,
       to,
       replyTo: email,
-      subject: `Neue Kontaktanfrage von ${name}`,
-      html: `
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
-        ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ""}
-        ${interesse ? `<p><strong>Interesse an:</strong> ${escapeHtml(interesse)}</p>` : ""}
-        <p><strong>Nachricht:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
-      `,
+      subject,
+      html,
+      text,
     });
 
     if (error) {

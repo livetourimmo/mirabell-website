@@ -7,7 +7,8 @@ import { ConsentEinstellungenLink } from "@/components/consent/consent-settings-
 import {
   AUFTRAGSBEARBEITER,
   EMBED_LISTE,
-  EMPFAENGER_ANFRAGEN,
+  GEMEINSAME_VERANTWORTUNG,
+  MITVERANTWORTLICHE,
   STAND,
   VERANTWORTLICHE,
 } from "@/lib/legal";
@@ -68,6 +69,11 @@ export default function DatenschutzPage() {
                   Für Fragen zum Datenschutz und zur Ausübung Ihrer Rechte wenden Sie sich
                   bitte an diese Adresse.
                 </p>
+                <Hinweis>
+                  Für die Anfragen aus dem Kontaktformular sind wir gemeinsam mit der{" "}
+                  {MITVERANTWORTLICHE.name} verantwortlich. Einzelheiten dazu und die
+                  Kernpunkte unserer Vereinbarung finden Sie unter Ziffer 4.
+                </Hinweis>
               </Abschnitt>
 
               <Abschnitt nummer="2" titel="Grundsätze und Rechtsgrundlagen">
@@ -153,28 +159,57 @@ export default function DatenschutzPage() {
                 </Liste>
                 <p className="mt-4">
                   Aus diesen Angaben wird eine E-Mail erzeugt und an die mit der
-                  Vermarktung beauftragte Stelle übermittelt:
+                  Vermarktung betraute Stelle übermittelt, welche Ihre Anfrage inhaltlich
+                  bearbeitet:
                 </p>
                 <p className="mt-4">
-                  {EMPFAENGER_ANFRAGEN.name}
+                  {MITVERANTWORTLICHE.name}
                   <br />
-                  {EMPFAENGER_ANFRAGEN.strasse}
+                  {MITVERANTWORTLICHE.strasse}
                   <br />
-                  {EMPFAENGER_ANFRAGEN.plzOrt}
+                  {MITVERANTWORTLICHE.plzOrt}
+                  <br />
+                  {MITVERANTWORTLICHE.land}
                   <br />
                   <a
-                    href={`mailto:${EMPFAENGER_ANFRAGEN.email}`}
+                    href={`mailto:${MITVERANTWORTLICHE.email}`}
                     className="hover:text-primary"
                   >
-                    {EMPFAENGER_ANFRAGEN.email}
+                    {MITVERANTWORTLICHE.email}
+                  </a>
+                  <br />
+                  <a href={MITVERANTWORTLICHE.telefonHref} className="hover:text-primary">
+                    {MITVERANTWORTLICHE.telefon}
                   </a>
                 </p>
                 <p className="mt-4">
-                  Dort werden Ihre Angaben zur Beratung und Betreuung im Verkaufsprozess
-                  bearbeitet. Ihre E-Mail-Adresse wird als Antwortadresse gesetzt, damit
-                  Ihnen direkt geantwortet werden kann. Eine Nutzung für Werbung oder eine
-                  Weitergabe zu anderen Zwecken findet nicht statt.
+                  Ihre E-Mail-Adresse wird als Antwortadresse gesetzt, damit Ihnen direkt
+                  geantwortet werden kann. Eine Nutzung für Werbung oder eine Weitergabe
+                  zu anderen Zwecken findet nicht statt.
                 </p>
+
+                <h3 className="mt-8 font-heading text-lg text-primary">
+                  Gemeinsame Verantwortlichkeit
+                </h3>
+                <p className="mt-2">
+                  Für die Bearbeitung der Anfragen aus dem Kontaktformular sind die{" "}
+                  {VERANTWORTLICHE.name} und die {MITVERANTWORTLICHE.name} gemeinsam
+                  verantwortlich (Art. 26 DSGVO). Wir haben in einer Vereinbarung
+                  festgelegt, wer welche Pflichten erfüllt. Deren wesentlicher Inhalt:
+                </p>
+                <div className="mt-5 flex flex-col gap-4">
+                  {GEMEINSAME_VERANTWORTUNG.map((rolle) => (
+                    <div key={rolle.wer} className="border-t border-border pt-4">
+                      <p className="font-medium text-primary">{rolle.wer}</p>
+                      <p className="mt-1 text-left! text-sm">{rolle.was}</p>
+                    </div>
+                  ))}
+                </div>
+                <Hinweis>
+                  Sie können Ihre Rechte als betroffene Person bei jeder der beiden
+                  Stellen geltend machen — unabhängig davon, wie wir die Aufgaben
+                  untereinander aufgeteilt haben.
+                </Hinweis>
                 <p className="mt-4">
                   Die Angaben werden nicht in einer Datenbank dieser Website gespeichert,
                   sondern ausschliesslich per E-Mail übermittelt. Wir bewahren die Anfrage
@@ -287,12 +322,13 @@ export default function DatenschutzPage() {
                   ))}
                 </div>
                 <p className="mt-6">
-                  Die Anfragen aus dem Kontaktformular gehen nicht an diese
-                  Dienstleister, sondern an die mit der Vermarktung beauftragte{" "}
-                  {EMPFAENGER_ANFRAGEN.name}, {EMPFAENGER_ANFRAGEN.plzOrt} (siehe
-                  Ziffer 4). Darüber hinaus geben wir Personendaten nur an weitere am
-                  Projekt beteiligte Stellen weiter, soweit dies zur Beantwortung Ihrer
-                  Anfrage erforderlich ist.
+                  Die Anfragen aus dem Kontaktformular gehen inhaltlich nicht an diese
+                  Dienstleister, sondern an die {MITVERANTWORTLICHE.name},{" "}
+                  {MITVERANTWORTLICHE.plzOrt}. Diese ist keine Auftragsbearbeiterin,
+                  sondern gemeinsam mit uns verantwortlich (siehe Ziffer 4). Darüber
+                  hinaus geben wir Personendaten nur an weitere am Projekt beteiligte
+                  Stellen weiter, soweit dies zur Beantwortung Ihrer Anfrage erforderlich
+                  ist.
                 </p>
               </Abschnitt>
 
@@ -362,11 +398,16 @@ export default function DatenschutzPage() {
                 </Liste>
                 <p className="mt-4">
                   Wenden Sie sich zur Ausübung dieser Rechte an die unter Ziffer 1
-                  genannte Adresse. Wir sind verpflichtet, Ihre Identität mit angemessenen
-                  Mitteln zu prüfen, und bitten Sie um Mitwirkung. Im rechtlich zulässigen
-                  Rahmen können wir die Ausübung von Rechten einschränken oder verweigern,
-                  etwa gestützt auf gesetzliche Aufbewahrungspflichten oder den Schutz
-                  Dritter.
+                  genannte Adresse. Betreffen Ihre Rechte eine Anfrage aus dem
+                  Kontaktformular, können Sie sich wahlweise auch direkt an die{" "}
+                  {MITVERANTWORTLICHE.name} wenden (Ziffer 4) — wir leiten Anliegen
+                  intern an die zuständige Stelle weiter.
+                </p>
+                <p className="mt-4">
+                  Wir sind verpflichtet, Ihre Identität mit angemessenen Mitteln zu
+                  prüfen, und bitten Sie um Mitwirkung. Im rechtlich zulässigen Rahmen
+                  können wir die Ausübung von Rechten einschränken oder verweigern, etwa
+                  gestützt auf gesetzliche Aufbewahrungspflichten oder den Schutz Dritter.
                 </p>
                 <p className="mt-4">
                   Sie haben zudem das Recht, Ihre Ansprüche auf dem Rechtsweg

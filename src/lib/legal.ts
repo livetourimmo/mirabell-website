@@ -82,18 +82,41 @@ export const AUFTRAGSBEARBEITER = [
 ] as const;
 
 /**
- * Empfänger der Kontaktformular-Anfragen. Muss mit der Umgebungsvariablen
+ * Gemeinsam verantwortliche Stelle für die Anfragen aus dem Kontaktformular
+ * (Art. 26 DSGVO). Die E-Mail-Adresse muss mit der Umgebungsvariablen
  * CONTACT_TO_EMAIL übereinstimmen — sonst behauptet die Datenschutzerklärung
  * einen anderen Empfänger als den, an den die E-Mail tatsächlich geht.
  */
-export const EMPFAENGER_ANFRAGEN = {
+export const MITVERANTWORTLICHE = {
   name: "Keller ImmoVermarktung GmbH",
-  rolle: "Vermarktung und Verkauf",
+  rolle: "Vermarktung, Beratung und Verkauf",
   strasse: "Lindenstrasse 35",
   plzOrt: "8738 Uetliburg",
   land: "Schweiz",
   email: "info@keller-immovermarktung.ch",
+  telefon: "058 101 22 30",
+  telefonHref: "tel:+41581012230",
 } as const;
+
+/**
+ * Das «Wesentliche der Vereinbarung» nach Art. 26 Abs. 2 DSGVO. Muss betroffenen
+ * Personen zugänglich sein, deshalb wird es in der Datenschutzerklärung
+ * ausgegeben und nicht bloss intern dokumentiert.
+ */
+export const GEMEINSAME_VERANTWORTUNG = [
+  {
+    wer: VERANTWORTLICHE.name,
+    was: "Betreibt die Website, stellt das Kontaktformular bereit und verantwortet die technische Sicherheit sowie die Übermittlung der Anfrage. Erfüllt die Informationspflicht mit dieser Datenschutzerklärung.",
+  },
+  {
+    wer: "Keller ImmoVermarktung GmbH",
+    was: "Bearbeitet die eingegangene Anfrage inhaltlich, nimmt Kontakt auf und betreut Interessentinnen und Interessenten im Beratungs- und Verkaufsprozess.",
+  },
+  {
+    wer: "Beide gemeinsam",
+    was: "Haben festgelegt, dass Auskunfts-, Berichtigungs- und Löschbegehren bei beiden Stellen geltend gemacht werden können und intern an die jeweils zuständige Stelle weitergeleitet werden. Unabhängig davon bleibt jede Stelle für die Sicherheit der bei ihr bearbeiteten Daten selbst verantwortlich.",
+  },
+] as const;
 
 /* ========================================================================== */
 /* Einwilligungspflichtige Embeds                                             */

@@ -25,7 +25,7 @@ const MAKRO = [
   },
   {
     titel: "Verkehr",
-    text: "Die Bushaltestelle Uetliburg SG, Ottenhofen befindet sich direkt vor der Haustüre und bietet eine komfortable Anbindung an den öffentlichen Verkehr. Rapperswil-Jona, Wattwil, Glarus Nord und Wetzikon sowie der angrenzende Kanton Schwyz sind mit dem Auto oder den öffentlichen Verkehrsmitteln gut erreichbar.",
+    text: "Die Bushaltestelle Uetliburg SG, Ottenhofen befindet sich direkt vor der Haustüre und bietet eine komfortable Anbindung an den öffentlichen Verkehr. Rapperswil-Jona, Wattwil, Glarus Nord, Wetzikon und Zürich sowie der angrenzende Kanton Schwyz sind mit dem Auto oder den öffentlichen Verkehrsmitteln gut erreichbar.",
   },
   {
     titel: "Naherholung",
@@ -38,6 +38,7 @@ const REGIONALE_ZENTREN = [
   { name: "Rapperswil-Jona", km: "21.7 km", oev: "29 Min.", auto: "27 Min." },
   { name: "Glarus Nord", km: "20.8 km", oev: "70 Min.", auto: "24 Min." },
   { name: "Wetzikon", km: "32.5 km", oev: "50 Min.", auto: "34 Min." },
+  { name: "Zürich", km: "61.0 km", oev: "70 Min.", auto: "50 Min." },
 ];
 
 type Mikro = {

@@ -8,18 +8,18 @@
  */
 
 export const VERANTWORTLICHE = {
-  name: "Visto Immobilien AG",
+  name: "Salus Fidelity GmbH",
   strasse: "Einsiedlerstrasse 21",
   plz: "8834",
   ort: "Schindellegi",
   land: "Schweiz",
   telefon: "+41 44 593 96 05",
   telefonHref: "tel:+41445939605",
-  email: "info@visto-immobilien.ch",
-  website: "visto-immobilien.ch",
-  websiteHref: "https://visto-immobilien.ch",
-  uid: "CHE-303.098.818",
-  handelsregister: "CH-130.3.026.974-8",
+  email: "info@salusfidelity.ch",
+  website: "salusfidelity.ch",
+  websiteHref: "https://salusfidelity.ch",
+  uid: "CHE-241.330.097",
+  handelsregister: "CH-130-4032334-8",
 } as const;
 
 export interface Projektbeteiligte {
@@ -39,10 +39,10 @@ export interface Projektbeteiligte {
 export const PROJEKTBETEILIGTE: readonly Projektbeteiligte[] = [
   {
     rolle: "Bauherrschaft & Realisation",
-    name: "Visto Immobilien AG",
+    name: "Salus Fidelity GmbH",
     adresse: ["Einsiedlerstrasse 21", "8834 Schindellegi"],
-    email: "info@visto-immobilien.ch",
-    domain: "visto-immobilien.ch",
+    email: "info@salusfidelity.ch",
+    domain: "salusfidelity.ch",
   },
   {
     rolle: "Verkauf & Beratung",

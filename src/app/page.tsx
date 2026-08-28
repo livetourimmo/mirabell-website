@@ -198,8 +198,8 @@ export default function Home() {
                   <dd className="font-heading text-2xl tabular-nums text-background md:text-3xl">6</dd>
                 </div>
                 <div className="flex items-baseline justify-between gap-6 py-3.5">
-                  <dt className="text-background/75">Tiefgaragenplätze</dt>
-                  <dd className="font-heading text-2xl tabular-nums text-background md:text-3xl">24</dd>
+                  <dt className="text-background/75">Einstellhallenplätze</dt>
+                  <dd className="font-heading text-2xl tabular-nums text-background md:text-3xl">23</dd>
                 </div>
               </dl>
               <p className="mt-4 text-xs uppercase tracking-[0.15em] text-background/50">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -8,7 +9,7 @@ import { PROJEKTBETEILIGTE, STAND, VERANTWORTLICHE } from "@/lib/legal";
 export const metadata: Metadata = {
   title: "Impressum",
   description:
-    "Impressum zur Website des Neubauprojekts Mirabell in Uetliburg. Verantwortlich: Visto Immobilien AG, Schindellegi.",
+    "Impressum zur Website des Neubauprojekts Mirabell in Uetliburg. Verantwortlich: Salus Fidelity GmbH, Schindellegi.",
 };
 
 export default function ImpressumPage() {
@@ -27,6 +28,15 @@ export default function ImpressumPage() {
 
             <div className="mt-12 flex flex-col gap-10">
               <Block titel="Verantwortlich für diese Website">
+                {/* Das Logo der Bauherrschaft steht bewusst über der Adresse: es
+                    identifiziert die verantwortliche Stelle auf einen Blick. */}
+                <Image
+                  src="/images/salus-fidelity-logo.png"
+                  alt={VERANTWORTLICHE.name}
+                  width={363}
+                  height={126}
+                  className="mb-6 h-11 w-auto"
+                />
                 <p>
                   {VERANTWORTLICHE.name}
                   <br />
@@ -61,7 +71,7 @@ export default function ImpressumPage() {
                       {VERANTWORTLICHE.website}
                     </a>
                   </dd>
-                  <dt className="font-medium text-primary">UID / MWST</dt>
+                  <dt className="font-medium text-primary">UID</dt>
                   <dd>{VERANTWORTLICHE.uid}</dd>
                   <dt className="font-medium text-primary">Handelsregister</dt>
                   <dd>{VERANTWORTLICHE.handelsregister}</dd>

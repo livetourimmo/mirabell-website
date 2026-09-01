@@ -38,7 +38,7 @@ const REGIONALE_ZENTREN = [
   { name: "Rapperswil-Jona", km: "21.7 km", oev: "29 Min.", auto: "27 Min." },
   { name: "Glarus Nord", km: "20.8 km", oev: "70 Min.", auto: "24 Min." },
   { name: "Wetzikon", km: "32.5 km", oev: "50 Min.", auto: "34 Min." },
-  { name: "Zürich", km: "61.0 km", oev: "70 Min.", auto: "50 Min." },
+  { name: "Zürich HB", km: "61.0 km", oev: "70 Min.", auto: "49 Min." },
 ];
 
 type Mikro = {

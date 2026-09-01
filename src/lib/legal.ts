@@ -116,8 +116,8 @@ export const MITVERANTWORTLICHE = {
   plzOrt: "8738 Uetliburg",
   land: "Schweiz",
   email: "info@keller-immovermarktung.ch",
-  telefon: "058 101 22 30",
-  telefonHref: "tel:+41581012230",
+  telefon: "058 101 22 33",
+  telefonHref: "tel:+41581012233",
 } as const;
 
 /**

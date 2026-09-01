@@ -22,13 +22,14 @@ export async function POST(request: Request) {
   if (String(data.get("kontakt_ref") ?? "").length > 0) {
     console.warn(
       "Kontaktformular: Honeypot ausgelöst, Anfrage verworfen.",
-      `name=${String(data.get("name") ?? "")}`,
+      `name=${String(data.get("vorname") ?? "")} ${String(data.get("nachname") ?? "")}`,
       `email=${String(data.get("email") ?? "")}`
     );
     return Response.json({ ok: true });
   }
 
-  const name = String(data.get("name") ?? "").trim();
+  const vorname = String(data.get("vorname") ?? "").trim();
+  const nachname = String(data.get("nachname") ?? "").trim();
   const email = String(data.get("email") ?? "").trim();
   const phone = String(data.get("phone") ?? "").trim();
   const strasse = String(data.get("strasse") ?? "").trim();
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
   const interesse = interesseLabel(String(data.get("interesse") ?? "").trim());
   const message = String(data.get("message") ?? "").trim();
 
-  if (!name || !email || !message) {
+  if (!vorname || !nachname || !email || !message) {
     return Response.json(
       { ok: false, error: "Bitte füllen Sie alle Pflichtfelder aus." },
       { status: 400 }
@@ -67,7 +68,8 @@ export async function POST(request: Request) {
   }
 
   const { subject, html, text } = buildContactEmail({
-    name,
+    vorname,
+    nachname,
     email,
     phone,
     strasse,

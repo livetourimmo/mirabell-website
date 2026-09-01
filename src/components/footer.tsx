@@ -46,9 +46,9 @@ export function Footer() {
               </div>
 
               <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/85">
-                <a href="tel:+41581012230" className="flex items-center gap-3 hover:text-white">
+                <a href="tel:+41581012233" className="flex items-center gap-3 hover:text-white">
                   <Phone className="size-4" strokeWidth={1.5} />
-                  058 101 22 30
+                  058 101 22 33
                 </a>
                 <a href="mailto:info@keller-immovermarktung.ch" className="flex items-center gap-3 hover:text-white">
                   <Mail className="size-4" strokeWidth={1.5} />

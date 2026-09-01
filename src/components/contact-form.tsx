@@ -84,14 +84,27 @@ export function ContactForm() {
         aria-hidden="true"
       />
 
+      {/* Vor- und Nachname bewusst in zwei Feldern: so lassen sich die
+          Kontaktangaben ohne Nachbearbeitung ins CRM übernehmen. */}
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="name">Name *</Label>
-          <Input id="name" name="name" required autoComplete="name" />
+          <Label htmlFor="vorname">Vorname *</Label>
+          <Input id="vorname" name="vorname" required autoComplete="given-name" />
         </div>
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="nachname">Name *</Label>
+          <Input id="nachname" name="nachname" required autoComplete="family-name" />
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Label htmlFor="email">E-Mail *</Label>
           <Input id="email" name="email" type="email" required autoComplete="email" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="phone">Telefon</Label>
+          <Input id="phone" name="phone" type="tel" autoComplete="tel" />
         </div>
       </div>
 
@@ -112,26 +125,20 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="phone">Telefon</Label>
-          <Input id="phone" name="phone" type="tel" autoComplete="tel" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="interesse">Interesse an</Label>
-          <Select name="interesse">
-            <SelectTrigger id="interesse" className="w-full">
-              <SelectValue placeholder="Wohnung auswählen (optional)" />
-            </SelectTrigger>
-            <SelectContent>
-              {MOCK_UNITS.map((unit) => (
-                <SelectItem key={unit.id} value={unit.id}>
-                  {unit.bezeichnung}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+      <div className="flex flex-col gap-2">
+        <Label htmlFor="interesse">Interesse an</Label>
+        <Select name="interesse">
+          <SelectTrigger id="interesse" className="w-full">
+            <SelectValue placeholder="Wohnung auswählen (optional)" />
+          </SelectTrigger>
+          <SelectContent>
+            {MOCK_UNITS.map((unit) => (
+              <SelectItem key={unit.id} value={unit.id}>
+                {unit.bezeichnung}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="flex flex-col gap-2">

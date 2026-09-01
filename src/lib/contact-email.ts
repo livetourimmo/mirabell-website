@@ -23,7 +23,8 @@ const FONT_HEADING = "'PT Serif', Georgia, 'Times New Roman', serif";
 const FONT_BODY = "'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
 
 export interface ContactSubmission {
-  name: string;
+  vorname: string;
+  nachname: string;
   email: string;
   phone: string;
   strasse: string;
@@ -62,6 +63,7 @@ function row(label: string, value: string, options: { href?: string; last?: bool
 
 export function buildContactEmail(data: ContactSubmission) {
   const ortZeile = [data.plz, data.ort].filter(Boolean).join(" ");
+  const vollerName = [data.vorname, data.nachname].filter(Boolean).join(" ");
   const message = escapeHtml(data.message).replace(/\r?\n/g, "<br />");
 
   const html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -91,7 +93,7 @@ export function buildContactEmail(data: ContactSubmission) {
 <body style="margin:0;padding:0;background-color:${COLOR.background};">
   <!-- Preheader: Vorschautext in der Inbox, im Mailtext selbst unsichtbar. -->
   <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:${COLOR.background};">
-    Neue Kontaktanfrage von ${escapeHtml(data.name)}${ortZeile ? ` aus ${escapeHtml(ortZeile)}` : ""}
+    Neue Kontaktanfrage von ${escapeHtml(vollerName)}${ortZeile ? ` aus ${escapeHtml(ortZeile)}` : ""}
   </div>
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${COLOR.background}" style="background-color:${COLOR.background};margin:0;padding:0;">
@@ -116,7 +118,8 @@ export function buildContactEmail(data: ContactSubmission) {
             <td class="mb-pad" style="padding:36px 40px 8px 40px;">
               <p style="margin:0 0 4px 0;font-family:${FONT_BODY};font-size:11px;line-height:16px;letter-spacing:0.18em;text-transform:uppercase;color:${COLOR.accent};">Absender</p>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-                ${row("Name", data.name)}
+                ${row("Vorname", data.vorname)}
+                ${row("Name", data.nachname)}
                 ${row("E-Mail", data.email, { href: `mailto:${data.email}` })}
                 ${row("Telefon", data.phone, { href: `tel:${data.phone.replace(/[^\d+]/g, "")}` })}
                 ${row("Strasse", data.strasse)}
@@ -177,7 +180,8 @@ export function buildContactEmail(data: ContactSubmission) {
   const text = [
     "NEUE KONTAKTANFRAGE — MIRABELL, UETLIBURG",
     "",
-    `Name:         ${data.name}`,
+    `Vorname:      ${data.vorname}`,
+    `Name:         ${data.nachname}`,
     `E-Mail:       ${data.email}`,
     data.phone ? `Telefon:      ${data.phone}` : null,
     data.strasse ? `Strasse:      ${data.strasse}` : null,
@@ -193,7 +197,7 @@ export function buildContactEmail(data: ContactSubmission) {
     .join("\n");
 
   return {
-    subject: `Neue Kontaktanfrage von ${data.name}`,
+    subject: `Neue Kontaktanfrage von ${vollerName}`,
     html,
     text,
   };

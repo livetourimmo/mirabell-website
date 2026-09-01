@@ -32,7 +32,7 @@ export interface ContactSubmission {
   ort: string;
   interesse: string;
   message: string;
-  /** Honeypot war ausgefuellt. Anfrage trotzdem zustellen, aber sichtbar markieren. */
+  /** Honeypot war ausgefüllt. Anfrage trotzdem zustellen, aber sichtbar markieren. */
   spamVerdacht?: boolean;
 }
 
@@ -114,8 +114,8 @@ export function buildContactEmail(data: ContactSubmission) {
           <!-- Spam-Verdacht -->
           <tr>
             <td bgcolor="#8a5a1c" class="mb-pad" style="background-color:#8a5a1c;padding:14px 40px;font-family:${FONT_BODY};font-size:13px;line-height:20px;color:#ffffff;">
-              <strong>Spam-Verdacht:</strong> Das unsichtbare Prueffeld war ausgefuellt.
-              Das machen Bots &mdash; aber auch Passwortmanager und die Browser-Autovervollstaendigung.
+              <strong>Spam-Verdacht:</strong> Das unsichtbare Prüffeld war ausgefüllt.
+              Das machen Bots &mdash; aber auch Passwortmanager und die Browser-Autovervollständigung.
               Die Anfrage wird deshalb zugestellt und nicht verworfen.
             </td>
           </tr>` : ""}
@@ -199,7 +199,7 @@ export function buildContactEmail(data: ContactSubmission) {
   const text = [
     "NEUE KONTAKTANFRAGE — MIRABELL, UETLIBURG",
     ...(data.spamVerdacht
-      ? ["", "SPAM-VERDACHT: Das unsichtbare Prueffeld war ausgefuellt (Bot oder Autovervollstaendigung).", "Die Anfrage wird trotzdem zugestellt."]
+      ? ["", "SPAM-VERDACHT: Das unsichtbare Prüffeld war ausgefüllt (Bot oder Autovervollständigung).", "Die Anfrage wird trotzdem zugestellt."]
       : []),
     "",
     `Vorname:      ${data.vorname}`,

@@ -2,8 +2,8 @@ import { Resend } from "resend";
 import { buildContactEmail } from "@/lib/contact-email";
 
 // Ohne diese Angabe lief die Funktion in iad1 (Washington), d. h. die
-// Formulardaten wurden in den USA verarbeitet. fra1 (Frankfurt) haelt die
-// Bearbeitung im EWR und deckt sich mit der Datenschutzerklaerung.
+// Formulardaten wurden in den USA verarbeitet. fra1 (Frankfurt) hält die
+// Bearbeitung im EWR und deckt sich mit der Datenschutzerklärung.
 export const preferredRegion = "fra1";
 
 export async function POST(request: Request) {
@@ -12,8 +12,8 @@ export async function POST(request: Request) {
   // Honeypot — für Menschen unsichtbares Feld, Bots füllen es meist aus.
   //
   // Die Anfrage wird deswegen NICHT mehr verworfen. Passwortmanager und die
-  // Browser-Autovervollständigung fuellen das Feld ebenfalls aus; die Mail ging
-  // dann nie raus, waehrend das Formular "Nachricht gesendet" meldete. Eine echte
+  // Browser-Autovervollständigung füllen das Feld ebenfalls aus; die Mail ging
+  // dann nie raus, während das Formular "Nachricht gesendet" meldete. Eine echte
   // Anfrage still zu verlieren wiegt schwerer als eine markierte Spam-Mail.
   // Der Verdacht steht jetzt im Betreff und im Mailkopf, filtern kann man ihn dort.
   const spamVerdacht = String(data.get("kontakt_ref") ?? "").trim().length > 0;
@@ -99,7 +99,7 @@ export async function POST(request: Request) {
     }
 
     console.log(
-      "Kontaktformular: Mail an Resend uebergeben.",
+      "Kontaktformular: Mail an Resend übergeben.",
       `id=${sent?.id ?? "unbekannt"}`,
       `to=${to}`,
       `spamVerdacht=${spamVerdacht}`

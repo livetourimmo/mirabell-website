@@ -1,17 +1,10 @@
 import { Resend } from "resend";
-import { MOCK_UNITS } from "@/lib/mock-data";
 import { buildContactEmail } from "@/lib/contact-email";
 
 // Ohne diese Angabe lief die Funktion in iad1 (Washington), d. h. die
 // Formulardaten wurden in den USA verarbeitet. fra1 (Frankfurt) haelt die
 // Bearbeitung im EWR und deckt sich mit der Datenschutzerklaerung.
 export const preferredRegion = "fra1";
-
-// Das Select sendet die Unit-ID (z. B. "a-eg-1") — in der E-Mail soll die
-// gleiche Bezeichnung stehen wie im Formular (z. B. "Haus A · Wohnung 1").
-function interesseLabel(value: string) {
-  return MOCK_UNITS.find((unit) => unit.id === value)?.bezeichnung ?? value;
-}
 
 export async function POST(request: Request) {
   const data = await request.formData();
@@ -35,7 +28,9 @@ export async function POST(request: Request) {
   const strasse = String(data.get("strasse") ?? "").trim();
   const plz = String(data.get("plz") ?? "").trim();
   const ort = String(data.get("ort") ?? "").trim();
-  const interesse = interesseLabel(String(data.get("interesse") ?? "").trim());
+  // Das Select sendet die fertige Bezeichnung aus dem Navigator
+  // (z. B. "Haus A · Wohnung A11"), sie geht unverändert in die E-Mail.
+  const interesse = String(data.get("interesse") ?? "").trim();
   const message = String(data.get("message") ?? "").trim();
 
   if (!vorname || !nachname || !email || !message) {

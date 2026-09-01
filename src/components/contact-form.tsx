@@ -10,11 +10,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MOCK_UNITS } from "@/lib/mock-data";
+import { UNIT_OPTIONS, unitOptionValue } from "@/lib/unit-options";
 import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -132,10 +134,15 @@ export function ContactForm() {
             <SelectValue placeholder="Wohnung auswählen (optional)" />
           </SelectTrigger>
           <SelectContent>
-            {MOCK_UNITS.map((unit) => (
-              <SelectItem key={unit.id} value={unit.id}>
-                {unit.bezeichnung}
-              </SelectItem>
+            {UNIT_OPTIONS.map((gruppe) => (
+              <SelectGroup key={gruppe.haus}>
+                <SelectLabel>{gruppe.haus}</SelectLabel>
+                {gruppe.wohnungen.map((wohnung) => (
+                  <SelectItem key={wohnung} value={unitOptionValue(gruppe.haus, wohnung)}>
+                    Wohnung {wohnung}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             ))}
           </SelectContent>
         </Select>

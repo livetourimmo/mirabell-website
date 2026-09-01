@@ -32,6 +32,8 @@ export interface ContactSubmission {
   ort: string;
   interesse: string;
   message: string;
+  /** Honeypot war ausgefuellt. Anfrage trotzdem zustellen, aber sichtbar markieren. */
+  spamVerdacht?: boolean;
 }
 
 export function escapeHtml(value: string) {
@@ -107,6 +109,16 @@ export function buildContactEmail(data: ContactSubmission) {
       <td align="center" style="padding:32px 16px;">
 
         <table role="presentation" class="mb-shell" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:${COLOR.surface};border:1px solid ${COLOR.border};">
+
+          ${data.spamVerdacht ? `
+          <!-- Spam-Verdacht -->
+          <tr>
+            <td bgcolor="#8a5a1c" class="mb-pad" style="background-color:#8a5a1c;padding:14px 40px;font-family:${FONT_BODY};font-size:13px;line-height:20px;color:#ffffff;">
+              <strong>Spam-Verdacht:</strong> Das unsichtbare Prueffeld war ausgefuellt.
+              Das machen Bots &mdash; aber auch Passwortmanager und die Browser-Autovervollstaendigung.
+              Die Anfrage wird deshalb zugestellt und nicht verworfen.
+            </td>
+          </tr>` : ""}
 
           <!-- Kopf -->
           <tr>
@@ -186,6 +198,9 @@ export function buildContactEmail(data: ContactSubmission) {
   // null = Feld war leer und entfällt; "" = gewollte Leerzeile.
   const text = [
     "NEUE KONTAKTANFRAGE — MIRABELL, UETLIBURG",
+    ...(data.spamVerdacht
+      ? ["", "SPAM-VERDACHT: Das unsichtbare Prueffeld war ausgefuellt (Bot oder Autovervollstaendigung).", "Die Anfrage wird trotzdem zugestellt."]
+      : []),
     "",
     `Vorname:      ${data.vorname}`,
     `Name:         ${data.nachname}`,
@@ -205,7 +220,7 @@ export function buildContactEmail(data: ContactSubmission) {
     .join("\n");
 
   return {
-    subject: `Neue Kontaktanfrage von ${vollerName}`,
+    subject: `${data.spamVerdacht ? "[Spam-Verdacht] " : ""}Neue Kontaktanfrage von ${vollerName}`,
     html,
     text,
   };

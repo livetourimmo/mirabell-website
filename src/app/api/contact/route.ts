@@ -10,15 +10,19 @@ export async function POST(request: Request) {
   const data = await request.formData();
 
   // Honeypot — für Menschen unsichtbares Feld, Bots füllen es meist aus.
-  // Wird geloggt, damit ein Fehlalarm in den Vercel-Logs auffällt, statt still
-  // eine echte Anfrage zu verschlucken.
-  if (String(data.get("kontakt_ref") ?? "").length > 0) {
+  //
+  // Die Anfrage wird deswegen NICHT mehr verworfen. Passwortmanager und die
+  // Browser-Autovervollständigung fuellen das Feld ebenfalls aus; die Mail ging
+  // dann nie raus, waehrend das Formular "Nachricht gesendet" meldete. Eine echte
+  // Anfrage still zu verlieren wiegt schwerer als eine markierte Spam-Mail.
+  // Der Verdacht steht jetzt im Betreff und im Mailkopf, filtern kann man ihn dort.
+  const spamVerdacht = String(data.get("kontakt_ref") ?? "").trim().length > 0;
+  if (spamVerdacht) {
     console.warn(
-      "Kontaktformular: Honeypot ausgelöst, Anfrage verworfen.",
+      "Kontaktformular: Honeypot ausgelöst, Anfrage als Spam-Verdacht markiert.",
       `name=${String(data.get("vorname") ?? "")} ${String(data.get("nachname") ?? "")}`,
       `email=${String(data.get("email") ?? "")}`
     );
-    return Response.json({ ok: true });
   }
 
   const vorname = String(data.get("vorname") ?? "").trim();
@@ -72,11 +76,12 @@ export async function POST(request: Request) {
     ort,
     interesse,
     message,
+    spamVerdacht,
   });
 
   try {
     const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
+    const { data: sent, error } = await resend.emails.send({
       from,
       to,
       replyTo: email,
@@ -93,6 +98,12 @@ export async function POST(request: Request) {
       );
     }
 
+    console.log(
+      "Kontaktformular: Mail an Resend uebergeben.",
+      `id=${sent?.id ?? "unbekannt"}`,
+      `to=${to}`,
+      `spamVerdacht=${spamVerdacht}`
+    );
     return Response.json({ ok: true });
   } catch (error) {
     console.error("Kontaktformular-Fehler:", error);

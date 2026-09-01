@@ -43,13 +43,19 @@ export function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
-/** Eine Zeile der Datentabelle — leere Felder werden gar nicht erst gerendert. */
-function row(label: string, value: string, options: { href?: string; last?: boolean } = {}) {
-  if (!value) return "";
+/**
+ * Eine Zeile der Datentabelle. Leere Felder werden gar nicht erst gerendert —
+ * ausser die Zeile ist als `immer` markiert: dann steht dort ein Gedankenstrich.
+ * Sonst sieht eine Anfrage ohne Adresse so aus, als fehle das Feld in der Mail.
+ */
+function row(label: string, value: string, options: { href?: string; last?: boolean; immer?: boolean } = {}) {
+  if (!value && !options.immer) return "";
   const borderBottom = options.last ? "none" : `1px solid ${COLOR.border}`;
-  const inner = options.href
-    ? `<a href="${escapeHtml(options.href)}" style="color:${COLOR.primary};text-decoration:underline;">${escapeHtml(value)}</a>`
-    : escapeHtml(value);
+  const inner = !value
+    ? `<span style="color:${COLOR.foregroundMuted};">&mdash;</span>`
+    : options.href
+      ? `<a href="${escapeHtml(options.href)}" style="color:${COLOR.primary};text-decoration:underline;">${escapeHtml(value)}</a>`
+      : escapeHtml(value);
 
   // Auf schmalen Screens rutscht der Wert unter das Label (siehe .mb-stack im
   // <style>-Block); Outlook Desktop ignoriert Media Queries und behält die
@@ -122,8 +128,9 @@ export function buildContactEmail(data: ContactSubmission) {
                 ${row("Name", data.nachname)}
                 ${row("E-Mail", data.email, { href: `mailto:${data.email}` })}
                 ${row("Telefon", data.phone, { href: `tel:${data.phone.replace(/[^\d+]/g, "")}` })}
-                ${row("Strasse", data.strasse)}
-                ${row("PLZ / Ort", ortZeile)}
+                ${row("Strasse", data.strasse, { immer: true })}
+                ${row("PLZ", data.plz, { immer: true })}
+                ${row("Ort", data.ort, { immer: true })}
                 ${row("Interesse an", data.interesse, { last: true })}
               </table>
             </td>
@@ -184,8 +191,9 @@ export function buildContactEmail(data: ContactSubmission) {
     `Name:         ${data.nachname}`,
     `E-Mail:       ${data.email}`,
     data.phone ? `Telefon:      ${data.phone}` : null,
-    data.strasse ? `Strasse:      ${data.strasse}` : null,
-    ortZeile ? `PLZ / Ort:    ${ortZeile}` : null,
+    `Strasse:      ${data.strasse || "—"}`,
+    `PLZ:          ${data.plz || "—"}`,
+    `Ort:          ${data.ort || "—"}`,
     data.interesse ? `Interesse an: ${data.interesse}` : null,
     "",
     "Nachricht:",

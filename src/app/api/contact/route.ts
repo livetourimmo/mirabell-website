@@ -37,7 +37,10 @@ export async function POST(request: Request) {
   const interesse = String(data.get("interesse") ?? "").trim();
   const message = String(data.get("message") ?? "").trim();
 
-  if (!vorname || !nachname || !email || !message) {
+  // Strasse, PLZ und Ort sind seit September 2026 Pflicht — die Bauherrschaft
+  // braucht zu jeder Anfrage eine vollständige Postadresse, wie sie es von
+  // Homegate gewohnt ist.
+  if (!vorname || !nachname || !email || !strasse || !plz || !ort || !message) {
     return Response.json(
       { ok: false, error: "Bitte füllen Sie alle Pflichtfelder aus." },
       { status: 400 }

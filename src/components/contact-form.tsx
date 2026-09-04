@@ -96,10 +96,21 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
       {/* Steht vor dem ersten Feld, weil der Gegenwert des Ausfüllens die
-          Eingabe motiviert — nicht erst die Bestätigung nach dem Absenden. */}
-      <p className="font-heading text-xl leading-snug text-primary md:text-2xl">
-        Kontaktformular ausfüllen und Verkaufsbroschüre direkt per E-Mail erhalten.
-      </p>
+          Eingabe motiviert — nicht erst die Bestätigung nach dem Absenden.
+
+          Der Satz soll auf einer Zeile stehen. Massgebend ist dafür nicht der
+          Viewport, sondern die Breite dieser Formularspalte (höchstens 702 px,
+          da sie im Grid nur 1.15fr bekommt) — daher `@container` und eine
+          Schriftgrösse in `cqi`. In PT Serif braucht der Satz das 34.3-fache
+          seiner Schriftgrösse an Breite, 2.8cqi hält ihn mit Reserve darunter.
+          Unter 36rem Spaltenbreite wäre einzeilig kleiner als 16 px, also
+          bricht er dort um; bei genau 36rem ergibt 2.8cqi ebenfalls 16 px,
+          sodass der Wechsel ohne Sprung in der Schriftgrösse passiert. */}
+      <div className="@container">
+        <p className="font-heading text-base leading-snug text-primary @[36rem]:whitespace-nowrap @[36rem]:text-[2.8cqi]">
+          Kontaktformular ausfüllen und Verkaufsbroschüre direkt per E-Mail erhalten.
+        </p>
+      </div>
 
       {/*
         Honeypot — für Menschen unsichtbar, Bots füllen es meist aus.

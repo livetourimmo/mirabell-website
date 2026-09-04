@@ -95,6 +95,12 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+      {/* Steht vor dem ersten Feld, weil der Gegenwert des Ausfüllens die
+          Eingabe motiviert — nicht erst die Bestätigung nach dem Absenden. */}
+      <p className="font-heading text-xl leading-snug text-primary md:text-2xl">
+        Kontaktformular ausfüllen und Verkaufsbroschüre direkt per E-Mail erhalten.
+      </p>
+
       {/*
         Honeypot — für Menschen unsichtbar, Bots füllen es meist aus.
         Der Feldname darf nach nichts Bekanntem klingen: hiess das Feld "website",

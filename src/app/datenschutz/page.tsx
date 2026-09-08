@@ -6,7 +6,8 @@ import { Eyebrow } from "@/components/eyebrow";
 import { ConsentEinstellungenLink } from "@/components/consent/consent-settings-link";
 import {
   AUFTRAGSBEARBEITER,
-  EMBED_LISTE,
+  EINWILLIGUNG_EMBEDS,
+  FREIE_EMBEDS,
   GEMEINSAME_VERANTWORTUNG,
   MITVERANTWORTLICHE,
   STAND,
@@ -229,11 +230,12 @@ export default function DatenschutzPage() {
               <Abschnitt nummer="5" titel="Eingebundene Inhalte Dritter">
                 <p>
                   Auf dieser Website binden wir Inhalte ein, die von Drittanbietern
-                  bereitgestellt werden. Diese Inhalte werden{" "}
+                  bereitgestellt werden. Inhalte, die eigene Cookies setzen oder weitere
+                  Dienste nachladen, werden{" "}
                   <strong className="font-medium text-primary">
                     erst geladen, nachdem Sie eingewilligt haben
                   </strong>
-                  . Ohne Ihre Einwilligung wird keine Verbindung zu den Anbietern
+                  . Ohne Ihre Einwilligung wird keine Verbindung zu diesen Anbietern
                   aufgebaut und es werden keine Daten an sie übermittelt.
                 </p>
                 <p className="mt-4">
@@ -245,7 +247,7 @@ export default function DatenschutzPage() {
                 </p>
 
                 <div className="mt-7 flex flex-col gap-5">
-                  {EMBED_LISTE.map((dienst) => (
+                  {EINWILLIGUNG_EMBEDS.map((dienst) => (
                     <div
                       key={dienst.id}
                       className="rounded-[var(--radius-base)] border border-border bg-surface p-5"
@@ -268,6 +270,61 @@ export default function DatenschutzPage() {
                         </dd>
                         <dt className="font-medium text-primary">Weitere Dienste</dt>
                         <dd>{dienst.drittdienste}</dd>
+                        <dt className="font-medium text-primary">Datenschutz</dt>
+                        <dd>
+                          <a
+                            href={dienst.datenschutz}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline underline-offset-2 hover:text-primary"
+                          >
+                            Erklärung des Anbieters
+                          </a>
+                        </dd>
+                      </dl>
+                    </div>
+                  ))}
+                </div>
+
+                <h3 className="mt-9 font-heading text-lg text-primary">
+                  Inhalte, die ohne Einwilligung geladen werden
+                </h3>
+                <p className="mt-2">
+                  Die folgenden Inhalte werden von einem Dienstleister bereitgestellt, der
+                  diese Website in unserem Auftrag betreibt. Sie speichern nichts auf Ihrem
+                  Gerät, binden keine Analyse- oder Werbedienste ein und übermitteln keine
+                  Daten in Drittstaaten. Sie sind damit Teil des Betriebs der Website und
+                  werden ohne gesonderte Einwilligung angezeigt (Art. 6 Abs. 1 lit. f
+                  DSGVO; Art. 31 DSG). Übermittelt wird dabei — technisch zwingend — Ihre
+                  IP-Adresse an den unten genannten Host.
+                </p>
+
+                <div className="mt-5 flex flex-col gap-5">
+                  {FREIE_EMBEDS.map((dienst) => (
+                    <div
+                      key={dienst.id}
+                      className="rounded-[var(--radius-base)] border border-border bg-surface p-5"
+                    >
+                      <p className="font-heading text-lg text-primary">{dienst.titel}</p>
+                      <dl className="mt-3 grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-[10rem_1fr]">
+                        <dt className="font-medium text-primary">Anbieter</dt>
+                        <dd>
+                          {dienst.anbieter}, {dienst.sitz}
+                        </dd>
+                        <dt className="font-medium text-primary">Aufgerufener Host</dt>
+                        <dd>{dienst.host}</dd>
+                        <dt className="font-medium text-primary">Zweck</dt>
+                        <dd>{dienst.zweck}</dd>
+                        <dt className="font-medium text-primary">Cookies</dt>
+                        <dd>
+                          {dienst.setztCookies
+                            ? "Der Anbieter setzt eigene Cookies und speichert Daten im Browser."
+                            : "Der Anbieter setzt keine Cookies."}
+                        </dd>
+                        <dt className="font-medium text-primary">Weitere Dienste</dt>
+                        <dd>{dienst.drittdienste}</dd>
+                        <dt className="font-medium text-primary">Warum ohne Einwilligung</dt>
+                        <dd>{dienst.begruendung}</dd>
                         <dt className="font-medium text-primary">Datenschutz</dt>
                         <dd>
                           <a

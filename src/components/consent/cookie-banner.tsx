@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { EMBED_LISTE } from "@/lib/legal";
+import { EINWILLIGUNG_EMBEDS, FREIE_EMBEDS } from "@/lib/legal";
 import { useConsent } from "@/components/consent/consent-provider";
 
 /**
@@ -12,6 +12,10 @@ import { useConsent } from "@/components/consent/consent-provider";
  * Bewusst gleichwertige Buttons: "Alle akzeptieren" und "Nur notwendige"
  * stehen nebeneinander und sind gleich gross. Eine optisch abgeschwächte
  * Ablehnung wäre keine freiwillige Einwilligung.
+ *
+ * Der Text benennt konkret, was betroffen ist — und ebenso konkret, was auch
+ * ohne Einwilligung sichtbar bleibt. Wer die Wohnungspreise sucht, soll hier
+ * nicht raten müssen, ob "Nur notwendige" sie ausblendet.
  */
 export function CookieBanner() {
   const {
@@ -42,11 +46,13 @@ export function CookieBanner() {
                 Externe Inhalte
               </p>
               <p className="mt-1.5 text-left! text-sm text-foreground-muted">
-                Diese Website funktioniert ohne Cookies. Für den virtuellen Rundgang, die
-                Umgebungskarte und den Immobiliennavigator binden wir Inhalte von
-                Drittanbietern ein. Beim Laden erhalten diese Ihre IP-Adresse; Rundgang
-                und Karte setzen zudem eigene Cookies und laden Analyse- und
-                Werbedienste nach. Das geschieht nur mit Ihrer Einwilligung.
+                Diese Website setzt keine eigenen Cookies. Die Wohnungsübersicht mit
+                allen Preisen, Grundrissen und Flächen ist immer verfügbar. Nur für den
+                virtuellen 360°-Rundgang und die interaktive Umgebungskarte binden wir
+                Inhalte von Drittanbietern ein: Diese erhalten beim Laden Ihre
+                IP-Adresse, setzen eigene Cookies und laden Analyse- und Werbedienste
+                nach. Beides können Sie später auch einzeln und nur für diesen Besuch
+                laden.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row sm:items-center">
@@ -139,6 +145,12 @@ function Einstellungen({
                 setzt dafür keine Cookies. Der Hosting-Anbieter protokolliert jeden
                 Zugriff technisch mit (IP-Adresse, Zeitpunkt, aufgerufene Seite).
               </p>
+              {FREIE_EMBEDS.map((dienst) => (
+                <p key={dienst.id} className="mt-3 text-left! text-sm text-foreground-muted">
+                  <span className="font-semibold text-primary">{dienst.titel}:</span>{" "}
+                  {dienst.begruendung}
+                </p>
+              ))}
             </div>
             <span className="shrink-0 rounded-[var(--radius-pill)] bg-secondary/50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground">
               Immer aktiv
@@ -151,9 +163,11 @@ function Einstellungen({
             <div>
               <p className="font-heading text-lg text-primary">Externe Inhalte</p>
               <p className="mt-1 text-left! text-sm text-foreground-muted">
-                Ohne Einwilligung bleiben diese Inhalte gesperrt und es wird keine
-                Verbindung zu den Anbietern aufgebaut. Sie können jedes Element auch
-                einzeln und nur für den aktuellen Besuch laden.
+                Ohne Einwilligung bleiben nur die unten aufgeführten Inhalte gesperrt und
+                es wird keine Verbindung zu deren Anbietern aufgebaut. Alle übrigen
+                Inhalte der Website — auch die Wohnungsübersicht mit den Preisen —
+                bleiben sichtbar. Sie können jedes Element zudem einzeln und nur für den
+                aktuellen Besuch laden.
               </p>
             </div>
             <span
@@ -168,7 +182,7 @@ function Einstellungen({
           </div>
 
           <ul className="mt-5 flex flex-col gap-4 border-t border-border pt-5">
-            {EMBED_LISTE.map((dienst) => (
+            {EINWILLIGUNG_EMBEDS.map((dienst) => (
               <li key={dienst.id}>
                 <p className="text-sm font-semibold text-primary">{dienst.titel}</p>
                 <p className="mt-0.5 text-left! text-xs text-foreground-muted">

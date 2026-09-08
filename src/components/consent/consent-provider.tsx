@@ -9,15 +9,20 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { EmbedId } from "@/lib/legal";
+import { EMBEDS, type EmbedId } from "@/lib/legal";
 
 /**
  * Einwilligungsverwaltung.
  *
- * Grundsatz: Externe Embeds werden erst geladen, wenn eine Einwilligung
- * vorliegt. Ein Banner, der erst zustimmt, nachdem die Tracker längst geladen
- * sind, wäre wirkungslos — deshalb hängt das Rendern der iframes am Zustand
- * hier und nicht bloss an einem Hinweistext.
+ * Grundsatz: Einwilligungspflichtige Embeds werden erst geladen, wenn eine
+ * Einwilligung vorliegt. Ein Banner, der erst zustimmt, nachdem die Tracker
+ * längst geladen sind, wäre wirkungslos — deshalb hängt das Rendern der iframes
+ * am Zustand hier und nicht bloss an einem Hinweistext.
+ *
+ * Nicht jedes eingebettete Element ist einwilligungspflichtig: Was nichts im
+ * Browser ablegt und von einem eigenen Auftragsbearbeiter stammt, lädt immer
+ * (siehe einwilligungspflichtig in lib/legal.ts). Sonst verschwänden die
+ * Wohnungspreise hinter einer Schranke, die niemand freiwillig anklickt.
  *
  * Gespeichert wird ausschliesslich lokal im Browser (localStorage), nicht in
  * einem Cookie: Die Entscheidung muss den Browser nie verlassen.
@@ -114,7 +119,10 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const externeMedienErlaubt = gespeichert?.externeMedien === true;
 
   const darfLaden = useCallback(
-    (id: EmbedId) => externeMedienErlaubt || einzelfreigaben.has(id),
+    (id: EmbedId) =>
+      !EMBEDS[id].einwilligungspflichtig ||
+      externeMedienErlaubt ||
+      einzelfreigaben.has(id),
     [externeMedienErlaubt, einzelfreigaben]
   );
 

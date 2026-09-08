@@ -159,6 +159,25 @@ export interface EmbedDienst {
   drittdienste: string;
   setztCookies: boolean;
   datenschutz: string;
+  /**
+   * Ob das Embed erst nach einer Einwilligung geladen werden darf.
+   *
+   * Einwilligung braucht es dort, wo etwas auf dem Gerät gespeichert wird oder
+   * Dienste Dritter nachgeladen werden. Ein Embed, das nichts ablegt und von
+   * einem unserer eigenen Auftragsbearbeiter stammt, fällt nicht darunter — es
+   * bleibt sichtbar, auch wenn nur das Notwendige erlaubt wurde.
+   */
+  einwilligungspflichtig: boolean;
+  /** Warum ohne Einwilligung geladen wird. Nur bei einwilligungspflichtig: false. */
+  begruendung?: string;
+  /**
+   * Vorschau der Klick-zum-Laden-Schranke. Ein echtes Bild statt einer leeren
+   * Box: Nur so ist erkennbar, was sich hinter der Sperre verbirgt — sonst
+   * klickt niemand, der nicht ohnehin weiss, was dort steht.
+   */
+  vorschau?: { src: string; alt: string };
+  /** Beschriftung des Buttons, der das Embed lädt. */
+  aktion?: string;
 }
 
 export const EMBEDS: Record<EmbedId, EmbedDienst> = {
@@ -174,6 +193,13 @@ export const EMBEDS: Record<EmbedId, EmbedDienst> = {
       "Lädt keine Werbe- oder Analysedienste nach. Die Daten stammen aus einer Datenbank im EU-Raum (Irland).",
     setztCookies: false,
     datenschutz: "https://www.livetour.ch",
+    // Ohne Einwilligung: liveTour betreibt diese Website ohnehin als
+    // Auftragsbearbeiter, der Navigator speichert nichts im Browser und lädt
+    // keine fremden Dienste nach. Die Preise dürfen deshalb nicht hinter einer
+    // Einwilligungsschranke verschwinden — sie sind der Kern des Angebots.
+    einwilligungspflichtig: false,
+    begruendung:
+      "Der Navigator stammt von liveTour, die diese Website ohnehin in unserem Auftrag technisch betreibt. Er speichert nichts auf Ihrem Gerät, bindet keine Analyse- oder Werbedienste ein und übermittelt keine Daten in Drittstaaten. Er wird deshalb immer angezeigt — auch dann, wenn Sie nur die notwendigen Funktionen erlauben.",
   },
   rundgang: {
     id: "rundgang",
@@ -186,6 +212,12 @@ export const EMBEDS: Record<EmbedId, EmbedDienst> = {
       "Bindet beim Laden zusätzlich Google Tag Manager, Google Analytics, DoubleClick (Google-Werbenetzwerk), den Facebook-Pixel (Meta), PostHog, Sentry und Cloudflare-Analysen ein.",
     setztCookies: true,
     datenschutz: "https://www.cloudpano.com/privacy-policy",
+    einwilligungspflichtig: true,
+    vorschau: {
+      src: "/images/innen1.jpg",
+      alt: "Offener Wohn- und Kochbereich der Musterwohnung mit Seesicht",
+    },
+    aktion: "360°-Rundgang starten",
   },
   karte: {
     id: "karte",
@@ -198,10 +230,22 @@ export const EMBEDS: Record<EmbedId, EmbedDienst> = {
       "Bindet beim Laden zusätzlich Google Maps, Google Tag Manager, Google Analytics, DoubleClick (Google-Werbenetzwerk), Segment, Heap Analytics und Sentry ein. Die Karte kann ausserdem den Standort des Geräts abfragen — das geschieht nur, wenn Sie die Abfrage im Browser ausdrücklich erlauben.",
     setztCookies: true,
     datenschutz: "https://www.atlist.com/privacy",
+    einwilligungspflichtig: true,
+    vorschau: {
+      src: "/images/lage-mirabell.jpg",
+      alt: "Blick über Uetliburg Richtung Obersee, der Standort von Mirabell ist markiert",
+    },
+    aktion: "Interaktive Karte laden",
   },
 };
 
 export const EMBED_LISTE = Object.values(EMBEDS);
+
+/** Embeds, die eine Einwilligung brauchen — Banner, Einstellungen, Kapitel 5. */
+export const EINWILLIGUNG_EMBEDS = EMBED_LISTE.filter((d) => d.einwilligungspflichtig);
+
+/** Embeds, die ohne Einwilligung laden dürfen — als solche auch auszuweisen. */
+export const FREIE_EMBEDS = EMBED_LISTE.filter((d) => !d.einwilligungspflichtig);
 
 /** Datum der letzten inhaltlichen Überarbeitung der Rechtstexte. */
 export const STAND = "August 2026";

@@ -77,7 +77,7 @@ export default function AngebotPage() {
           <Script id="lvt-axo-mirabell-resize" strategy="afterInteractive">
             {`
               (function () {
-                // Das iframe existiert erst nach erteilter Einwilligung, deshalb
+                // Das iframe kann später erscheinen als dieses Skript, deshalb
                 // wird es bei jeder Nachricht neu gesucht statt einmal beim Start.
                 window.addEventListener("message", function (event) {
                   var iframe = document.getElementById("lvt-axo-mirabell");

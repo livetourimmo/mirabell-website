@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { ConsentProvider } from "@/components/consent/consent-provider";
 import { CookieBanner } from "@/components/consent/cookie-banner";
+import { Analytics } from "@vercel/analytics/next";
 
 const ptSerif = PT_Serif({
   variable: "--font-pt-serif",
@@ -44,6 +45,8 @@ export default function RootLayout({
           <CookieBanner />
           <Toaster position="bottom-center" />
         </ConsentProvider>
+        {/* Cookielos und ohne Browser-Speicher — daher nicht einwilligungspflichtig. */}
+        <Analytics />
       </body>
     </html>
   );

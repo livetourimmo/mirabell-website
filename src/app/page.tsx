@@ -37,6 +37,7 @@ export default function Home() {
             src="/images/aussen2.jpg"
             alt="Architektur-Visualisierung Mirabell, Luftaufnahme von Haus A und Haus B im Dorfkern von Uetliburg"
             fill
+            quality={65}
             priority
             sizes="100vw"
             className="object-cover"
@@ -129,7 +130,7 @@ export default function Home() {
                   src="/images/aussen1-v7.jpg"
                   alt="Architektur-Visualisierung Mirabell, Strassenansicht von Haus A und Haus B"
                   fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
                   className="object-cover"
                 />
               </div>
@@ -192,7 +193,7 @@ export default function Home() {
                   src="/images/lage-mirabell.jpg"
                   alt="Blick über Uetliburg Richtung Obersee, der Standort von Mirabell ist markiert"
                   fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
                   className="object-cover"
                 />
               </div>
@@ -259,7 +260,7 @@ export default function Home() {
                     src="/images/innen6.jpg"
                     alt="Sitzplatz auf der Loggia mit raumhohen Fenstern"
                     fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
                     className="object-cover"
                   />
                 </div>

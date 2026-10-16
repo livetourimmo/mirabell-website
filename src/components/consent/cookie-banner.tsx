@@ -40,31 +40,28 @@ export function CookieBanner() {
           aria-labelledby="consent-titel"
           className="fixed inset-x-0 bottom-0 z-[60] border-t border-border bg-surface shadow-[0_-8px_30px_rgba(44,58,66,0.10)]"
         >
-          <div className="shell flex flex-col gap-5 py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+          <div className="shell flex flex-col gap-3 py-4 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             <div className="max-w-[68ch]">
               <p id="consent-titel" className="font-heading text-lg text-primary">
                 Statistik und externe Inhalte
               </p>
-              <p className="mt-1.5 text-left! text-sm text-foreground-muted">
-                Mit Ihrer Zustimmung verwenden wir Google Analytics, um die Nutzung
-                dieser Website auszuwerten. Dabei werden Cookies gesetzt. Ausserdem
-                laden wir die interaktive Karte und den 360°-Rundgang von Drittanbietern.
-                Mit «Nur notwendige» bleiben Google Analytics und diese externen Inhalte
-                ausgeschaltet. Die Wohnungsübersicht mit Preisen und Grundrissen bleibt
-                verfügbar. Ihre Auswahl können Sie jederzeit in den Einstellungen ändern.
+              <p className="mt-1.5 text-left! text-sm text-primary">
+                Mit Ihrer Zustimmung laden wir Google Analytics mit Cookies sowie
+                Karte und 360°-Rundgang. Ohne Zustimmung bleiben Preise und Grundrisse
+                verfügbar. Ihre Auswahl ist jederzeit unter Einstellungen änderbar.
               </p>
             </div>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row sm:items-center">
-              <Button variant="primary" onClick={alleAkzeptieren} className="sm:order-2">
+            <div className="grid shrink-0 grid-cols-2 gap-2 sm:flex sm:items-center">
+              <Button variant="primary" onClick={alleAkzeptieren} className="px-3 sm:order-2 sm:px-7">
                 Alle akzeptieren
               </Button>
-              <Button variant="secondary" onClick={nurNotwendige} className="sm:order-1">
+              <Button variant="secondary" onClick={nurNotwendige} className="px-3 sm:order-1 sm:px-7">
                 Nur notwendige
               </Button>
               <button
                 type="button"
                 onClick={einstellungenOeffnen}
-                className="text-sm font-medium text-primary underline underline-offset-4 hover:opacity-70 sm:order-3"
+                className="col-span-2 min-h-11 text-sm font-medium text-primary underline underline-offset-4 hover:opacity-70 sm:order-3"
               >
                 Einstellungen
               </button>

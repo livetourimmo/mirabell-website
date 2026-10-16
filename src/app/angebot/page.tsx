@@ -35,6 +35,7 @@ export default function AngebotPage() {
             src="/images/aussen4.jpg"
             alt="Blick vom Hof zwischen Haus A und Haus B über Uetliburg Richtung Obersee"
             fill
+            quality={65}
             priority
             sizes="100vw"
             className="object-cover"
@@ -188,7 +189,7 @@ export default function AngebotPage() {
                   src="/images/innen4.jpg"
                   alt="Schlafzimmer mit direktem Zugang zum Bad"
                   fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
                   className="object-cover"
                 />
               </div>

@@ -29,12 +29,11 @@ export function CookieBanner() {
     einstellungenSchliessen,
   } = useConsent();
 
-  if (!bereit) return null;
-
   return (
     <>
-      {offen && !einstellungenOffen && (
+      {(!bereit || offen) && !einstellungenOffen && (
         <div
+          data-consent-pending={!bereit ? "true" : undefined}
           role="dialog"
           aria-modal="false"
           aria-labelledby="consent-titel"

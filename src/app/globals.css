@@ -197,3 +197,8 @@ select:focus-visible {
   margin-inline: auto;
   padding-inline: clamp(2rem, 7vw, 8rem);
 }
+
+/* Avoid showing the server-rendered consent banner to returning visitors. */
+html[data-mirabell-consent="known"] [data-consent-pending="true"] {
+  display: none;
+}

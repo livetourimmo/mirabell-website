@@ -39,8 +39,14 @@ export default function RootLayout({
   return (
     <html
       lang="de-CH"
+      suppressHydrationWarning
       className={cn("h-full antialiased", ptSerif.variable, ptSans.variable)}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: `(function(){try{var c=JSON.parse(localStorage.getItem('mirabell-consent'));if(c&&c.version===2)document.documentElement.dataset.mirabellConsent='known';}catch(e){}})();` }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
         <ConsentProvider>
           {children}

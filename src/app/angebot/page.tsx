@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Script from "next/script";
 import { Download } from "lucide-react";
@@ -9,10 +9,11 @@ import { Eyebrow } from "@/components/eyebrow";
 import { ConsentEmbed } from "@/components/consent/consent-embed";
 import { MOCK_DOWNLOADS } from "@/lib/mock-data";
 
-export const metadata: Metadata = {
-  title: "Angebot",
-  description: "Alle 13 Wohnungen im Überblick: Grundrisse, Flächen, Preise und Downloads zum Neubauprojekt Mirabell in Uetliburg.",
-};
+export const metadata = pageMetadata(
+  "Eigentumswohnungen: Preise & Grundrisse in Uetliburg",
+  "Entdecken Sie die 13 Eigentumswohnungen von Mirabell in Uetliburg: 3.5 und 4.5 Zimmer, Grundrisse, Wohnflächen, Preise und Verkaufsunterlagen.",
+  "/angebot",
+);
 
 const MATERIALS = [
   { titel: "Böden", text: "Parkett aus definierter Grundauswahl mit individuellen Wahlmöglichkeiten im Rahmen des vorgesehenen Budgets." },

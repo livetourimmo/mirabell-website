@@ -1,3 +1,4 @@
+import { pageMetadata, SITE_URL, SITE_DESCRIPTION } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -8,9 +9,25 @@ import { Gallery } from "@/components/gallery";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/eyebrow";
 
+export const metadata = pageMetadata("Eigentumswohnungen in Uetliburg", SITE_DESCRIPTION, "/");
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: "Mirabell",
+  url: `${SITE_URL}/`,
+  description: SITE_DESCRIPTION,
+  inLanguage: "de-CH",
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+      />
       <Nav />
       <main className="flex-1">
         {/* HERO — vollflächiges Bild, Titel & Informationen darunter statt darauf.
@@ -35,7 +52,7 @@ export default function Home() {
               Wo Seesicht und Weitblick zuhause sind.
             </p>
             <p className="mt-5 max-w-[52ch] text-foreground-muted">
-              13 charaktervolle Eigentumswohnungen (3.5 &amp; 4.5 Zimmer) mit
+              13 charaktervolle Eigentumswohnungen in Uetliburg (3.5 &amp; 4.5 Zimmer) mit
               grosszügiger Autoeinstellhalle inklusive E-Mobilität.
             </p>
             <p className="mt-6 max-w-[52ch] font-heading italic text-primary">

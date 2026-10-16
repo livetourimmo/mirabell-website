@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { disableGoogleAnalytics } from "@/lib/google-analytics";
 import { EMBEDS, type EmbedId } from "@/lib/legal";
 
 /**
@@ -29,7 +30,7 @@ import { EMBEDS, type EmbedId } from "@/lib/legal";
  */
 
 /** Hochzählen, wenn sich die eingebundenen Dienste ändern — fragt erneut nach. */
-const CONSENT_VERSION = 1;
+const CONSENT_VERSION = 2;
 const STORAGE_KEY = "mirabell-consent";
 
 interface StoredConsent {
@@ -108,8 +109,11 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const nurNotwendige = useCallback(() => {
     // Widerruf muss auch die Einzelfreigaben zurücknehmen, sonst bliebe ein
     // bereits geladenes Embed trotz "Nur notwendige" weiter sichtbar.
+    disableGoogleAnalytics();
     setEinzelfreigaben(new Set());
     setzen(false);
+    // Stop already loaded scripts and their history listeners after withdrawal.
+    if (window.mirabellGaInitialized) window.location.reload();
   }, [setzen]);
 
   const einmaligLaden = useCallback((id: EmbedId) => {

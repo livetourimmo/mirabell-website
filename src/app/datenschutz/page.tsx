@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -14,11 +14,11 @@ import {
   VERANTWORTLICHE,
 } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  title: "Datenschutz",
-  description:
-    "Datenschutzerklärung zur Website des Neubauprojekts Mirabell in Uetliburg: bearbeitete Personendaten, eingebundene Drittdienste und Rechte betroffener Personen.",
-};
+export const metadata = pageMetadata(
+  "Datenschutz",
+  "Datenschutzerklärung von Mirabell in Uetliburg: Informationen zur Bearbeitung von Personendaten, eingebundenen Diensten und Ihren Rechten.",
+  "/datenschutz",
+);
 
 export default function DatenschutzPage() {
   return (
@@ -133,11 +133,35 @@ export default function DatenschutzPage() {
                   Zuordnung dieser Daten zu einer bestimmten Person nehmen wir nicht vor.
                 </p>
                 <Hinweis>
-                  Diese Website setzt selbst keine Cookies und verwendet keine
-                  Analyse-, Statistik- oder Werbedienste. Es findet weder eine Messung von
-                  Reichweite oder Nutzerverhalten noch ein geräteübergreifendes Tracking
-                  statt.
+                  Wir verwenden Vercel Web Analytics für aggregierte Besucherstatistiken
+                  ohne Analyse-Cookies. Zusätzlich setzen wir Google Analytics 4 erst
+                  nach Ihrer Einwilligung über «Alle akzeptieren» ein.
                 </Hinweis>
+                <h3 className="mt-6 font-heading text-xl text-primary">Google Analytics 4</h3>
+                <p className="mt-4">
+                  Anbieter ist Google Ireland Limited, Gordon House, Barrow Street,
+                  Dublin 4, Irland. Nach Ihrer Zustimmung werden unter anderem
+                  Seitenaufrufe, Verweisquellen sowie Browser- und Geräteinformationen
+                  zur Auswertung der Website-Nutzung verarbeitet. Google Analytics
+                  verwendet Cookies wie _ga und eine projektspezifische _ga-Kennung.
+                  Wir konfigurieren deren Laufzeit auf ein Jahr; bei erneuter Nutzung
+                  kann die Laufzeit erneuert werden. Eine Verarbeitung in den USA ist
+                  möglich. Google-Signale und Werbepersonalisierung sind in unserer
+                  Einbindung deaktiviert.
+                </p>
+                <p className="mt-4">
+                  Grundlage ist Ihre Einwilligung (soweit die DSGVO anwendbar ist:
+                  Art. 6 Abs. 1 lit. a DSGVO). Ohne Zustimmung wird unser Google-Tag
+                  nicht geladen. Sie können Ihre Zustimmung jederzeit über die
+                  Cookie-Einstellungen im Footer und «Nur notwendige» widerrufen.
+                  Dabei deaktivieren wir die weitere Erfassung und entfernen die von
+                  unserer Einbindung verwendeten Analyse-Cookies. Bereits erhobene
+                  Daten werden dadurch nicht rückwirkend gelöscht.
+                </p>
+                <p className="mt-4">
+                  Weitere Informationen: <a href="https://policies.google.com/privacy" className="underline">Google-Datenschutzerklärung</a>
+                  {" "}und <a href="https://vercel.com/docs/analytics/privacy-policy" className="underline">Datenschutz bei Vercel Web Analytics</a>.
+                </p>
               </Abschnitt>
 
               <Abschnitt nummer="4" titel="Kontaktformular">

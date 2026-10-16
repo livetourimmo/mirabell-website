@@ -43,16 +43,15 @@ export function CookieBanner() {
           <div className="shell flex flex-col gap-5 py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             <div className="max-w-[68ch]">
               <p id="consent-titel" className="font-heading text-lg text-primary">
-                Externe Inhalte
+                Statistik und externe Inhalte
               </p>
               <p className="mt-1.5 text-left! text-sm text-foreground-muted">
-                Diese Website setzt keine eigenen Cookies. Die Wohnungsübersicht mit
-                allen Preisen, Grundrissen und Flächen ist immer verfügbar. Nur für den
-                virtuellen 360°-Rundgang und die interaktive Umgebungskarte binden wir
-                Inhalte von Drittanbietern ein: Diese erhalten beim Laden Ihre
-                IP-Adresse, setzen eigene Cookies und laden Analyse- und Werbedienste
-                nach. Beides können Sie später auch einzeln und nur für diesen Besuch
-                laden.
+                Mit Ihrer Zustimmung verwenden wir Google Analytics, um die Nutzung
+                dieser Website auszuwerten. Dabei werden Cookies gesetzt. Ausserdem
+                laden wir die interaktive Karte und den 360°-Rundgang von Drittanbietern.
+                Mit «Nur notwendige» bleiben Google Analytics und diese externen Inhalte
+                ausgeschaltet. Die Wohnungsübersicht mit Preisen und Grundrissen bleibt
+                verfügbar. Ihre Auswahl können Sie jederzeit in den Einstellungen ändern.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row sm:items-center">
@@ -133,7 +132,7 @@ function Einstellungen({
           id="consent-einstellungen-titel"
           className="mt-2 font-heading text-2xl text-primary md:text-3xl"
         >
-          Einstellungen zu externen Inhalten
+          Statistik und externe Inhalte
         </h2>
 
         <div className="mt-7 rounded-[var(--radius-base)] border border-border p-5">
@@ -161,9 +160,9 @@ function Einstellungen({
         <div className="mt-4 rounded-[var(--radius-base)] border border-border p-5">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="font-heading text-lg text-primary">Externe Inhalte</p>
+              <p className="font-heading text-lg text-primary">Statistik und externe Inhalte</p>
               <p className="mt-1 text-left! text-sm text-foreground-muted">
-                Ohne Einwilligung bleiben nur die unten aufgeführten Inhalte gesperrt und
+                Ohne Einwilligung bleiben Google Analytics und die unten aufgeführten Inhalte gesperrt und
                 es wird keine Verbindung zu deren Anbietern aufgebaut. Alle übrigen
                 Inhalte der Website — auch die Wohnungsübersicht mit den Preisen —
                 bleiben sichtbar. Sie können jedes Element zudem einzeln und nur für den
@@ -181,6 +180,13 @@ function Einstellungen({
             </span>
           </div>
 
+          <p className="mt-4 text-sm text-foreground-muted">
+            Google Analytics 4 (Google Ireland Limited) erfasst nach Zustimmung
+            Seitenaufrufe und Nutzungsdaten und speichert Analyse-Cookies. Eine
+            Verarbeitung in den USA ist möglich. Werbepersonalisierung ist deaktiviert.
+            Die Freigabe eines einzelnen Rundgangs oder einer Karte aktiviert unsere
+            Website-Analyse nicht.
+          </p>
           <ul className="mt-5 flex flex-col gap-4 border-t border-border pt-5">
             {EINWILLIGUNG_EMBEDS.map((dienst) => (
               <li key={dienst.id}>

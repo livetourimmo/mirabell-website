@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { SITE_URL, SITE_DESCRIPTION } from "@/lib/seo";
 import { PT_Serif, PT_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { ConsentProvider } from "@/components/consent/consent-provider";
 import { CookieBanner } from "@/components/consent/cookie-banner";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { Analytics } from "@vercel/analytics/next";
 
 const ptSerif = PT_Serif({
@@ -20,13 +22,13 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.mirabell.immobilien"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Mirabell — Wo Seesicht und Weitblick zuhause sind",
+    default: "Eigentumswohnungen in Uetliburg | Mirabell",
     template: "%s | Mirabell",
   },
-  description:
-    "Mirabell in Uetliburg: 13 charaktervolle Eigentumswohnungen (3.5 & 4.5 Zimmer) mit grosszügiger Autoeinstellhalle inklusive E-Mobilität.",
+  description: SITE_DESCRIPTION,
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
 export default function RootLayout({
@@ -43,9 +45,9 @@ export default function RootLayout({
         <ConsentProvider>
           {children}
           <CookieBanner />
+          <GoogleAnalytics />
           <Toaster position="bottom-center" />
         </ConsentProvider>
-        {/* Cookielos und ohne Browser-Speicher — daher nicht einwilligungspflichtig. */}
         <Analytics />
       </body>
     </html>

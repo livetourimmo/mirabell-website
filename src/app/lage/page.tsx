@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
@@ -13,10 +13,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export const metadata: Metadata = {
-  title: "Lage",
-  description: "Mirabell im Dorfkern von Uetliburg — Region, unmittelbare Umgebung und interaktive Karte.",
-};
+export const metadata = pageMetadata(
+  "Wohnen in Uetliburg – Lage & Umgebung",
+  "Entdecken Sie die Lage von Mirabell in Uetliburg, Gemeinde Gommiswald: Seesicht, Umgebung, Verkehrsanbindung und interaktive Karte.",
+  "/lage",
+);
 
 const MAKRO = [
   {

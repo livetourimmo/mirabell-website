@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/nav";
@@ -6,11 +6,11 @@ import { Footer } from "@/components/footer";
 import { Eyebrow } from "@/components/eyebrow";
 import { PROJEKTBETEILIGTE, STAND, VERANTWORTLICHE } from "@/lib/legal";
 
-export const metadata: Metadata = {
-  title: "Impressum",
-  description:
-    "Impressum zur Website des Neubauprojekts Mirabell in Uetliburg. Verantwortlich: Salus Fidelity GmbH, Schindellegi.",
-};
+export const metadata = pageMetadata(
+  "Impressum",
+  "Impressum zum Neubauprojekt Mirabell in Uetliburg: Verantwortliche, Bauherrschaft und Ansprechpartner für Verkauf und Beratung.",
+  "/impressum",
+);
 
 export default function ImpressumPage() {
   return (

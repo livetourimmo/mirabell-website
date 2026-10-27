@@ -14,7 +14,9 @@ import { useConsent } from "@/components/consent/consent-provider";
  * Ablehnung wäre keine freiwillige Einwilligung.
  *
  * Der Text benennt konkret, was betroffen ist — und ebenso konkret, was auch
- * ohne Einwilligung sichtbar bleibt. Wer die Wohnungspreise sucht, soll hier
+ * ohne Einwilligung sichtbar bleibt. Google Analytics wird nicht gesperrt,
+ * sondern läuft bis zur Zustimmung ohne Cookies (Consent Mode); das sagt der
+ * Text ausdrücklich. Wer die Wohnungspreise sucht, soll hier
  * nicht raten müssen, ob "Nur notwendige" sie ausblendet.
  */
 export function CookieBanner() {
@@ -45,8 +47,9 @@ export function CookieBanner() {
                 Statistik und externe Inhalte
               </p>
               <p className="mt-1.5 text-left! text-sm text-primary">
-                Mit Ihrer Zustimmung laden wir Google Analytics mit Cookies sowie
-                Karte und 360°-Rundgang. Ohne Zustimmung bleiben Preise und Grundrisse
+                Google Analytics misst im Einwilligungsmodus; dabei erhält Google Ihre
+                IP-Adresse. Cookies setzt Google erst mit Ihrer Zustimmung, ebenso laden
+                Karte und 360°-Rundgang erst dann. Preise und Grundrisse bleiben immer
                 verfügbar. Ihre Auswahl ist jederzeit unter Einstellungen änderbar.
               </p>
             </div>
@@ -158,8 +161,9 @@ function Einstellungen({
             <div>
               <p className="font-heading text-lg text-primary">Statistik und externe Inhalte</p>
               <p className="mt-1 text-left! text-sm text-foreground-muted">
-                Ohne Einwilligung bleiben Google Analytics und die unten aufgeführten Inhalte gesperrt und
-                es wird keine Verbindung zu deren Anbietern aufgebaut. Alle übrigen
+                Ohne Einwilligung bleiben die unten aufgeführten Inhalte gesperrt und
+                es wird keine Verbindung zu deren Anbietern aufgebaut. Google Analytics
+                läuft dann nur eingeschränkt ohne Cookies (siehe unten). Alle übrigen
                 Inhalte der Website — auch die Wohnungsübersicht mit den Preisen —
                 bleiben sichtbar. Sie können jedes Element zudem einzeln und nur für den
                 aktuellen Besuch laden.
@@ -177,9 +181,13 @@ function Einstellungen({
           </div>
 
           <p className="mt-4 text-sm text-foreground-muted">
-            Google Analytics 4 (Google Ireland Limited) erfasst nach Zustimmung
-            Seitenaufrufe und Nutzungsdaten und speichert Analyse-Cookies. Eine
-            Verarbeitung in den USA ist möglich. Werbepersonalisierung ist deaktiviert.
+            Google Analytics 4 (Google Ireland Limited) wird im Einwilligungsmodus
+            auf jeder Seite geladen; Google erhält dabei Ihre IP-Adresse. Ohne
+            Zustimmung setzt Google keine Cookies und erhält nur cookielose Signale,
+            aus denen die Nutzung statistisch hochgerechnet wird. Erst nach Zustimmung
+            erfasst Google Seitenaufrufe und Nutzungsdaten mit Analyse-Cookies. Eine
+            Verarbeitung in den USA ist möglich. Werbefunktionen sind deaktiviert. Ein
+            Widerruf löscht die Analyse-Cookies.
             Die Freigabe eines einzelnen Rundgangs oder einer Karte aktiviert unsere
             Website-Analyse nicht.
           </p>

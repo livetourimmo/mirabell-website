@@ -104,7 +104,7 @@ export default function DatenschutzPage() {
                   <li>
                     <strong className="font-medium text-primary">Art. 6 Abs. 1 lit. a DSGVO</strong>{" "}
                     — Ihre Einwilligung, namentlich für das Laden der eingebundenen
-                    Inhalte Dritter.
+                    Inhalte Dritter und für Analyse-Cookies von Google Analytics.
                   </li>
                   <li>
                     <strong className="font-medium text-primary">Art. 6 Abs. 1 lit. f DSGVO</strong>{" "}
@@ -134,28 +134,43 @@ export default function DatenschutzPage() {
                 </p>
                 <Hinweis>
                   Wir verwenden Vercel Web Analytics für aggregierte Besucherstatistiken
-                  ohne Analyse-Cookies. Zusätzlich setzen wir Google Analytics 4 erst
-                  nach Ihrer Einwilligung über «Alle akzeptieren» ein.
+                  ohne Analyse-Cookies. Zusätzlich nutzen wir Google Analytics 4 im
+                  Einwilligungsmodus: Ohne Ihre Einwilligung läuft es nur eingeschränkt
+                  ohne Cookies, Cookies setzt es erst nach «Alle akzeptieren».
                 </Hinweis>
-                <h3 className="mt-6 font-heading text-xl text-primary">Google Analytics 4</h3>
+                <h3 className="mt-6 font-heading text-xl text-primary">Google Analytics 4 (Einwilligungsmodus)</h3>
                 <p className="mt-4">
                   Anbieter ist Google Ireland Limited, Gordon House, Barrow Street,
-                  Dublin 4, Irland. Nach Ihrer Zustimmung werden unter anderem
-                  Seitenaufrufe, Verweisquellen sowie Browser- und Geräteinformationen
-                  zur Auswertung der Website-Nutzung verarbeitet. Google Analytics
-                  verwendet Cookies wie _ga und eine projektspezifische _ga-Kennung.
+                  Dublin 4, Irland. Wir nutzen Google Analytics im Einwilligungsmodus
+                  (Consent Mode). Das Google-Tag wird bei jedem Seitenaufruf geladen;
+                  dabei erhält Google Ihre IP-Adresse sowie Angaben zu Browser, Gerät
+                  und aufgerufener Seite. Solange Sie nicht über «Alle akzeptieren»
+                  eingewilligt haben, setzt Google keine Cookies und speichert keine
+                  Kennungen in Ihrem Browser. Übermittelt werden dann nur cookielose
+                  Signale, aus denen Google die Nutzung der Website statistisch
+                  hochrechnet.
+                </p>
+                <p className="mt-4">
+                  Nach Ihrer Zustimmung werden unter anderem Seitenaufrufe,
+                  Verweisquellen sowie Browser- und Geräteinformationen zur Auswertung
+                  der Website-Nutzung verarbeitet und einzelnen Besuchen zugeordnet.
+                  Google Analytics verwendet dafür Cookies wie _ga und eine
+                  projektspezifische _ga-Kennung.
                   Wir konfigurieren deren Laufzeit auf ein Jahr; bei erneuter Nutzung
                   kann die Laufzeit erneuert werden. Eine Verarbeitung in den USA ist
-                  möglich. Google-Signale und Werbepersonalisierung sind in unserer
+                  möglich. Google-Signale, Werbefunktionen und Werbepersonalisierung sind in unserer
                   Einbindung deaktiviert.
                 </p>
                 <p className="mt-4">
-                  Grundlage ist Ihre Einwilligung (soweit die DSGVO anwendbar ist:
-                  Art. 6 Abs. 1 lit. a DSGVO). Ohne Zustimmung wird unser Google-Tag
-                  nicht geladen. Sie können Ihre Zustimmung jederzeit über die
-                  Cookie-Einstellungen im Footer und «Nur notwendige» widerrufen.
-                  Dabei deaktivieren wir die weitere Erfassung und entfernen die von
-                  unserer Einbindung verwendeten Analyse-Cookies. Bereits erhobene
+                  Grundlage für die Analyse-Cookies ist Ihre Einwilligung (soweit die
+                  DSGVO anwendbar ist: Art. 6 Abs. 1 lit. a DSGVO), für die
+                  cookielosen Signale unser berechtigtes Interesse an einer
+                  Reichweitenmessung (Art. 6 Abs. 1 lit. f DSGVO). Sie können Ihre
+                  Zustimmung jederzeit über die Cookie-Einstellungen im Footer und
+                  «Nur notwendige» widerrufen. Dabei lehnen wir die Speicherung für
+                  Google Analytics wieder ab und entfernen die von unserer Einbindung
+                  verwendeten Analyse-Cookies; danach werden wieder nur cookielose
+                  Signale übermittelt. Bereits erhobene
                   Daten werden dadurch nicht rückwirkend gelöscht.
                 </p>
                 <p className="mt-4">
@@ -422,9 +437,10 @@ export default function DatenschutzPage() {
                 </p>
                 <p className="mt-4">
                   Eine Bekanntgabe in die Vereinigten Staaten findet statt beim
-                  technischen Versand der Kontaktformular-E-Mail über Resend sowie —
-                  sofern Sie einwilligen — beim Laden des virtuellen Rundgangs und der
-                  Umgebungskarte. Die Vereinigten Staaten verfügen nach Einschätzung des
+                  technischen Versand der Kontaktformular-E-Mail über Resend, bei der
+                  Nutzung von Google Analytics (Google kann Daten in die USA
+                  übermitteln) sowie — sofern Sie einwilligen — beim Laden des
+                  virtuellen Rundgangs und der Umgebungskarte. Die Vereinigten Staaten verfügen nach Einschätzung des
                   Schweizerischen Bundesrates und der Europäischen Kommission über keinen
                   generell angemessenen Datenschutz. Wir stützen solche Übermittlungen
                   daher auf Standarddatenschutzklauseln beziehungsweise auf Ihre

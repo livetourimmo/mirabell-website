@@ -16,7 +16,9 @@ import { EMBEDS, type EmbedId } from "@/lib/legal";
  * Einwilligungsverwaltung.
  *
  * Grundsatz: Einwilligungspflichtige Embeds werden erst geladen, wenn eine
- * Einwilligung vorliegt. Ein Banner, der erst zustimmt, nachdem die Tracker
+ * Einwilligung vorliegt. Ausnahme ist das Google-Tag im Einwilligungsmodus
+ * (components/google-tag.tsx): Es lädt immer, setzt aber erst nach «Alle
+ * akzeptieren» Cookies. Ein Banner, der erst zustimmt, nachdem die Tracker
  * längst geladen sind, wäre wirkungslos — deshalb hängt das Rendern der iframes
  * am Zustand hier und nicht bloss an einem Hinweistext.
  *
@@ -109,11 +111,11 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const nurNotwendige = useCallback(() => {
     // Widerruf muss auch die Einzelfreigaben zurücknehmen, sonst bliebe ein
     // bereits geladenes Embed trotz "Nur notwendige" weiter sichtbar.
+    // Google Analytics bleibt im Einwilligungsmodus geladen, setzt nach dem
+    // Widerruf aber keine Cookies mehr; die vorhandenen werden gelöscht.
     disableGoogleAnalytics();
     setEinzelfreigaben(new Set());
     setzen(false);
-    // Stop already loaded scripts and their history listeners after withdrawal.
-    if (window.mirabellGaInitialized) window.location.reload();
   }, [setzen]);
 
   const einmaligLaden = useCallback((id: EmbedId) => {

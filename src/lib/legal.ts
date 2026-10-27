@@ -248,4 +248,4 @@ export const EINWILLIGUNG_EMBEDS = EMBED_LISTE.filter((d) => d.einwilligungspfli
 export const FREIE_EMBEDS = EMBED_LISTE.filter((d) => !d.einwilligungspflichtig);
 
 /** Datum der letzten inhaltlichen Überarbeitung der Rechtstexte. */
-export const STAND = "16. Oktober 2026";
+export const STAND = "27. Oktober 2026";

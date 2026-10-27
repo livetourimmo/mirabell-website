@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ConsentProvider } from "@/components/consent/consent-provider";
 import { CookieBanner } from "@/components/consent/cookie-banner";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { GoogleTag } from "@/components/google-tag";
 import { Analytics } from "@vercel/analytics/next";
 
 // Lokal aus @fontsource statt next/font/google: Der Abruf bei Google ist im
@@ -57,6 +58,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{ __html: `(function(){try{var c=JSON.parse(localStorage.getItem('mirabell-consent'));if(c&&c.version===2)document.documentElement.dataset.mirabellConsent='known';}catch(e){}})();` }}
         />
+        <GoogleTag />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
         <ConsentProvider>

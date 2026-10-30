@@ -148,7 +148,7 @@ export default function DatenschutzPage() {
                   eingewilligt haben, setzt Google keine Cookies und speichert keine
                   Kennungen in Ihrem Browser. Übermittelt werden dann nur cookielose
                   Signale, aus denen Google die Nutzung der Website statistisch
-                  hochrechnet.
+                  hochrechnet. Ausserdem erfassen wir, ob eine Kontaktanfrage erfolgreich übermittelt wurde; bei dieser Erfolgsmessung übertragen wir nur die Herkunftsseite des Formulars, keine Namen, E-Mail-Adressen, Telefonnummern oder Nachrichten.
                 </p>
                 <p className="mt-4">
                   Nach Ihrer Zustimmung werden unter anderem Seitenaufrufe,

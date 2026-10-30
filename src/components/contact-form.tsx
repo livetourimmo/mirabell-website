@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
+import { messeKontaktanfrage } from "@/lib/google-analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -79,6 +80,10 @@ export function ContactForm() {
       }
 
       setStatus("success");
+      if (!data.get("kontakt_ref")) {
+        // Ein Messfehler darf eine erfolgreiche Anfrage nie als Fehler anzeigen.
+        try { messeKontaktanfrage(window.location.pathname); } catch { /* Messung ist optional. */ }
+      }
       toast.success("Nachricht gesendet", {
         description: "Wir melden uns in Kürze bei Ihnen zurück.",
       });

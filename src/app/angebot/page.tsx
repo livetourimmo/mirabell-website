@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
 import { ConsentEmbed } from "@/components/consent/consent-embed";
+import { BILDQUALITAET } from "@/lib/bilder";
 import { MOCK_DOWNLOADS } from "@/lib/mock-data";
 
 export const metadata = pageMetadata(
@@ -35,7 +36,7 @@ export default function AngebotPage() {
             src="/images/aussen4.jpg"
             alt="Blick vom Hof zwischen Haus A und Haus B über Uetliburg Richtung Obersee"
             fill
-            quality={65}
+            quality={BILDQUALITAET}
             priority
             sizes="100vw"
             className="object-cover"
@@ -190,6 +191,7 @@ export default function AngebotPage() {
                   alt="Schlafzimmer mit direktem Zugang zum Bad"
                   fill
                   sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
+                  quality={BILDQUALITAET}
                   className="object-cover"
                 />
               </div>

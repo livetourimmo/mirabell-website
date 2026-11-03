@@ -2,8 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    formats: ["image/avif", "image/webp"],
-    qualities: [65, 75],
+    // Nur WebP: AVIF verschmierte bei den Visualisierungen feine Strukturen
+    // (Laub, Stoffe) sichtbar, siehe src/lib/bilder.ts BILDQUALITAET.
+    formats: ["image/webp"],
+    qualities: [75, 85],
   },
   experimental: {
     inlineCss: true,

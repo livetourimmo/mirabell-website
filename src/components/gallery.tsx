@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { BILDQUALITAET } from "@/lib/bilder";
 
 interface GalleryImage {
   id: string;
@@ -56,6 +57,7 @@ export function Gallery() {
               alt={image.alt}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
+              quality={BILDQUALITAET}
               className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
           </button>
@@ -81,6 +83,7 @@ export function Gallery() {
                 src={active.src}
                 alt={active.alt}
                 fill
+                quality={BILDQUALITAET}
                 className="object-contain"
               />
 

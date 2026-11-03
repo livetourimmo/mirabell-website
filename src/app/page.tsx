@@ -8,6 +8,7 @@ import { Reveal } from "@/components/reveal";
 import { Gallery } from "@/components/gallery";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/eyebrow";
+import { BILDQUALITAET } from "@/lib/bilder";
 
 export const metadata = pageMetadata("Eigentumswohnungen in Uetliburg", SITE_DESCRIPTION, "/");
 
@@ -37,7 +38,7 @@ export default function Home() {
             src="/images/aussen2.jpg"
             alt="Architektur-Visualisierung Mirabell, Luftaufnahme von Haus A und Haus B im Dorfkern von Uetliburg"
             fill
-            quality={65}
+            quality={BILDQUALITAET}
             priority
             sizes="100vw"
             className="object-cover"
@@ -131,6 +132,7 @@ export default function Home() {
                   alt="Architektur-Visualisierung Mirabell, Strassenansicht von Haus A und Haus B"
                   fill
                   sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
+                  quality={BILDQUALITAET}
                   className="object-cover"
                 />
               </div>
@@ -194,6 +196,7 @@ export default function Home() {
                   alt="Blick über Uetliburg Richtung Obersee, der Standort von Mirabell ist markiert"
                   fill
                   sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
+                  quality={BILDQUALITAET}
                   className="object-cover"
                 />
               </div>
@@ -261,6 +264,7 @@ export default function Home() {
                     alt="Sitzplatz auf der Loggia mit raumhohen Fenstern"
                     fill
                     sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, calc(100vw - 40px)"
+                    quality={BILDQUALITAET}
                     className="object-cover"
                   />
                 </div>

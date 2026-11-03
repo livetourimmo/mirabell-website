@@ -16,13 +16,13 @@ export function pageMetadata(title: string, description: string, path: string): 
       title: fullTitle,
       description,
       url: `${SITE_URL}${path}`,
-      images: [{ url: `${SITE_URL}/images/aussen2.jpg`, alt: "Mirabell – Eigentumswohnungen in Uetliburg" }],
+      images: [{ url: `${SITE_URL}/images/og-mirabell.jpg`, width: 1200, height: 630, alt: "Mirabell – Eigentumswohnungen in Uetliburg" }],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [`${SITE_URL}/images/aussen2.jpg`],
+      images: [`${SITE_URL}/images/og-mirabell.jpg`],
     },
   };
 }

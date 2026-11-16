@@ -7,10 +7,11 @@ const nextConfig: NextConfig = {
     formats: ["image/webp"],
     qualities: [75, 85],
   },
-  // Einbetten nur durch die Seite selbst und das liveTour-Kundenportal (Rückmeldung der Bauherrschaft
-  // zur Webseite). Schützt zugleich vor Clickjacking durch fremde Seiten.
+  // Einbetten nur durch die Seite selbst, das liveTour-Kundenportal (Rückmeldung der Bauherrschaft
+  // zur Webseite) und die liveTour-Website (Projektseite /projekte/mirabell zeigt die Webseite live).
+  // Schützt zugleich vor Clickjacking durch fremde Seiten.
   async headers() {
-    return [{ source: "/:path*", headers: [{ key: "Content-Security-Policy", value: "frame-ancestors 'self' https://kundenportal.livetour.ch" }] }];
+    return [{ source: "/:path*", headers: [{ key: "Content-Security-Policy", value: "frame-ancestors 'self' https://kundenportal.livetour.ch https://www.livetour.ch https://livetour.ch" }] }];
   },
   experimental: {
     inlineCss: true,

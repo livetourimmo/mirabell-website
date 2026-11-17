@@ -1,13 +1,39 @@
 import { Resend } from "resend";
 import { buildContactEmail } from "@/lib/contact-email";
+import { anfragePruefen } from "@/lib/anfrage-schutz";
 
 // Ohne diese Angabe lief die Funktion in iad1 (Washington), d. h. die
 // Formulardaten wurden in den USA verarbeitet. fra1 (Frankfurt) hält die
 // Bearbeitung im EWR und deckt sich mit der Datenschutzerklärung.
 export const preferredRegion = "fra1";
 
+// Höchstlängen pro Feld. Längere Eingaben werden abgewiesen statt gekürzt,
+// damit nichts unbemerkt verloren geht.
+const LIMITS = {
+  vorname: 120,
+  nachname: 120,
+  email: 200,
+  phone: 60,
+  strasse: 200,
+  plz: 20,
+  ort: 120,
+  interesse: 200,
+  message: 5000,
+} as const;
+
 export async function POST(request: Request) {
-  const data = await request.formData();
+  // Ursprung, Grösse und Rate-Limit (lib/anfrage-schutz.ts).
+  const sperre = anfragePruefen(request);
+  if (sperre) {
+    return Response.json({ ok: false, error: sperre.fehler }, { status: sperre.status });
+  }
+
+  let data: FormData;
+  try {
+    data = await request.formData();
+  } catch {
+    return Response.json({ ok: false, error: "Ungültige Anfrage." }, { status: 400 });
+  }
 
   // Honeypot — für Menschen unsichtbares Feld, Bots füllen es meist aus.
   //
@@ -17,12 +43,9 @@ export async function POST(request: Request) {
   // Anfrage still zu verlieren wiegt schwerer als eine markierte Spam-Mail.
   // Der Verdacht steht jetzt im Betreff und im Mailkopf, filtern kann man ihn dort.
   const spamVerdacht = String(data.get("kontakt_ref") ?? "").trim().length > 0;
+  // Keine Personendaten ins Log (Datenschutz): nur der Hinweis selbst.
   if (spamVerdacht) {
-    console.warn(
-      "Kontaktformular: Honeypot ausgelöst, Anfrage als Spam-Verdacht markiert.",
-      `name=${String(data.get("vorname") ?? "")} ${String(data.get("nachname") ?? "")}`,
-      `email=${String(data.get("email") ?? "")}`
-    );
+    console.warn("Kontaktformular: Honeypot ausgelöst, Anfrage als Spam-Verdacht markiert.");
   }
 
   const vorname = String(data.get("vorname") ?? "").trim();
@@ -43,6 +66,17 @@ export async function POST(request: Request) {
   if (!vorname || !nachname || !email || !strasse || !plz || !ort || !message) {
     return Response.json(
       { ok: false, error: "Bitte füllen Sie alle Pflichtfelder aus." },
+      { status: 400 }
+    );
+  }
+
+  const laengen = { vorname, nachname, email, phone, strasse, plz, ort, interesse, message };
+  const zuLang = (Object.keys(LIMITS) as (keyof typeof LIMITS)[]).some(
+    (feld) => laengen[feld].length > LIMITS[feld]
+  );
+  if (zuLang) {
+    return Response.json(
+      { ok: false, error: "Eine Ihrer Eingaben ist zu lang. Bitte kürzen Sie sie." },
       { status: 400 }
     );
   }
@@ -104,7 +138,6 @@ export async function POST(request: Request) {
     console.log(
       "Kontaktformular: Mail an Resend übergeben.",
       `id=${sent?.id ?? "unbekannt"}`,
-      `to=${to}`,
       `spamVerdacht=${spamVerdacht}`
     );
     return Response.json({ ok: true });

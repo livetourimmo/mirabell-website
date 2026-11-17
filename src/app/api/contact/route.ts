@@ -81,7 +81,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Streng: nur Buchstaben (inkl. Umlaute), Ziffern und . _ + ' -. Zeichen wie ? & # = kommen
+  // so nie in den mailto-Link der Benachrichtigung (Sicherheitsprüfung 2026-11-17).
+  const emailPattern = /^[A-Za-z0-9À-ÖØ-öø-ÿ._+'-]+@[A-Za-z0-9À-ÖØ-öø-ÿ-]+(?:\.[A-Za-z0-9À-ÖØ-öø-ÿ-]+)*\.[A-Za-z]{2,}$/;
   if (!emailPattern.test(email)) {
     return Response.json(
       { ok: false, error: "Bitte geben Sie eine gültige E-Mail-Adresse an." },

@@ -11,7 +11,7 @@ import { BILDQUALITAET } from "@/lib/bilder";
 import { MOCK_DOWNLOADS } from "@/lib/mock-data";
 
 export const metadata = pageMetadata(
-  "Eigentumswohnungen: Preise & Grundrisse in Uetliburg",
+  "Preise & Grundrisse in Uetliburg SG",
   "Entdecken Sie die 13 Eigentumswohnungen von Mirabell in Uetliburg: 3.5 und 4.5 Zimmer, Grundrisse, Wohnflächen, Preise und Verkaufsunterlagen.",
   "/angebot",
 );

@@ -36,7 +36,7 @@ const ptSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Eigentumswohnungen in Uetliburg | Mirabell",
+    default: "Eigentumswohnungen mit Seesicht in Uetliburg SG | Mirabell",
     template: "%s | Mirabell",
   },
   description: SITE_DESCRIPTION,

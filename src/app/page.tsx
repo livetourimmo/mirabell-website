@@ -13,7 +13,7 @@ import { MITVERANTWORTLICHE, PROJEKTBETEILIGTE, VERANTWORTLICHE } from "@/lib/le
 
 const VERMARKTUNG_DOMAIN = PROJEKTBETEILIGTE.find((p) => p.name === MITVERANTWORTLICHE.name)?.domain;
 
-export const metadata = pageMetadata("Eigentumswohnungen in Uetliburg", SITE_DESCRIPTION, "/");
+export const metadata = pageMetadata("Eigentumswohnungen mit Seesicht in Uetliburg SG", SITE_DESCRIPTION, "/");
 
 /**
  * Strukturierte Daten (JSON-LD), serverseitig im HTML. Nur Angaben, die auf

@@ -249,3 +249,6 @@ export const FREIE_EMBEDS = EMBED_LISTE.filter((d) => !d.einwilligungspflichtig)
 
 /** Datum der letzten inhaltlichen Überarbeitung der Rechtstexte. */
 export const STAND = "27. Oktober 2026";
+
+/** Stand der Datenschutzerklärung, wenn nur sie geändert wurde (Impressum behält STAND). */
+export const DATENSCHUTZ_STAND = "18. November 2026";

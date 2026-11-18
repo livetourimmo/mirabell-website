@@ -8,6 +8,7 @@ import { ConsentProvider } from "@/components/consent/consent-provider";
 import { CookieBanner } from "@/components/consent/cookie-banner";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { GoogleTag } from "@/components/google-tag";
+import { WebVitals } from "@/components/web-vitals";
 import { Analytics } from "@vercel/analytics/next";
 
 // Lokal aus @fontsource statt next/font/google: Der Abruf bei Google ist im
@@ -67,6 +68,7 @@ export default function RootLayout({
           <GoogleAnalytics />
           <Toaster position="bottom-center" />
         </ConsentProvider>
+        <WebVitals />
         <Analytics />
       </body>
     </html>

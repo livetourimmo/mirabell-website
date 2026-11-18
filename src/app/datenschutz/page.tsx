@@ -6,11 +6,11 @@ import { Eyebrow } from "@/components/eyebrow";
 import { ConsentEinstellungenLink } from "@/components/consent/consent-settings-link";
 import {
   AUFTRAGSBEARBEITER,
+  DATENSCHUTZ_STAND,
   EINWILLIGUNG_EMBEDS,
   FREIE_EMBEDS,
   GEMEINSAME_VERANTWORTUNG,
   MITVERANTWORTLICHE,
-  STAND,
   VERANTWORTLICHE,
 } from "@/lib/legal";
 
@@ -150,6 +150,10 @@ export default function DatenschutzPage() {
                   Kennungen in Ihrem Browser. Übermittelt werden dann nur cookielose
                   Signale, aus denen Google die Nutzung der Website statistisch
                   hochrechnet. Ausserdem erfassen wir, ob eine Kontaktanfrage erfolgreich übermittelt wurde; bei dieser Erfolgsmessung übertragen wir nur die Herkunftsseite des Formulars, keine Namen, E-Mail-Adressen, Telefonnummern oder Nachrichten.
+                  Zusätzlich erfasst Google Analytics Messwerte zur Ladezeit und
+                  Reaktionsgeschwindigkeit der Seiten (Core Web Vitals), damit wir die
+                  Geschwindigkeit der Website verbessern können; dafür gelten dieselben
+                  Einstellungen wie für die übrige Statistik.
                 </p>
                 <p className="mt-4">
                   Nach Ihrer Zustimmung werden unter anderem Seitenaufrufe,
@@ -529,7 +533,7 @@ export default function DatenschutzPage() {
             </div>
 
             <p className="mt-14 border-t border-border pt-6 text-sm text-foreground-muted">
-              Stand: {STAND} ·{" "}
+              Stand: {DATENSCHUTZ_STAND} ·{" "}
               <Link href="/impressum" className="underline underline-offset-2 hover:text-primary">
                 Impressum
               </Link>

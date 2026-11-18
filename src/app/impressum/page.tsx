@@ -10,6 +10,7 @@ export const metadata = pageMetadata(
   "Impressum",
   "Impressum zum Neubauprojekt Mirabell in Uetliburg: Verantwortliche, Bauherrschaft und Ansprechpartner für Verkauf und Beratung.",
   "/impressum",
+  { noindex: true },
 );
 
 export default function ImpressumPage() {

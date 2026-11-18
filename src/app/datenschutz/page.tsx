@@ -18,6 +18,7 @@ export const metadata = pageMetadata(
   "Datenschutz",
   "Datenschutzerklärung von Mirabell in Uetliburg: Informationen zur Bearbeitung von Personendaten, eingebundenen Diensten und Ihren Rechten.",
   "/datenschutz",
+  { noindex: true },
 );
 
 export default function DatenschutzPage() {

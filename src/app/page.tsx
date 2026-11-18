@@ -9,17 +9,92 @@ import { Gallery } from "@/components/gallery";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/eyebrow";
 import { BILDQUALITAET } from "@/lib/bilder";
+import { MITVERANTWORTLICHE, PROJEKTBETEILIGTE, VERANTWORTLICHE } from "@/lib/legal";
+
+const VERMARKTUNG_DOMAIN = PROJEKTBETEILIGTE.find((p) => p.name === MITVERANTWORTLICHE.name)?.domain;
 
 export const metadata = pageMetadata("Eigentumswohnungen in Uetliburg", SITE_DESCRIPTION, "/");
 
+/**
+ * Strukturierte Daten (JSON-LD), serverseitig im HTML. Nur Angaben, die auf
+ * der Website stehen: Adresse (Impressum), Wohnungsspiegel (7 × 4.5, 6 × 3.5
+ * Zimmer), Ausstattung (Seite Angebot), Gemeinde/Kanton (Seite Lage),
+ * Bauherrschaft und Vermarktung (lib/legal.ts). Keine Preise oder
+ * Verfügbarkeiten (die stehen im Navigator und ändern sich), keine
+ * Koordinaten (nicht im Repo belegt).
+ */
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${SITE_URL}/#website`,
-  name: "Mirabell",
-  url: `${SITE_URL}/`,
-  description: SITE_DESCRIPTION,
-  inLanguage: "de-CH",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "Mirabell",
+      url: `${SITE_URL}/`,
+      description: SITE_DESCRIPTION,
+      inLanguage: "de-CH",
+      publisher: { "@id": `${SITE_URL}/#bauherrschaft` },
+    },
+    {
+      "@type": "ApartmentComplex",
+      "@id": `${SITE_URL}/#projekt`,
+      name: "Mirabell",
+      alternateName: "Ottenhofenstrasse 53 + 55, Uetliburg",
+      description: SITE_DESCRIPTION,
+      url: `${SITE_URL}/`,
+      image: [`${SITE_URL}/images/og-mirabell.jpg`, `${SITE_URL}/images/aussen2.jpg`, `${SITE_URL}/images/aussen1-v7.jpg`],
+      numberOfAccommodationUnits: 13,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Ottenhofenstrasse 53 + 55",
+        postalCode: "8738",
+        addressLocality: "Uetliburg",
+        addressRegion: "SG",
+        addressCountry: "CH",
+      },
+      containedInPlace: { "@type": "AdministrativeArea", name: "Gemeinde Gommiswald, Kanton St. Gallen" },
+      accommodationFloorPlan: [
+        { "@type": "FloorPlan", name: "4.5-Zimmerwohnung", numberOfRooms: 4.5, numberOfAccommodationUnits: 7 },
+        { "@type": "FloorPlan", name: "3.5-Zimmerwohnung", numberOfRooms: 3.5, numberOfAccommodationUnits: 6 },
+      ],
+      amenityFeature: [
+        "Lift",
+        "Hindernisfrei nach SIA 500",
+        "23 Einstellhallenplätze mit Vorbereitung für E-Ladestationen",
+        "Erdsonden-Wärmepumpe",
+        "Fussbodenheizung mit Einzelraumregulierung",
+        "Eigener Waschturm in jeder Wohnung",
+      ].map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true })),
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#bauherrschaft`,
+      name: VERANTWORTLICHE.name,
+      url: VERANTWORTLICHE.websiteHref,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: VERANTWORTLICHE.strasse,
+        postalCode: VERANTWORTLICHE.plz,
+        addressLocality: VERANTWORTLICHE.ort,
+        addressCountry: "CH",
+      },
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": `${SITE_URL}/#vermarktung`,
+      name: MITVERANTWORTLICHE.name,
+      ...(VERMARKTUNG_DOMAIN ? { url: `https://${VERMARKTUNG_DOMAIN}` } : {}),
+      email: MITVERANTWORTLICHE.email,
+      telephone: MITVERANTWORTLICHE.telefonHref.replace("tel:", ""),
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: MITVERANTWORTLICHE.strasse,
+        postalCode: MITVERANTWORTLICHE.plzOrt.split(" ")[0],
+        addressLocality: MITVERANTWORTLICHE.plzOrt.split(" ").slice(1).join(" "),
+        addressCountry: "CH",
+      },
+    },
+  ],
 };
 
 export default function Home() {
